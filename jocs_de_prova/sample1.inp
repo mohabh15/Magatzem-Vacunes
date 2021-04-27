@@ -1,0 +1,54 @@
+7
+1 1
+2 2
+3 3
+3 2
+4 3
+1 2
+2 2
+escriure 1
+escriure 2
+escriure 3
+escriure 4
+escriure 5
+escriure 6
+escriure 7
+afegir_unitats 5 J07BX01M3 100
+afegir_vac J07BX01M3
+inventari
+afegir_vac J07BX01M3
+inventari
+treure_vac J07BX01M2
+treure_vac J07BX01M3
+inventari
+afegir_vac J07BX01M3
+consultar_vac J07BX01M4
+afegir_unitats 5 J07BX01M3 100
+consultar_pos 5 2 1
+escriure 5
+consultar_vac J07BX01M3
+afegir_vac J07BX01M1
+canviar_nevera 5 3 2
+escriure 5
+canviar_nevera 5 7 2
+escriure 5
+treure_unitats 7 J07BX01M5 10
+treure_unitats 7 J07BX01M3 10
+escriure 7
+afegir_vac J07BX01M4
+afegir_unitats 7 J07BX01M4 5
+escriure 7
+treure_unitats 7 J07BX01M4 3
+escriure 7
+afegir_unitats 7 J07BX01M3 2
+escriure 7
+ordenar 7
+escriure 7
+treure_unitats 5 J07BX01M3 4
+escriure 5
+comprimir 5
+escriure 5
+consultar_pos 5 1 1
+consultar_pos 5 7 1
+inventari
+fi

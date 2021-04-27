@@ -80,12 +80,23 @@ void cambra::comprimir()
 
 }
 
-
+bool mirar_null(string a, string b)
+{
+	if(a=="NULL") return false;
+	return true;
+}
 void cambra::ordenar()
 //Pre: cert
 //Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
 //entre elles ni abans de cap vacuna
 {
+	for(int i=0; i<cambra1.size(); ++i)
+	{
+		for(int j=0; i<cambra1.size(); ++i)
+		{
+			sort(cambra1.begin(),cambra1.end(),mirar_null);
+		}
+	}
 
 }
 

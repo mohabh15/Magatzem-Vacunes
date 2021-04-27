@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm> 
 #include "sistema.hpp"
 using namespace std;
 
