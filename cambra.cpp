@@ -73,7 +73,6 @@ void cambra::comprimir()
 //Post:  Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
 //entre dues vacunes ni abans de cap vacuna
 {
-	int contador=0;
 	//mirar de un en un i si esta buit quan trobem un que estigui buit mirem els seguent 
 	for(unsigned int i=0; i<cambra1.size(); ++i)
 	{
@@ -81,6 +80,7 @@ void cambra::comprimir()
 		{
 			if(cambra1[i][j]=="NULL") 
 			{
+				int contador=0;
 				//seguir mirant amb un altre bucle fins trobar un no buit que es posara en el ultim lloc buit trobat
 				for(unsigned int v=i; i<cambra1.size(); ++i)
 				{
@@ -97,7 +97,9 @@ void cambra::comprimir()
 						else ++contador;
 						if(contador==v*z) 
 						{
-							//salir de la cambra
+							//si arribem al final de la cambra sense trobar cap ple ja tenim la post i sortim dels bucles
+							i=cambra1.size();
+							j=cambra1[0].size();
 						}
 					}
 				}
@@ -123,7 +125,6 @@ void cambra::ordenar()
 			sort(cambra1.begin(),cambra1.end(),mirar_null);
 		}
 	}
-
 }
 
 
@@ -132,21 +133,67 @@ void cambra::canviar_nevera(int files, int columnes)
 //Post: Es crea un nova nevera amb les dimension de files i columnes si el contingut de la antigua nevera
 //caben en la nova, si no dona error  
 {
-	//es copia la nevera en una aux i es cambia la que hi havia 
-	//despres es va implint la nova amb la antigua
+	//contar quantes vacunes hay en la cambra
+	int quantitat=0;
+	for(int i=0; i<cambra1.size();++i )
+	{
+		for(int j=0; j<cambra1[0].size(); ++j) 
+		{
+			if(cambra1[i][j]!="NULL") ++quantitat;
+		}
+	}
+	//si la cantidad cabe en la nueva nevera 
+	//despres es va omplint la nova amb la antigua
+	if(quantitat<=files*columnes)  
+	{
+		// Crea la nevera aux i es posa la nova amb les noves dimensions
+		Matriu cambra_aux(files,vector<string>(columnes,"NULL")); 
+		//Es copia la nevera en una aux
+		for(int i=0; i<cambra1.size();++i )
+		{
+			for(int j=0; j<cambra1[0].size(); ++j) 
+			{
+				if(cambra1[i][j]!="NULL") 
+				{
+					cambra_aux[i][j]=cambra1[i][j];
+				}
+			}	
+		}
+		//es copia les vacunes de la nevera aux a la nova nevera
+		cambra1=cambra_aux;
+		cambra1.resize(files,vector<string>(columnes));
+		for(int i=0; i<cambra1.size();++i )
+		{
+			for(int j=0; j<cambra1[0].size(); ++j) 
+			{
+				cambra1[i][j]=cambra_aux[i][j];
+			}	
+		}
+	else cout<<"ERROR"<<endl;
+	
 
 }
 
 
-string cambra::consultar_po(int fila, int columna)
+string Cambra::consultar_po(int fila, int columna)
 //Pre:cert
 //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
 {
-	return cambra1[fila][columna];
+	return cambra[fila][columna];
 }
 
 
-void cambra::escriure()
+unsigned int Cambra::size(int fila, int columna)
+//Pre: 
+//Post: retorna la mida de la matriu cambra
+{
+	unsigned int mida_matriu;
+	mida_matriu = fila * columna;
+	return mida_matriu;
+}
+
+
+void Cambra::escriure()
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
 //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 
