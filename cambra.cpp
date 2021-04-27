@@ -90,9 +90,9 @@ void cambra::ordenar()
 //Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
 //entre elles ni abans de cap vacuna
 {
-	for(int i=0; i<cambra1.size(); ++i)
+	for(unsigned int i=0; i<cambra1.size(); ++i)
 	{
-		for(int j=0; i<cambra1.size(); ++i)
+		for(unsigned int j=0; i<cambra1.size(); ++i)
 		{
 			sort(cambra1.begin(),cambra1.end(),mirar_null);
 		}
