@@ -73,11 +73,37 @@ void cambra::comprimir()
 //Post:  Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
 //entre dues vacunes ni abans de cap vacuna
 {
-	//mirar de un en un i si esta buit posar les cordenadas en una variable
-	//i seguir mirant amb un altre bucle fins trobar un no buit que es posara en les cordenadas abans guardades
-	//i aquell lloc es posara en null i mirem la casilla seguent de la que estaba buida
-	// si amb el segon bucle arribem al final sense trobar cap ocupat sortim dels 2 bucles
-
+	int contador=0;
+	//mirar de un en un i si esta buit quan trobem un que estigui buit mirem els seguent 
+	for(unsigned int i=0; i<cambra1.size(); ++i)
+	{
+		for(unsigned int j=0; i<cambra1.size(); ++i)
+		{
+			if(cambra1[i][j]=="NULL") 
+			{
+				//seguir mirant amb un altre bucle fins trobar un no buit que es posara en el ultim lloc buit trobat
+				for(unsigned int v=i; i<cambra1.size(); ++i)
+				{
+					for(unsigned int z=j; i<cambra1[0].size(); ++i)
+					{
+						//i aquell lloc es posara en null i mirem la casilla seguent de la que estaba buida
+						if(cambra1[v][z]!="NULL") 
+						{
+							cambra1[i][j]=cambra1[v][z];
+							cambra1[v][z]="NULL";
+							v=cambra1.size();
+							z=cambra1[0].size();
+						}
+						else ++contador;
+						if(contador==v*z) 
+						{
+							//salir de la cambra
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 bool mirar_null(string a, string b)
