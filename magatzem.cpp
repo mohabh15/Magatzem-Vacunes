@@ -41,7 +41,7 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
     }
     else
     {
-        eliminar_vacuna;
+        eliminar_vacuna; sgsdgdg
     }
     */
 }
