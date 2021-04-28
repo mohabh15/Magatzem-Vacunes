@@ -169,41 +169,69 @@ void cambra::canviar_nevera(int files, int columnes)
 				cambra1[i][j]=cambra_aux[i][j];
 			}	
 		}
+	}
 	else cout<<"ERROR"<<endl;
-	
-
 }
 
 
-string Cambra::consultar_po(int fila, int columna)
+string cambra::consultar_po(int fila, int columna)
 //Pre:cert
 //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
 {
-	return cambra[fila][columna];
+	return cambra1[fila][columna];
 }
 
 
-unsigned int Cambra::size(int fila, int columna)
+/*unsigned int cambra::size(int fila, int columna)
 //Pre: 
 //Post: retorna la mida de la matriu cambra
 {
 	unsigned int mida_matriu;
 	mida_matriu = fila * columna;
 	return mida_matriu;
-}
+}*/
 
 
-void Cambra::escriure()
+void cambra::escriure()
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
-//Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 
+//Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacuna existent en la nevera, 
 //s’escriuen l’identificador de vacuna i la seva quantitat
 {
 	int quantitat;
-
+	vector<pair<string,int>> vacunes;
 	//contigunt de dalt a baix de la nevera
-	//
+	for(unsigned int i=0; i<cambra1.size();++i)
+	{
+		for(unsigned int j=0; j<cambra1[0].size();++j)
+		{
+			cout<<cambra1[i][j];
+			if(cambra1[i][j]!="NULL") 
+			{
+				++quantitat;
+				if (vacunes.size()==0) vacunes.push_back(make_pair(cambra1[i][j],1));
+				else
+				{
+					for(unsigned int z=0; z<vacunes.size(); ++z)
+					{
+						if(cambra1[i][j]==vacunes[i].first)
+						{
+							++vacunes[i].second;
+						}
+						else if(cambra1[i][j]!="NULL") vacunes.push_back(make_pair(cambra1[i][j],1));
+					}
+				}
+			}
+		}
+		cout<<endl;
+	}
 
 	//identificador de vacuna i quantes hi ha d'aquest tipus
+	for(unsigned int i=0; i<vacunes.size(); ++i)
+	{
+		cout<<vacunes[i].first<<vacunes[i].second<<endl;
+	}
+
+	//quantitat total de vacunes
 	cout<<quantitat<<endl;
 }
