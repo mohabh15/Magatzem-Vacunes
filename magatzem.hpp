@@ -21,7 +21,7 @@ class Magatzem
     //typedef arbreBin<cambra> TMagatzem;  no fa falta no?
     //arbreBin<cambra> magatzem;
 
-    list<cambra> magatzem;
+    list<Cambra> magatzem;
 
     map<string,int> sistema;    
     // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
