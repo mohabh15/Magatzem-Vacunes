@@ -65,7 +65,8 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
     for(list<cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
     // recorrer la llista magatzem
     {
-        for(unsigned int j = 0; j < *it.size(); ++j)
+        cambra c1=*it;
+        for(unsigned int j = 0; j < c1.size(); ++j)
         // recorrer la matriu cambra
         {
             if(sistema.find(Ident_vacuna)!=sistema.end())
