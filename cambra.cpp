@@ -174,14 +174,14 @@ string cambra::consultar_po(int fila, int columna)
 }
 
 
-/*unsigned int cambra::size(int fila, int columna)
+unsigned int cambra::size()
 //Pre: 
 //Post: retorna la mida de la matriu cambra
 {
 	unsigned int mida_matriu;
-	mida_matriu = fila * columna;
+	mida_matriu = cambra1.size() * cambra1[0].size();
 	return mida_matriu;
-}*/
+}
 
 
 void cambra::escriure()

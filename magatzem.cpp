@@ -2,17 +2,17 @@
 using namespace std;
 
 // Constructors
-Magatzem::magatzem()
-// Crea una llista buida anomenada magatzem
-{
-}
-Magatzem::magatzem(int mida_magatzem)
+Magatzem::Magatzem()
+//Pre:
+// Post:Crea una llista buida anomenada magatzem
+{}
+Magatzem::Magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
 {
 }
 
 //Destructors
-Magatzem::~magatzem()
+Magatzem::~Magatzem()
 // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
 {
 }
@@ -62,15 +62,13 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
 {
     int comptador = 0;
-    magatzem1.begin();
-    magatzem1.front();
-    for(list<cambra>::iterator it = magatzem1.begin(); it != magatzem1.end(); ++it) 
+    for(list<cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
     // recorrer la llista magatzem
     {
-        for(unsigned int j = 0; j < c1.size(); ++j)
+        for(unsigned int j = 0; j < *it.size(); ++j)
         // recorrer la matriu cambra
         {
-            if(m1.find(Ident_vacuna) == true)
+            if(sistema.find(Ident_vacuna)!=sistema.end())
             {
                 ++comptador;
             }
