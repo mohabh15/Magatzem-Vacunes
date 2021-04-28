@@ -34,16 +34,16 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
 {
-    /*
-    if(no_existeix_vacuna or no_queden_unitats)
+    
+    if(sistema.find(Ident_vacuna)==sistema.end() or no_queden_unitats)
     {
         error;
     }
     else
     {
-        eliminar_vacuna; sgsdgdg
+        eliminar_vacuna; 
     }
-    */
+    
 }
 void Magatzem::afegir_vacuna(string Ident_vacuna)
     // Pre:  s’introdueix un identificador de vacuna.
@@ -103,5 +103,5 @@ void Magatzem::fi()
 // Pre: cert
 // Post: Acaba l'execució de la simulació.
 {
-   cin.ignore();
+   cin.ignore();  // perque tot el rato esta llegint llavors una vegada deixi de llegir s'acaba el programa
 }
