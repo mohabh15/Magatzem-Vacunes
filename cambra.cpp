@@ -8,60 +8,52 @@ cambra::cambra(int x, int y)
 }
 
 
-int cambra::afegir_unitats(string ident_vacuna,int quantitat, sistema m1)
+int cambra::afegir_unitats(string ident_vacuna,int quantitat)
 //Pre: Identificacio de vacuna ha de començar amb "J07"
 //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
 //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
 {
-	if(!m1.find(ident_vacuna)) cout<<"ERROR"<<endl;
-	else 
+	for(int i=0; i<cambra1.size(); ++i)
 	{
-		for(int i=0; i<cambra1.size(); ++i)
+		for(int j=0; i<cambra1[0].size(); ++i)
 		{
-			for(int j=0; i<cambra1[0].size(); ++i)
+			if(quantitat!=0 or cambra1[i][j]!="NULL") 
 			{
-				if(quantitat!=0 or cambra1[i][j]!="NULL") 
-				{
-					cambra1[i][j]=ident_vacuna;
-					--quantitat;
-				}
-				if(quantitat==0)
-				{
-					i=cambra1.size();
-					j=cambra1[0].size();
-				}
-				
+				cambra1[i][j]=ident_vacuna;
+				--quantitat;
 			}
+			if(quantitat==0)
+			{
+				i=cambra1.size();
+				j=cambra1[0].size();
+			}
+			
 		}
 	}
 	return quantitat;
 }
 
 
-int cambra::treure_unitats(string ident_vacuna, int quantitat, sistema m1)
+int cambra::treure_unitats(string ident_vacuna, int quantitat)
 //Pre: Identificacio de vacuna ha de començar amb "J07"
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //pogut treure perque no hi havia suficients a la cambra 
 {
-	if(!m1.find(ident_vacuna)) cout<<"ERROR"<<endl;
-	else 
+	for(int i=0; i<cambra1.size(); ++i)
 	{
-		for(int i=0; i<cambra1.size(); ++i)
+		for(int j=0; i<cambra1[0].size(); ++i)
 		{
-			for(int j=0; i<cambra1[0].size(); ++i)
+			if(quantitat!=0 or cambra1[i][j]!=ident_vacuna) 
 			{
-				if(quantitat!=0 or cambra1[i][j]!=ident_vacuna) 
-				{
-					cambra1[i][j]="NULL";
-					--quantitat;
-				}
-				if(quantitat==0)
-				{
-					i=cambra1.size();
-					j=cambra1[0].size();
-				}
-				
+				cambra1[i][j]="NULL";
+				--quantitat;
 			}
+			if(quantitat==0)
+			{
+				i=cambra1.size();
+				j=cambra1[0].size();
+			}
+			
 		}
 	}
 	return quantitat;

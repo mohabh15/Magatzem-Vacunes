@@ -19,13 +19,13 @@ class cambra
     //Post:crea una matriu de x files i y columnes 
 
 
-    int afegir_unitats(string ident_vacuna,int quantitat, sistema m1);
+    int afegir_unitats(string ident_vacuna,int quantitat);
     //Pre: Identificacio de vacuna ha de començar amb "J07"
     //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
     //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
 
 
-    int treure_unitats(string ident_vacuna, int quantitat, sistema m1);
+    int treure_unitats(string ident_vacuna, int quantitat);
     //Pre: Identificacio de vacuna ha de començar amb "J07"
     //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
     //pogut treure perque no hi havia suficients a la cambra 

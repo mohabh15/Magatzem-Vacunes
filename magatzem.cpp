@@ -6,7 +6,6 @@ Magatzem::magatzem()
 // Crea una llista buida anomenada magatzem
 {
 }
-
 Magatzem::magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
 {
@@ -30,7 +29,6 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
 {
 }
-
 void Magatzem::treure_vacuna(string Ident_vacuna)
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
@@ -47,7 +45,6 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
     }
     */
 }
-
 void Magatzem::afegir_vacuna(string Ident_vacuna)
     // Pre:  s’introdueix un identificador de vacuna.
     // Post: si la vacuna ja existeix, es produeix un error;
@@ -82,7 +79,16 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
     }
     return comptador;
 }
-
+bool Magatzem::find(string ident_vacuna)
+//Pre: ident_vacun es un identificador de vacuna correcte 
+//Post: Retorna true si existeix la vacuna al sistema i false en qualsevol altre cas
+{
+    bool trobat=false;
+    map<string,int>::iterator it=sistema.find(ident_vacuna);
+	if(it==sistema.end()) trobat=false;
+    else trobat=true;
+    return trobat;
+}
 
 // Lectura i Escriptura
 pair <string, int> Magatzem::inventari()

@@ -6,9 +6,11 @@
 #include <list>
 #include <queue>
 #include <stack>
+#include <map>
+
 
 #include "cambra.hpp"
-#include "arbreBin.hpp"
+//#include "arbreBin.hpp"
 
 using namespace std;
 
@@ -17,9 +19,9 @@ class Magatzem
     private:
 
     //typedef arbreBin<cambra> TMagatzem;  no fa falta no?
-    arbreBin<cambra> magatzem;
+    //arbreBin<cambra> magatzem;
 
-    list<cambra> magatzem1;
+    list<cambra> magatzem;
 
     map<string,int> sistema;    
     // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
@@ -64,7 +66,9 @@ class Magatzem
     // Pre:  S'introdueix un identificador de vacuna
     // Post: Si la vacuna no existeix, es produeix un error.  
     //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
-
+    bool find(string ident_vacun);
+    //Pre: ident_vacun es un identificador de vacuna correcte 
+    //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas
 
     // Lectura i Escriptura
     pair <string, int> inventari();
