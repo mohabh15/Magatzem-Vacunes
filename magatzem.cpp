@@ -2,24 +2,26 @@
 using namespace std;
 
 // Constructors
-magatzem::magatzem()
+Magatzem::magatzem()
 // Crea una llista buida anomenada magatzem
 {
 }
 
-magatzem::magatzem(int n)
+Magatzem::magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
 {
 }
 
 //Destructors
-magatzem::~magatzem()
+Magatzem::~magatzem()
 // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
 {
 }
 
+
+
 // Modificadors
-int magatzem::distribuir(string vacuna, int quantitatVacuna, sistema m1)
+int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueix la quantitat de vacunes de 
@@ -29,8 +31,35 @@ int magatzem::distribuir(string vacuna, int quantitatVacuna, sistema m1)
 {
 }
 
+void Magatzem::treure_vacuna(string Ident_vacuna)
+// Pre:  s’introdueix  un  identificador  de  vacuna.
+// Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
+//       En cas contrari, la vacuna s'elimina del map de vacunes
+{
+    /*
+    if(no_existeix_vacuna or no_queden_unitats)
+    {
+        error;
+    }
+    else
+    {
+        eliminar_vacuna;
+    }
+    */
+}
+
+void Magatzem::afegir_vacuna(string Ident_vacuna)
+    // Pre:  s’introdueix un identificador de vacuna.
+    // Post: si la vacuna ja existeix, es produeix un error;
+    //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
+{
+
+}
+
+
+
 // Consultors
-int consultar_vacuna(Identificador vacuna, sistema m1, cambra c1)
+int Magatzem::consultar_vacuna(string Ident_vacuna)
 // Pre:  S'introdueix un identificador de vacuna
 // Post: Si la vacuna no existeix, es produeix un error.  
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
@@ -44,7 +73,7 @@ int consultar_vacuna(Identificador vacuna, sistema m1, cambra c1)
         for(unsigned int j = 0; j < c1.size(); ++j)
         // recorrer la matriu cambra
         {
-            if(m1.find(vacuna) == true)
+            if(m1.find(Ident_vacuna) == true)
             {
                 ++comptador;
             }
@@ -54,8 +83,20 @@ int consultar_vacuna(Identificador vacuna, sistema m1, cambra c1)
     return comptador;
 }
 
-void fi()
+
+// Lectura i Escriptura
+pair <string, int> Magatzem::inventari()
+// Pre:  cert
+// Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
+//       total en el magatzem, ordenat per identificador de vacuna.
+{
+    
+}
+
+
+void Magatzem::fi()
 // Pre: cert
 // Post: Acaba l'execució de la simulació.
 {
+   cin.ignore();
 }

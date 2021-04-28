@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <algorithm> 
-#include "sistema.hpp"
 using namespace std;
 
 typedef vector<vector<string> > Matriu;

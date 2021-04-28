@@ -1,7 +1,14 @@
+#ifndef _MAGATZEM_HPP_
+#define _MAGATZEM_HPP_
+
+#include <iostream>
+#include <string>
 #include <list>
+#include <queue>
+#include <stack>
 
 #include "cambra.hpp"
-//#include "sistema.hpp"
+#include "arbreBin.hpp"
 
 using namespace std;
 
@@ -9,33 +16,65 @@ class Magatzem
 {
     private:
 
-    list<cambra> magatzem; 
+    //typedef arbreBin<cambra> TMagatzem;  no fa falta no?
+    arbreBin<cambra> magatzem;
+
+    list<cambra> magatzem1;
+
+    map<string,int> sistema;    
+    // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
+
 
     public:
 
     //Constructor
-    Magatzem(int n);
-    //Pre: n>0
+    Magatzem(); //no fa falta no perqu el c++ ja et crea el consultor buit per defecte
+    // Crea una llista buida anomenada magatzem
+    Magatzem(int mida_magatzem);
+    //Pre:  n>0
     //Post: Magatzem amb n cambres    
 
+
+    //Destructors
+    ~Magatzem();
+    //Pre: cert
+    // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
+
+
     //Modificadors
-    int distribuir(string ident_vacuna, int quant_vacuna, sistema m1);
-    // Pre: S’introdueix un identificador de vacuna i una quantitat.
+    int distribuir(string Ident_vacuna, int quant_vacuna);
+    // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
     //       En cas contrari, començant per la cambra inicial es distribueix la quantitat de vacunes de 
     //       manera correcta i ordenada com ha estat explicat anteriorment.
     //       Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
     //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
+    void afegir_vacuna(string Ident_vacuna);
+    // Pre:  s’introdueix un identificador de vacuna.
+    // Post: si la vacuna ja existeix, es produeix un error;
+    //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
+    void treure_vacuna(string Ident_vacuna);
+    // Pre:  s’introdueix  un  identificador  de  vacuna.
+    // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
+    //       En cas contrari, la vacuna s'elimina del map de vacunes
+
 
     //Consultors
-    int consultar_vacuna(int ident_vacuna, sistema m1);
-    // Pre: S'introdueix un identificador de vacuna
+    int consultar_vacuna(string Ident_vacuna);
+    // Pre:  S'introdueix un identificador de vacuna
     // Post: Si la vacuna no existeix, es produeix un error.  
-    //       En cas contrari, escriu quantes unitats d'aquesta vacuna en concret 
-    //       hi ha al magatzem en total
-    
+    //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
+
+
+    // Lectura i Escriptura
+    pair <string, int> inventari();
+    // Pre:  cert
+    // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
+    //       total en el magatzem, ordenat per identificador de vacuna.
+
     void fi();
-    // Pre: cert
+    // Pre:  cert
     // Post: Acaba l'execució de la simulació
 
 };
+#endif

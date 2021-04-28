@@ -1,0 +1,8 @@
+
+
+
+si et dieuen accedeix a la cambra 3 com ho fas si es un arbre?
+
+"despres l’estructura del magatzemen preordre" -> aixo encara no ho tenim no te 
+sentit fer un arbre perque no tenim l'esctructura
+perque no saps com sera l'arbre quants fill ha de tenir cada arrel, quantes fulles...etc 
