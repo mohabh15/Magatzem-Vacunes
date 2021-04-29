@@ -50,6 +50,11 @@ int main()
                 magatzem. //metode que retorni la cambra desitjada
             }
         }
+        if(operacion=="treure_unitats")
+        {
+          
+        }
+        
         
         
         
