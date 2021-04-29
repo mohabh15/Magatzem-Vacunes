@@ -50,9 +50,41 @@ int main()
                 magatzem. //metode que retorni la cambra desitjada
             }
         }
-        if(operacion=="treure_unitats")
+        if(operacion=="distribuir")
         {
           
+        }
+        if(operacion=="comprimir")
+        {
+          
+        }
+        if(operacion=="ordenar")
+        {
+          
+        }
+        if(operacion=="canviar_nevera")
+        {
+          
+        }
+        if(operacion=="inventari")
+        {
+          
+        }
+        if(operacion=="escriure")
+        {
+          
+        }
+        if(operacion=="consultar_pos")
+        {
+          
+        }
+        if(operacion=="consultar_vac")
+        {
+          
+        }
+        if(operacion=="fi")
+        {
+          magatzem.fi();
         }
         
         
