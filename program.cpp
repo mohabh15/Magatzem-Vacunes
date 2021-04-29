@@ -9,11 +9,10 @@ using namespace std;
 
 int main()
 {
-
-    Magatzem m1;
     int numero_cambres;
     cin>>numero_cambres;
     
+    Magatzem m1(numeros_cambres);
 
     string operacion;
     int  ident_cambra;
