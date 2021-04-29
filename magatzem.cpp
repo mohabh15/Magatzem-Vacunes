@@ -8,14 +8,12 @@ Magatzem::Magatzem()
 {}
 Magatzem::Magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
-{
-}
+{}
 
 //Destructors
 Magatzem::~Magatzem()
 // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
-{
-}
+{}
 
 
 
