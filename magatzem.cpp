@@ -35,9 +35,9 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
 //       En cas contrari, la vacuna s'elimina del map de vacunes
 {
     
-    if(sistema.find(Ident_vacuna)==sistema.end() or no_queden_unitats)
+    if(sistema.find(Ident_vacuna)==sistema.end() or  no_queden_unitats)
     {
-        error;
+        cout<<"ERROR"<<endl;
     }
     else
     {
