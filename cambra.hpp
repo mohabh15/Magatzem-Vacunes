@@ -1,7 +1,11 @@
+#ifndef _CAMBRA_HPP_
+#define _CAMBRA_HPP_
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm> 
+
 using namespace std;
 
 typedef vector<vector<string> > Matriu;
@@ -58,3 +62,4 @@ class Cambra
     //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 
     //s’escriuen l’identificador de vacuna i la seva quantitat
 };
+#endif

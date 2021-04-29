@@ -14,9 +14,6 @@ magatzem.o: magatzem.cpp magatzem.hpp cambra.hpp
 cambra.o: cambra.cpp cambra.hpp sistema.hpp
 		g++ -c cambra.cpp $(OPCIONS)
 
-sistema.o: sistema.cpp sistema.hpp
-		g++ -c sistema.cpp $(OPCIONS)
-
 clean:
 	rm *.o
 	rm *.exe
