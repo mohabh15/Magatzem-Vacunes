@@ -26,23 +26,42 @@ int main()
         if (operacion=="afegir_vac")
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            magatzem.afegir_vacu()
+            magatzem.afegir_vac(ident_vacuna);
         }
         if (operacion=="treure_vac")
         {
-            /* code */
+            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            magatzem.treure_vac(ident_vacuna);
         }
-        
-
         if(operacion=="afegir_unitats")
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            if(m1.find()==false) cout<<"ERROR"<<endl;
-            m1[]
-            
+            if(m1.find()==false) cout<<"error"<<endl;
+            else
+            {
+                magatzem. //metode que retorni la cambra desitjada
+            }
         }
+        if(operacion=="treure_unitats")
+        {
+            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            if(m1.find()==false) cout<<"error"<<endl;
+            else
+            {
+                magatzem. //metode que retorni la cambra desitjada
+            }
+        }
+        
+        
+        
+        
+        
     }
 
 
 
 }
+
+
+
+
