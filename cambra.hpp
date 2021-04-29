@@ -8,7 +8,7 @@
 
 using namespace std;
 
-typedef vector<vector<string> > Matriu;
+typedef vector<vector<string>> Matriu;
 
 class Cambra
 {

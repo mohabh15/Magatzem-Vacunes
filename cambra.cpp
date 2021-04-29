@@ -13,9 +13,9 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 //Post:Si la vacuna no existeix, es produeix un error. En cas contrari, es posen tantes unitats 
 //	   com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
 {
-	for(int i=0; i<cambra.size(); ++i)
+	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(int j=0; i<cambra[0].size(); ++i)
+		for(unsigned int j=0; i<cambra[0].size(); ++i)
 		{
 			if(quantitat!=0 or cambra[i][j]!="NULL") 
 			{
@@ -39,9 +39,9 @@ int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //		pogut treure perque no hi havia suficients a la cambra 
 {
-	for(int i=0; i<cambra.size(); ++i)
+	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(int j=0; i<cambra[0].size(); ++i)
+		for(unsigned int j=0; i<cambra[0].size(); ++i)
 		{
 			if(quantitat!=0 or cambra[i][j]!=ident_vacuna) 
 			{
@@ -102,8 +102,7 @@ void Cambra::comprimir()
 
 bool mirar_null(string a, string b)
 {
-	if(a=="NULL") return false;
-	return true;
+	return (a<b);
 }
 void Cambra::ordenar()
 //Pre: cert
@@ -112,7 +111,7 @@ void Cambra::ordenar()
 {
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; i<cambra.size(); ++i)
+		for(unsigned int j=0; i<cambra[0].size(); ++j)
 		{
 			sort(cambra.begin(),cambra.end(),mirar_null);
 		}
@@ -127,9 +126,9 @@ void Cambra::canviar_nevera(int files, int columnes)
 {
 	//contar quantes vacunes hay en la cambra
 	int quantitat=0;
-	for(int i=0; i<cambra.size();++i )
+	for(unsigned int i=0; i<cambra.size();++i )
 	{
-		for(int j=0; j<cambra[0].size(); ++j) 
+		for(unsigned int j=0; j<cambra[0].size(); ++j) 
 		{
 			if(cambra[i][j]!="NULL") ++quantitat;
 		}
@@ -141,9 +140,9 @@ void Cambra::canviar_nevera(int files, int columnes)
 		// Crea la nevera aux i es posa la nova amb les noves dimensions
 		Matriu cambra_aux(files,vector<string>(columnes,"NULL")); 
 		//Es copia la nevera en una aux
-		for(int i=0; i<cambra.size();++i )
+		for(unsigned int i=0; i<cambra.size();++i )
 		{
-			for(int j=0; j<cambra[0].size(); ++j) 
+			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
 				if(cambra[i][j]!="NULL") 
 				{
@@ -154,9 +153,9 @@ void Cambra::canviar_nevera(int files, int columnes)
 		//es copia les vacunes de la nevera aux a la nova nevera
 		cambra=cambra_aux;
 		cambra.resize(files,vector<string>(columnes));
-		for(int i=0; i<cambra.size();++i )
+		for(unsigned int i=0; i<cambra.size();++i )
 		{
-			for(int j=0; j<cambra[0].size(); ++j) 
+			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
 				cambra[i][j]=cambra_aux[i][j];
 			}	

@@ -11,7 +11,7 @@ program.o: program.cpp magatzem.hpp cambra.hpp sistema.hpp
 magatzem.o: magatzem.cpp magatzem.hpp cambra.hpp 
 		g++ -c magatzem.cpp $(OPCIONS)
 
-cambra.o: cambra.cpp cambra.hpp sistema.hpp
+cambra.o: cambra.cpp cambra.hpp
 		g++ -c cambra.cpp $(OPCIONS)
 
 clean:
