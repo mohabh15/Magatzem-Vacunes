@@ -14,13 +14,13 @@ int main()
     int numero_cambres;
     cin>>numero_cambres;
     
-    
-     
 
     string operacion;
     int  ident_cambra;
     string ident_vacuna; 
     int quantitat; 
+
+    //Operacions 
     while(cin>>operacion)
     {
         if (operacion=="afegir_vac")
