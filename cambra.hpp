@@ -10,7 +10,7 @@ class Cambra
 {
     private:
 
-    Matriu cambra1;
+    Matriu cambra;
 
     public:
 
