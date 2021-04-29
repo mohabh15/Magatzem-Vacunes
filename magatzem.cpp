@@ -96,6 +96,14 @@ bool Magatzem::find(string ident_vacuna)
     else trobat=true;
     return trobat;
 }
+iterator pos_cambra(int ident_cambra)
+//Pre: magatzem.size()>ident_cambra>0
+//Post: retorna un iterador que apunta a la cambra ident_cambra
+{
+	
+}
+
+
 
 // Lectura i Escriptura
 pair <string, int> Magatzem::inventari()

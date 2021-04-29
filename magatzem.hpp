@@ -62,6 +62,9 @@ class Magatzem
     bool find(string ident_vacun);
     //Pre: ident_vacun es un identificador de vacuna correcte 
     //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas
+    iterator pos_cambra(int ident_cambra);
+    //Pre: magatzem.size()>ident_cambra>0
+    //Post: retorna un iterador que apunta a la cambra ident_cambra
 
     // Lectura i Escriptura
     pair <string, int> inventari();

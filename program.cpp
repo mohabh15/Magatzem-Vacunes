@@ -49,7 +49,7 @@ int main()
         }
         if(operacion=="distribuir")
         {
-          
+          cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
         }
         if(operacion=="comprimir")
         {
