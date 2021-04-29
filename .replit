@@ -1,2 +1,2 @@
 language = "cpp"
-run = "G++ -o"
+run = "g++ -o program.exe program.cpp"
