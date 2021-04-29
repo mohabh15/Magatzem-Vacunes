@@ -6,7 +6,7 @@ using namespace std;
 
 typedef vector<vector<string> > Matriu;
 
-class cambra
+class Cambra
 {
     private:
 
@@ -15,7 +15,7 @@ class cambra
     public:
 
     //Creadores
-    cambra(int x, int y);
+    Cambra(int x, int y);
     //Pre:Cert
     //Post:crea una matriu de x files i y columnes 
 
@@ -47,7 +47,7 @@ class cambra
     string consultar_po(int fila, int columna);
     //Pre:cert
     //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
-    unsigned int cambra::size();
+    unsigned int size();
     //Pre: cert
     //Post: retorna la mida de la matriu cambra
 

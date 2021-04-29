@@ -1,14 +1,14 @@
 #include "cambra.hpp"
 using namespace std;
 
-cambra::cambra(int x, int y)
+Cambra::Cambra(int x, int y)
 //crea una matriu de x files i y columnes 
 {
     cambra1.resize(x,vector<string>(y));
 }
 
 
-int cambra::afegir_unitats(string ident_vacuna,int quantitat)
+int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 //Pre: Identificacio de vacuna ha de començar amb "J07"
 //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
 //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
@@ -34,7 +34,7 @@ int cambra::afegir_unitats(string ident_vacuna,int quantitat)
 }
 
 
-int cambra::treure_unitats(string ident_vacuna, int quantitat)
+int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 //Pre: Identificacio de vacuna ha de començar amb "J07"
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //pogut treure perque no hi havia suficients a la cambra 
@@ -60,7 +60,7 @@ int cambra::treure_unitats(string ident_vacuna, int quantitat)
 }	
 
 
-void cambra::comprimir()
+void Cambra::comprimir()
 //Pre: cert
 //Post:  Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
 //entre dues vacunes ni abans de cap vacuna
@@ -105,7 +105,7 @@ bool mirar_null(string a, string b)
 	if(a=="NULL") return false;
 	return true;
 }
-void cambra::ordenar()
+void Cambra::ordenar()
 //Pre: cert
 //Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
 //entre elles ni abans de cap vacuna
@@ -120,7 +120,7 @@ void cambra::ordenar()
 }
 
 
-void cambra::canviar_nevera(int files, int columnes)
+void Cambra::canviar_nevera(int files, int columnes)
 //Pre: cert
 //Post: Es crea un nova nevera amb les dimension de files i columnes si el contingut de la antigua nevera
 //caben en la nova, si no dona error  
@@ -166,7 +166,7 @@ void cambra::canviar_nevera(int files, int columnes)
 }
 
 
-string cambra::consultar_po(int fila, int columna)
+string Cambra::consultar_po(int fila, int columna)
 //Pre:cert
 //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
 {
@@ -174,7 +174,7 @@ string cambra::consultar_po(int fila, int columna)
 }
 
 
-unsigned int cambra::size()
+unsigned int Cambra::size()
 //Pre: 
 //Post: retorna la mida de la matriu cambra
 {
@@ -184,7 +184,7 @@ unsigned int cambra::size()
 }
 
 
-void cambra::escriure()
+void Cambra::escriure()
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
 //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacuna existent en la nevera, 

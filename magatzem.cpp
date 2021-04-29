@@ -70,10 +70,10 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
 {
     int comptador = 0;
-    for(list<cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
+    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
     // recorrer la llista magatzem
     {
-        cambra c1=*it;
+        Cambra c1=*it;
         for(unsigned int j = 0; j < c1.size(); ++j)
         // recorrer la matriu cambra
         {
