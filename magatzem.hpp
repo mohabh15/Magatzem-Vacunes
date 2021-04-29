@@ -10,16 +10,13 @@
 
 
 #include "cambra.hpp"
-//#include "arbreBin.hpp"
+
 
 using namespace std;
 
 class Magatzem
 {
     private:
-
-    //typedef arbreBin<cambra> TMagatzem;  no fa falta no?
-    //arbreBin<cambra> magatzem;
 
     list<cambra> magatzem;
 
