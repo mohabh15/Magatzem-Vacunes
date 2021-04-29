@@ -25,8 +25,14 @@ int main()
     {
         if (operacion=="afegir_vac")
         {
+            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            magatzem.afegir_vacu()
+        }
+        if (operacion=="treure_vac")
+        {
             /* code */
         }
+        
 
         if(operacion=="afegir_unitats")
         {
