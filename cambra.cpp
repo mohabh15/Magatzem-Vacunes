@@ -113,7 +113,7 @@ void Cambra::ordenar()
 	{
 		for(unsigned int j=0; i<cambra[0].size(); ++j)
 		{
-			sort(cambra.begin(),cambra.end(),mirar_null);
+			sort(cambra[i].begin(),cambra[i].end(),mirar_null);
 		}
 	}
 }
