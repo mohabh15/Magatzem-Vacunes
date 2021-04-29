@@ -35,13 +35,14 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
 //       En cas contrari, la vacuna s'elimina del map de vacunes
 {
     
-    if(sistema.find(Ident_vacuna)==sistema.end() or  no_queden_unitats)
+    if(sistema.find(Ident_vacuna)==sistema.end() or  sistema[Ident_vacuna]>0)
     {
-        cout<<"ERROR"<<endl;
+        cout<<"error"<<endl;
     }
     else
     {
-        eliminar_vacuna; 
+        //eliminar_vacuna; 
+        sistema.erase(Ident_vacuna);
     }
     
 }
@@ -50,6 +51,15 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
     // Post: si la vacuna ja existeix, es produeix un error;
     //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
 {
+    if(sistema.find(Ident_vacuna)!=sistema.end())
+    {
+        cout<<"error"<<endl;
+    }
+    else 
+    {
+        //Afegir vacuna
+        sistema.insert(make_pair(Ident_vacuna,0));
+    }
 
 }
 
