@@ -27,7 +27,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
 {
 }
-bool Magatzem::treure_vacuna(string Ident_vacuna)
+bool Magatzem::treure_vacuna(string Ident_vacuna)   //ha de ser un void no ha de retornar res 
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
