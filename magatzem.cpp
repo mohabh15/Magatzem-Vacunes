@@ -39,7 +39,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
         }
     }
 }
-void Magatzem::treure_vacuna(string Ident_vacuna)   //tens
+void Magatzem::treure_vacuna(string Ident_vacuna)   //tens raó
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
