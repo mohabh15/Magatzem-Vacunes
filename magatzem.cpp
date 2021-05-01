@@ -21,14 +21,25 @@ Magatzem::~Magatzem()
 int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
-//       En cas contrari, començant per la cambra inicial es distribueix la quantitat de vacunes de 
-//       cap a l’esquerra i cap avall de manera que no quedi cap forat ni abans ni entre dues vacunes. 
-//       L’ordre relatiu de les vacunes no s’ha de canviar.
-//       Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
+//       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben. 
+//       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen
+//       la meitat a la cambra de l'esquerra (en aquest cas just la següent de la cambra inicial) i
+//       l'altre meitat es distribueix a la cambra de la dreta (la que es troba 2 posicions més enllà
+//       de la 1a cambra) i si en queda un nº senar de vacunes s'en distribueixen la meitat més una a la
+//       cambra de la dreta. Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
-
 {
+    int vacunes_distribuides = 0;
+    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
+    // recorrer la llista magatzem
+    {
+        while(vacunes_distribuides < quant_vacuna)
+        {
+
+        }
+    }
 }
+
 bool Magatzem::treure_vacuna(string Ident_vacuna)
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
