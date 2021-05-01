@@ -39,45 +39,35 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
         }
     }
 }
-
-bool Magatzem::treure_vacuna(string Ident_vacuna)
+void Magatzem::treure_vacuna(string Ident_vacuna)   //tens
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
 {
-    bool vacuna_treta;
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or  vacunes_donades_alta[Ident_vacuna]>0)
     {
         cout<<"error"<<endl;
-        vacuna_treta = false;
     }
     else
     {
         //eliminar_vacuna; 
         vacunes_donades_alta.erase(Ident_vacuna);
-        vacuna_treta = true;
     }
-    return vacuna_treta;
-    
 }
-string Magatzem::afegir_vacuna(string Ident_vacuna)
+void Magatzem::afegir_vacuna(string Ident_vacuna)
     // Pre:  s’introdueix un identificador de vacuna.
     // Post: si la vacuna ja existeix, es produeix un error;
     //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
 {
-    string vacuna_afegida;
     if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
         cout<<"ERROR"<<endl;
-        vacuna_afegida = "ERROR";
     }
     else 
     {
         // Afageix la vacuna al diccionari vacunes_donades_alta
         vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
-        vacuna_afegida = Ident_vacuna;
     }
-    return vacuna_afegida;
 }
 
 
