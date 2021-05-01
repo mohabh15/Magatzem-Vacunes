@@ -22,9 +22,11 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueix la quantitat de vacunes de 
-//       manera correcta i ordenada com ha estat explicat anteriorment.
+//       cap a l’esquerra i cap avall de manera que no quedi cap forat ni abans ni entre dues vacunes. 
+//       L’ordre relatiu de les vacunes no s’ha de canviar.
 //       Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
+
 {
 }
 bool Magatzem::treure_vacuna(string Ident_vacuna)
