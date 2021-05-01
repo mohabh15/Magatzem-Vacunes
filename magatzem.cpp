@@ -16,7 +16,6 @@ Magatzem::~Magatzem()
 {}
 
 
-
 // Modificadors
 int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
@@ -30,10 +29,10 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
 {
     int vacunes_distribuides = 0;
-    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
+    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end() or vacunes_distribuides < quant_vacuna; ++it) 
     // recorrer la llista magatzem
     {
-        while(vacunes_distribuides < quant_vacuna)
+        if(it != magatzem.begin())
         {
 
         }

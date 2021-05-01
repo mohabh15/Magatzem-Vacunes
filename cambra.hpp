@@ -18,7 +18,7 @@ class Cambra
 
     public:
 
-    //Creadores
+    //Constructores
     Cambra(int x, int y);
     //Pre:Cert
     //Post:crea una matriu de x files i y columnes 
@@ -48,12 +48,15 @@ class Cambra
 
 
     //Consultores
-    string consultar_po(int fila, int columna);
+    string consultar_posicio(int fila, int columna);
     //Pre:cert
     //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
     unsigned int size();
     //Pre: cert
     //Post: retorna la mida de la matriu cambra
+    bool plena();
+    //Pre: cert
+    //Post: retorna true si la cambra està plena i false en cas contrari
 
     //L/E
     void escriure();
