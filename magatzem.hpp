@@ -16,7 +16,7 @@ class Magatzem
 
     list<Cambra> magatzem;
 
-    map<string,int> sistema;    
+    map<string,int> vacunes_donades_alta;    
     // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
 

@@ -27,38 +27,44 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
 {
 }
-void Magatzem::treure_vacuna(string Ident_vacuna)
+bool Magatzem::treure_vacuna(string Ident_vacuna)
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
 {
-    
-    if(sistema.find(Ident_vacuna)==sistema.end() or  sistema[Ident_vacuna]>0)
+    bool vacuna_treta;
+    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or  vacunes_donades_alta[Ident_vacuna]>0)
     {
         cout<<"error"<<endl;
+        vacuna_treta = false;
     }
     else
     {
         //eliminar_vacuna; 
-        sistema.erase(Ident_vacuna);
+        vacunes_donades_alta.erase(Ident_vacuna);
+        vacuna_treta = true;
     }
+    return vacuna_treta;
     
 }
-void Magatzem::afegir_vacuna(string Ident_vacuna)
+string Magatzem::afegir_vacuna(string Ident_vacuna)
     // Pre:  s’introdueix un identificador de vacuna.
     // Post: si la vacuna ja existeix, es produeix un error;
     //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
 {
-    if(sistema.find(Ident_vacuna)!=sistema.end())
+    string vacuna_afegida;
+    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
-        cout<<"error"<<endl;
+        cout<<"ERROR"<<endl;
+        vacuna_afegida = "ERROR";
     }
     else 
     {
-        //Afegir vacuna
-        sistema.insert(make_pair(Ident_vacuna,0));
+        // Afageix la vacuna al diccionari vacunes_donades_alta
+        vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
+        vacuna_afegida = Ident_vacuna;
     }
-
+    return vacuna_afegida;
 }
 
 
@@ -77,7 +83,7 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
         for(unsigned int j = 0; j < c1.size(); ++j)
         // recorrer la matriu cambra
         {
-            if(sistema.find(Ident_vacuna)!=sistema.end())
+            if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
             {
                 ++comptador;
             }
@@ -90,20 +96,18 @@ bool Magatzem::find(string ident_vacuna)
 //Pre: ident_vacun es un identificador de vacuna correcte 
 //Post: Retorna true si existeix la vacuna al sistema i false en qualsevol altre cas
 {
-    bool trobat=false;
-    map<string,int>::iterator it=sistema.find(ident_vacuna);
-	if(it==sistema.end()) trobat=false;
-    else trobat=true;
+    bool trobat = false;
+    map<string,int>::iterator it = vacunes_donades_alta.find(ident_vacuna);
+	if(it == vacunes_donades_alta.end()) 
+    {
+        trobat = false;
+    }
+    else 
+    {
+        trobat = true;
+    }
     return trobat;
 }
-iterator pos_cambra(int ident_cambra)
-//Pre: magatzem.size()>ident_cambra>0
-//Post: retorna un iterador que apunta a la cambra ident_cambra
-{
-	
-}
-
-
 
 // Lectura i Escriptura
 pair <string, int> Magatzem::inventari()
@@ -111,7 +115,10 @@ pair <string, int> Magatzem::inventari()
 // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
 //       total en el magatzem, ordenat per identificador de vacuna.
 {
-    
+    for(map<string, int>::const_iterator it = vacunes_donades_alta.begin(); it != vacunes_donades_alta.end(); ++it)
+    {
+        cout << "Del tipus de vacuna " << it -> first << " hi ha " << it -> second << "vacunes" << endl;
+    }
 }
 
 
