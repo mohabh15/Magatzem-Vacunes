@@ -34,7 +34,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
     {
         if(it != magatzem.begin())
         {
-
+            
         }
     }
 }
