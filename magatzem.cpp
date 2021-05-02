@@ -117,6 +117,7 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
+
 // Lectura i Escriptura
 pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema
 // Pre:  cert
