@@ -30,7 +30,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 {
     int vacunes_distribuides = 0;
     for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end() or vacunes_distribuides < quant_vacuna; ++it) 
-    // recorrer la llista magatzem
+    // recorre la llista magatzem
     {
         if(it != magatzem.begin())
         {
@@ -45,7 +45,7 @@ void Magatzem::treure_vacuna(string Ident_vacuna)   //tens raó
 {
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or  vacunes_donades_alta[Ident_vacuna]>0)
     {
-        cout<<"error"<<endl;
+        cout << "error" << endl;
     }
     else
     {
@@ -60,7 +60,7 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
 {
     if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
-        cout<<"ERROR"<<endl;
+        cout << "ERROR" << endl;
     }
     else 
     {
