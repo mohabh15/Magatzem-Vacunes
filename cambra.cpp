@@ -165,7 +165,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 }
 
 
-string Cambra::consultar_po(int fila, int columna)
+string Cambra::consultar_posicio(int fila, int columna)
 //Pre: fila>0 columna>0
 //Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
@@ -173,13 +173,17 @@ string Cambra::consultar_po(int fila, int columna)
 }
 
 
-unsigned int Cambra::size()
+unsigned int Cambra::files()
 //Pre: cert
 //Post: retorna la mida de cambra
 {
-	unsigned int mida_matriu;
-	mida_matriu = cambra.size() * cambra[0].size();
-	return mida_matriu;
+	return cambra.size();
+}
+unsigned int Cambra::columnes()
+//Pre: cert
+//Post: retorna la mida de cambra
+{
+	return cambra[0].size();
 }
 
 

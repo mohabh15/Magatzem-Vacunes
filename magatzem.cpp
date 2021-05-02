@@ -38,7 +38,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
         }
     }
 }
-void Magatzem::treure_vacuna(string Ident_vacuna)   //tens raó
+void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
 //       En cas contrari, la vacuna s'elimina del map de vacunes
@@ -60,7 +60,7 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
 {
     if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
-        cout<<"ERROR"<<endl;
+        cout<<"error"<<endl;
     }
     else 
     {
@@ -72,25 +72,29 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
 
 
 // Consultors
-int Magatzem::consultar_vacuna(string Ident_vacuna)
+int Magatzem::consultar_vacuna(string Ident_vacuna)  //no esta acabat 
 // Pre:  S'introdueix un identificador de vacuna
 // Post: Si la vacuna no existeix, es produeix un error.  
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
 {
     int comptador = 0;
-    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
-    // recorrer la llista magatzem
+    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
-        Cambra c1=*it;
-        for(unsigned int j = 0; j < c1.size(); ++j)
-        // recorrer la matriu cambra
+        cout<<"error"<<endl;
+    }
+    else 
+    {
+        // recorrer la llista magatzem
+        for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
         {
-            if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
+            Cambra c1=*it;
+            // recorrer la matriu cambra
+            for(unsigned int j = 0; j < c1.size(); ++j)
             {
-                ++comptador;
+                
+                if(c1.consultar_posicio())
             }
         }
-        ++it;
     }
     return comptador;
 }
@@ -112,7 +116,7 @@ bool Magatzem::find(string ident_vacuna)
 }
 
 // Lectura i Escriptura
-pair <string, int> Magatzem::inventari()
+pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema
 // Pre:  cert
 // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
 //       total en el magatzem, ordenat per identificador de vacuna.
@@ -128,5 +132,5 @@ void Magatzem::fi()
 // Pre: cert
 // Post: Acaba l'execució de la simulació.
 {
-   cin.ignore();  // perque tot el rato esta llegint llavors una vegada deixi de llegir s'acaba el programa
+   cin.ignore();  // perque tot l'estona esta llegint llavors una vegada deixi de llegir s'acaba el programa
 }
