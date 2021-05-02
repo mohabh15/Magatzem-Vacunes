@@ -15,6 +15,7 @@ int main()
     int  ident_cambra;
     string ident_vacuna; 
     int quantitat; 
+    int files,columnes;
 
     //Operacions 
     while(cin>>operacion)
@@ -35,7 +36,7 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
-                //magatzem. metode que retorni la cambra desitjada
+                magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
             }
         }
         if(operacion=="treure_unitats")
@@ -44,40 +45,46 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
-                //magatzem. metode que retorni la cambra desitjada
+                magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat); 
             }
         }
         if(operacion=="distribuir")
         {
-          cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
+            cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
         }
         if(operacion=="comprimir")
         {
-          
+            cin>>ident_cambra;
+            magatzem.cambra(ident_cambra).comprimir();
         }
         if(operacion=="ordenar")
         {
-          
+            cin>>ident_cambra;
+            magatzem.cambra(ident_cambra).ordenar();
         }
         if(operacion=="canviar_nevera")
         {
-          
+            cin>>ident_cambra>>files>>columnes;
+            magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
         }
         if(operacion=="inventari")
         {
-          
+            magatzem.inventari();
         }
         if(operacion=="escriure")
         {
-          
+            cin>>ident_cambra;
+            magatzem.cambra(ident_cambra).escriure();
         }
         if(operacion=="consultar_pos")
         {
-          
+            cin>>ident_cambra>>files>>columnes;
+            magatzem.cambra(ident_cambra).consultar_posicio(files,columnes);
         }
         if(operacion=="consultar_vac")
         {
-          
+            cin>>ident_vacuna;
+            magatzem.consultar_vacuna(ident_vacuna);
         }
         if(operacion=="fi")
         {

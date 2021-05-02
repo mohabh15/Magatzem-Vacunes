@@ -57,10 +57,12 @@ class Magatzem
     // Pre:  S'introdueix un identificador de vacuna
     // Post: Si la vacuna no existeix, es produeix un error.  
     //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
-    bool find(string ident_vacun);
+    bool find(string ident_vacuna);
     //Pre: ident_vacun es un identificador de vacuna correcte 
     //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas
-
+    Cambra cambra(int Ident_cambra);
+    //Pre: magatzem.size() > Ident_cambra > 0 
+    //Post: retorna la cambra seleccionada
 
     // Lectura i Escriptura
     pair <string, int> inventari();
