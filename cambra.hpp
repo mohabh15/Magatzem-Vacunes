@@ -54,6 +54,12 @@ class Cambra
     unsigned int size();
     //Pre: cert
     //Post: retorna la mida de la matriu cambra
+    unsigned int files();
+    //Pre: cert
+    //Post: retorna la mida de les files de la matriu cambra
+    unsigned int columnes();
+    //Pre: cert
+    //Post: retorna la mida de les columnes de la matriu cambra
     bool plena();
     //Pre: cert
     //Post: retorna true si la cambra està plena i false en cas contrari

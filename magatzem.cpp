@@ -72,7 +72,7 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
 
 
 // Consultors
-int Magatzem::consultar_vacuna(string Ident_vacuna)  //no esta acabat 
+int Magatzem::consultar_vacuna(string Ident_vacuna)  
 // Pre:  S'introdueix un identificador de vacuna
 // Post: Si la vacuna no existeix, es produeix un error.  
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
@@ -89,10 +89,12 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)  //no esta acabat
         {
             Cambra c1=*it;
             // recorrer la matriu cambra
-            for(unsigned int j = 0; j < c1.size(); ++j)
+            for(unsigned int i = 0; i < c1.files(); ++i)
             {
-                
-                if(c1.consultar_posicio())
+                for(unsigned int j = 0; j < c1.columnes(); ++j)
+                {
+                    if(c1.consultar_posicio(i,j)==Ident_vacuna) ++comptador;
+                }
             }
         }
     }
