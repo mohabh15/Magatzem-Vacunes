@@ -27,6 +27,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
 
 {
+    int quant_vacunes_total=quant_vacuna;
     int quan_sobrada=0;
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end()) cout<<"error"<<endl;
     else
@@ -51,6 +52,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
                 }
             }
         }
+        vacunes_donades_alta[Ident_vacuna]=quant_vacunes_total-quan_sobrada; //por el comentario puesto en inventari mañana le pregunto al profe en LABO
     }
     return quan_sobrada;
 
@@ -169,7 +171,7 @@ Cambra Magatzem::cambra(int Ident_cambra)
 
 
 // Lectura i Escriptura
-pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema
+pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema si no cada vegada que s'hafegixi al magatzem s'ha d'afegir al sistema tambe aixi tenir al sistema la quantitat total que hi ha al magatzem que té sentit  
 // Pre:  cert
 // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
 //       total en el magatzem, ordenat per identificador de vacuna.

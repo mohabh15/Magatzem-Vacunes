@@ -64,7 +64,17 @@ class Magatzem
     //Pre: magatzem.size() > Ident_cambra > 0 
     //Post: retorna la cambra seleccionada
 
-    // Lectura i Escriptura
+    // Hacer el cin de magatzem 
+    friend istream& operator>> (istream &is, Magatzem &p)
+    /* Pre: estan preparats al canal estandar d'entrada  */
+    /* Post: el punt p passa a tenir els atributs llegits del canal
+       estandard d'entrada */
+    {
+      is >> p.x >> p.y;
+      return is;
+    }
+
+
     pair <string, int> inventari();
     // Pre:  cert
     // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat

@@ -11,11 +11,25 @@ int main()
     
     Magatzem magatzem(numero_cambres);
 
+    //Hacer un cin de magatzem 
+
+    int files,columnes;
+    for(int i=0; i<numero_cambres;++i)
+    {
+        cin>>files>>columnes;
+
+        magatzem.cambra(i)
+
+    }
+
+
+
+
     string operacion;
     int  ident_cambra;
     string ident_vacuna; 
     int quantitat; 
-    int files,columnes;
+
 
     //Operacions 
     while(cin>>operacion)
