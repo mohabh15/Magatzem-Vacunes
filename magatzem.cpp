@@ -20,19 +20,53 @@ Magatzem::~Magatzem()
 int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
-//       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben. 
-//       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen
-//       la meitat a la cambra de l'esquerra i l'altre meitat es distribueix a la cambra de la dreta
-//       i si en queda un nº senar de vacunes s'en distribueixen la meitat més una a la cambra de 
-//       la dreta. Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
-//       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
-//       En aquesta primera entrega es distribuiran les vacunes cambra per cambra seguint l'ordre
-//       en el que es troben a la llista.
+//       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
+//       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen la meitat
+//       a partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per la dreta.
+//       I si en queda un nº senar de vacunes s'en distribueixen per l'esquerra.
+//       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
+
 {
-    int vacunes_distribuides = 0;
-    Cambra cambra_auxiliar;
+    int quan_sobrada=0;
+    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end()) cout<<"error"<<endl;
+    else
+    {
+        //recorrer la llista de cambres
+        for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end() and quant_vacuna>0; ++it) 
+        {
+            Cambra auxiliar=*it;
+            if(it==magatzem.begin()) quant_vacuna=auxiliar.afegir_unitats(Ident_vacuna,quant_vacuna);
+            else 
+            {
+                if(quant_vacuna%2==0)
+                {
+                    // S'ha de distribuit la meitat de las vacunas sobrada o ocupar la meitat de la cambra per cada banda?
+                    quan_sobrada=auxiliar.afegir_unitats(Ident_vacuna,quant_vacuna/2);
+                    //if(//cambra no plena==(cambra[nfiles][ncolumnes]!=NULL) i quan_sobrada!=0)
+                    //distribuir per la dreta = recorrer la cambra per la dreta -> fer quan el profe contesti al correu enviat 
+                }
+                else
+                {
+                    quan_sobrada=auxiliar.afegir_unitats(Ident_vacuna,quan_sobrada);
+                }
+            }
+        }
+    }
+    return quan_sobrada;
+
+    /*//recorre la cambra 
+            for(int i=0; i< auxiliar.files();++i)
+            {
+                for(int j=0; j< auxiliar.columnes();++j)   
+                {
+                    if(auxiliar.consultar_posicio(i,j)=="NULL") auxiliar.
+                }
+            }*/
+
+
+   /*Cambra cambra_auxiliar;
     bool cambra_plena = false;
-    for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end() or vacunes_distribuides < quant_vacuna) and cambra_plena; ++it) 
+    for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end()  < quant_vacuna) and cambra_plena; ++it) 
     // recorre la llista magatzem
     {
         cambra_plena = false; 
@@ -41,7 +75,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
         {
             cambra_plena = true;
         }
-    }
+    }*/
 }
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
