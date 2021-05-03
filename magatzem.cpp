@@ -22,19 +22,23 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben. 
 //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen
-//       la meitat a la cambra de l'esquerra (en aquest cas just la següent de la cambra inicial) i
-//       l'altre meitat es distribueix a la cambra de la dreta (la que es troba 2 posicions més enllà
-//       de la 1a cambra) i si en queda un nº senar de vacunes s'en distribueixen la meitat més una a la
-//       cambra de la dreta. Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
-//       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
+//       la meitat a la cambra de l'esquerra i l'altre meitat es distribueix a la cambra de la dreta
+//       i si en queda un nº senar de vacunes s'en distribueixen la meitat més una a la cambra de 
+//       la dreta. Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
+//       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
+//       En aquesta primera entrega es distribuiran les vacunes cambra per cambra seguint l'ordre
+//       en el que es troben a la llista.
 {
     int vacunes_distribuides = 0;
-    for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end() or vacunes_distribuides < quant_vacuna; ++it) 
+    Cambra cambra_auxiliar;
+    for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end() or vacunes_distribuides < quant_vacuna) and cambra_plena; ++it) 
     // recorre la llista magatzem
     {
-        if(it != magatzem.begin())
+        bool cambra_plena = false; 
+        cambra_auxiliar = it;
+        if(cambra_auxiliar.plena())
         {
-
+            cambra_plena = true;
         }
     }
 }
