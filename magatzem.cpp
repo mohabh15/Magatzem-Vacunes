@@ -31,10 +31,11 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 {
     int vacunes_distribuides = 0;
     Cambra cambra_auxiliar;
+    bool cambra_plena = false;
     for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end() or vacunes_distribuides < quant_vacuna) and cambra_plena; ++it) 
     // recorre la llista magatzem
     {
-        bool cambra_plena = false; 
+        cambra_plena = false; 
         cambra_auxiliar = it;
         if(cambra_auxiliar.plena())
         {
