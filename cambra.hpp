@@ -60,7 +60,7 @@ class Cambra
     unsigned int columnes();
     //Pre: cert
     //Post: retorna la mida de les columnes de la matriu cambra
-    bool plena();
+    //bool plena();
     //Pre: cert
     //Post: retorna true si la cambra està plena i false en cas contrari
 
