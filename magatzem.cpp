@@ -8,8 +8,8 @@ Magatzem::Magatzem()
 {}
 Magatzem::Magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
-{}
-
+{
+}
 //Destructors
 Magatzem::~Magatzem()
 // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
@@ -68,16 +68,27 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 
    /*Cambra cambra_auxiliar;
     bool cambra_plena = false;
-    for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end()  < quant_vacuna) and cambra_plena; ++it) 
-    // recorre la llista magatzem
+    if(existeix_vacuna)
     {
-        cambra_plena = false; 
-        cambra_auxiliar = it;
-        if(cambra_auxiliar.plena())
+        for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end() or vacunes_distribuides < quant_vacuna) and cambra_plena; ++it) 
+        // recorre la llista magatzem
         {
-            cambra_plena = true;
+            cambra_plena = false; 
+            cambra_auxiliar = it;
+            if(cambra_auxiliar.plena())
+            {
+                cambra_plena = true;
+            }
+            else
+            {
+                cambra_actual.afegir_unitats(quant_vacuna);
+            }
         }
-    }*/
+    }
+    else
+    {
+        cout << "error" << endl;
+    }
 }
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
