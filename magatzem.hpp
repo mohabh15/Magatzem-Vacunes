@@ -15,7 +15,8 @@ class Magatzem
     private:
 
     list<Cambra> magatzem;
-    int files,columnes;
+
+    
     map<string,int> vacunes_donades_alta;    
     // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 

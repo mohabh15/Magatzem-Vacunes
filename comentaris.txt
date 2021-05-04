@@ -9,7 +9,12 @@ perque no saps com sera l'arbre quants fill ha de tenir cada arrel, quantes full
 
 
 
-La quantitat de vacunes que hi ha al sistema ha de ser diferents a la quantitat que hi ha al magatzem?
+La quantitat de vacunes que hi ha al sistema ha de ser diferents a la quantitat que hi ha al magatzem? no, ha de ser la mateixa
 
+Hem de distribuir la meitat per l'esquerra i si amb aquella meitat ja omplim la cambra l'altre meitat 
+que havia d'anar per la dreta la distribuim a la seguent cambra?
+
+
+A tots els metodes que son d'afegir vacunes hem d'afegir el codi per afegir vacunes al sistema
 
 

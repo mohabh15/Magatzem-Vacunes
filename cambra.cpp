@@ -8,7 +8,7 @@ Cambra::Cambra(int x, int y)
 }
 
 
-int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
+int Cambra::afegir_unitats(string ident_vacuna,int quantitat)   //hem d'afegir el codi per afegir vacunes al sistema
 //Pre:Ident_vacuna ha de començar amb "J07" quantitat>0
 //Post:Si la vacuna no existeix, es produeix un error. En cas contrari, es posen tantes unitats 
 //	   com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
@@ -27,14 +27,13 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 				i=cambra.size();
 				j=cambra[0].size();
 			}
-			
 		}
 	}
 	return quantitat;
 }
 
 
-int Cambra::treure_unitats(string ident_vacuna, int quantitat)
+int Cambra::treure_unitats(string ident_vacuna, int quantitat) //hem d'afegir el codi per treure vacunes al sistema
 //Pre: Ident_vacuna ha de començar amb "J07", quantitat>0
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //		pogut treure perque no hi havia suficients a la cambra 

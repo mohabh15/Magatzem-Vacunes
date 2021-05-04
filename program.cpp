@@ -24,7 +24,7 @@ int main()
     int  ident_cambra;
     string ident_vacuna; 
     int quantitat; 
-
+    int aux;
 
     //Operacions 
     while(cin>>operacion)
@@ -45,7 +45,8 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
-                magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
+                aux=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
+                cout<<aux<<endl;
             }
         }
         if(operacion=="treure_unitats")
