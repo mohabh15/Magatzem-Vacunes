@@ -17,17 +17,17 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
-int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
+int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el borraria perque ha ser sobre l'arbre que encara no tenim
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
 //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen la meitat
 //       a partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per la dreta.
-//       I si en queda un nº senar de vacunes s'en distribueixen per l'esquerra.
+//       I si en queda un nº senar de vacunes s'en distribueixen per l'esquerra el restant.
 //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
 
 {
-    int quant_vacunes_total=quant_vacuna;
+    /*int quant_vacunes_total=quant_vacuna;
     int quan_sobrada=0;
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end()) cout<<"error"<<endl;
     else
@@ -54,17 +54,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
         }
         vacunes_donades_alta[Ident_vacuna]=quant_vacunes_total-quan_sobrada; //por el comentario puesto en inventari mañana le pregunto al profe en LABO
     }
-    return quan_sobrada;
-
-    /*//recorre la cambra 
-            for(int i=0; i< auxiliar.files();++i)
-            {
-                for(int j=0; j< auxiliar.columnes();++j)   
-                {
-                    if(auxiliar.consultar_posicio(i,j)=="NULL") auxiliar.
-                }
-            }*/
-
+    return quan_sobrada;*/
 
    /*Cambra cambra_auxiliar;
     bool cambra_plena = false;
@@ -88,7 +78,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
     else
     {
         cout << "error" << endl;
-    }
+    }*/
 }
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
