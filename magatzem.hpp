@@ -52,6 +52,9 @@ class Magatzem
     // Pre:  s’introdueix  un  identificador  de  vacuna.
     // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
     //       En cas contrari, la vacuna s'elimina del map de vacunes
+    void modificar_sistema(string Ident_vacuna, int quantitat);
+    //Pre: quantitat>0 i Ident_vacuna comença amb J07
+    //Post: Posa la quantitat de Ident_vacuna al sistema 
 
     //Consultors
     int consultar_vacuna(string Ident_vacuna);

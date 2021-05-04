@@ -110,6 +110,12 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
         vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
     }
 }
+void modificar_sistema(string Ident_vacuna, int quantitat)
+//Pre: quantitat>0 i Ident_vacuna comença amb J07
+//Post: Posa la quantitat de Ident_vacuna al sistema 
+{
+    
+}
 
 
 
