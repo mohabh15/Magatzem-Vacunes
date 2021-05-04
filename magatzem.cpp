@@ -27,58 +27,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el bo
 //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
 
 {
-    /*int quant_vacunes_total=quant_vacuna;
-    int quan_sobrada=0;
-    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end()) cout<<"error"<<endl;
-    else
-    {
-        //recorrer la llista de cambres
-        for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end() and quant_vacuna>0; ++it) 
-        {
-            Cambra auxiliar=*it;
-            if(it==magatzem.begin()) quant_vacuna=auxiliar.afegir_unitats(Ident_vacuna,quant_vacuna);
-            else 
-            {
-                if(quant_vacuna%2==0)
-                {
-                    // S'ha de distribuit la meitat de las vacunas sobrada o ocupar la meitat de la cambra per cada banda?
-                    quan_sobrada=auxiliar.afegir_unitats(Ident_vacuna,quant_vacuna/2);
-                    //if(//cambra no plena==(cambra[nfiles][ncolumnes]!=NULL) i quan_sobrada!=0)
-                    //distribuir per la dreta = recorrer la cambra per la dreta -> fer quan el profe contesti al correu enviat 
-                }
-                else
-                {
-                    quan_sobrada=auxiliar.afegir_unitats(Ident_vacuna,quan_sobrada);
-                }
-            }
-        }
-        vacunes_donades_alta[Ident_vacuna]=quant_vacunes_total-quan_sobrada; //por el comentario puesto en inventari mañana le pregunto al profe en LABO
-    }
-    return quan_sobrada;*/
 
-   /*Cambra cambra_auxiliar;
-    bool cambra_plena = false;
-    if(existeix_vacuna)
-    {
-        for(list<Cambra>::iterator it = magatzem.begin(); (it != magatzem.end() or vacunes_distribuides < quant_vacuna) and cambra_plena; ++it) 
-        // recorre la llista magatzem
-        {
-            cambra_plena = false; 
-            cambra_auxiliar = it;
-            if(cambra_auxiliar.plena())
-            {
-                cambra_plena = true;
-            }
-            else
-            {
-                cambra_actual.afegir_unitats(quant_vacuna);
-            }
-        }
-    }
-    else
-    {
-        cout << "error" << endl;
-    }*/
 }
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
@@ -110,11 +59,11 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
         vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
     }
 }
-void modificar_sistema(string Ident_vacuna, int quantitat)
+void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat)
 //Pre: quantitat>0 i Ident_vacuna comença amb J07
 //Post: Posa la quantitat de Ident_vacuna al sistema 
 {
-    
+    vacunes_donades_alta[Ident_vacuna]=quantitat;
 }
 
 
