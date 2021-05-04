@@ -11,18 +11,13 @@ int main()
     
     Magatzem magatzem(numero_cambres);
 
-    //Hacer un cin de magatzem 
-
+    //Cin de magatzem 
     int files,columnes;
     for(int i=0; i<numero_cambres;++i)
     {
         cin>>files>>columnes;
-
-        magatzem.cambra(i)
-
+        magatzem.cambra(i).canviar_nevera(files,columnes);
     }
-
-
 
 
     string operacion;
