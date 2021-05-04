@@ -15,7 +15,7 @@ class Magatzem
     private:
 
     list<Cambra> magatzem;
-
+    int files,columnes;
     map<string,int> vacunes_donades_alta;    
     // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
@@ -64,7 +64,7 @@ class Magatzem
     //Pre: magatzem.size() > Ident_cambra > 0 
     //Post: retorna la cambra seleccionada
 
-    // Lectura i Escriptura
+    //L/E
     pair <string, int> inventari();
     // Pre:  cert
     // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
