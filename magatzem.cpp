@@ -6,10 +6,13 @@ Magatzem::Magatzem()
 //Pre:
 // Post:Crea una llista buida anomenada magatzem
 {}
+
 Magatzem::Magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
 {
 }
+
+
 //Destructors
 Magatzem::~Magatzem()
 // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
@@ -29,6 +32,7 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el bo
 {
 
 }
+
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
 // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
@@ -44,6 +48,7 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
         vacunes_donades_alta.erase(Ident_vacuna);
     }
 }
+
 void Magatzem::afegir_vacuna(string Ident_vacuna)
     // Pre:  s’introdueix un identificador de vacuna.
     // Post: si la vacuna ja existeix, es produeix un error;
@@ -59,13 +64,13 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
         vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
     }
 }
+
 void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat)
 //Pre: quantitat>0 i Ident_vacuna comença amb J07
 //Post: Posa la quantitat de Ident_vacuna al sistema 
 {
     vacunes_donades_alta[Ident_vacuna]=quantitat;
 }
-
 
 
 // Consultors
@@ -97,6 +102,7 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
     }
     return comptador;
 }
+
 bool Magatzem::find(string ident_vacuna)
 //Pre: ident_vacun es un identificador de vacuna correcte 
 //Post: Retorna true si existeix la vacuna al sistema i false en qualsevol altre cas
@@ -125,7 +131,6 @@ Cambra Magatzem::cambra(int Ident_cambra)
 }
 
 
-
 // Lectura i Escriptura
 pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema si no cada vegada que s'hafegixi al magatzem s'ha d'afegir al sistema tambe aixi tenir al sistema la quantitat total que hi ha al magatzem que té sentit  
 // Pre:  cert
@@ -137,7 +142,6 @@ pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem n
         cout << "Del tipus de vacuna " << it -> first << " hi ha " << it -> second << "vacunes" << endl;
     }
 }
-
 
 void Magatzem::fi()
 // Pre: cert
