@@ -70,7 +70,7 @@ class Magatzem
     //Post: retorna la cambra seleccionada
 
     //L/E
-    pair <string, int> inventari();
+    void inventari();
     // Pre:  cert
     // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
     //       total en el magatzem, ordenat per identificador de vacuna.

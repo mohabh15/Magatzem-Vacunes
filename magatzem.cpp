@@ -138,7 +138,7 @@ Cambra Magatzem::cambra(int Ident_cambra)
 
 
 // Lectura i Escriptura
-pair <string, int> Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema si no cada vegada que s'hafegixi al magatzem s'ha d'afegir al sistema tambe aixi tenir al sistema la quantitat total que hi ha al magatzem que té sentit  
+void Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema si no cada vegada que s'hafegixi al magatzem s'ha d'afegir al sistema tambe aixi tenir al sistema la quantitat total que hi ha al magatzem que té sentit  
 // Pre:  cert
 // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
 //       total en el magatzem, ordenat per identificador de vacuna.
