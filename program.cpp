@@ -19,6 +19,7 @@ int main()
         magatzem.cambra(i).canviar_nevera(files,columnes);
     }
 
+  cout<<99<<endl;
 
     string operacion;
     int  ident_cambra;
@@ -32,6 +33,7 @@ int main()
         if (operacion=="afegir_vac")
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
+            cout<<98<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
         }
         if (operacion=="treure_vac")
