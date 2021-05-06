@@ -32,7 +32,7 @@ int main()
     {
         if (operacion=="afegir_vac")
         {
-            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            cin>>ident_vacuna;
             cout<<98<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
         }
@@ -47,6 +47,7 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
+                magatzem.modificar_sistema(ident_vacuna,quantitat);
                 aux=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
                 cout<<aux<<endl;
             }
@@ -74,7 +75,7 @@ int main()
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).ordenar();
         }
-        if(operacion=="canviar_nevera")
+        if(operacion=="canviar_nevera")  //de momento ya funciona cuando no hay ninguna vacuna en la nevera
         {
             cin>>ident_cambra>>files>>columnes;
             magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
