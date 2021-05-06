@@ -139,35 +139,38 @@ void Cambra::canviar_nevera(int files, int columnes)
 			if(cambra[i][j]!="NULL") ++quantitat;
 		}
 	}
-	//si la cantidad cabe en la nueva nevera 
-	//despres es va omplint la nova amb la antigua
+	//si la cantidad cabe en la nueva nevera es va omplint la nova amb la antigua
 	if(quantitat<=files*columnes)  
 	{
 		// Crea la nevera aux i es posa la nova amb les noves dimensions
-		Matriu cambra_aux(files,vector<string>(columnes,"NULL")); 
-		//Es copia la nevera en una aux
+		vector<string> aux; 
+
+		//Es copia la nevera en un vector aux
 		for(unsigned int i=0; i<cambra.size();++i )
 		{
+			columnes=0;
 			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
 				if(cambra[i][j]!="NULL") 
 				{
-					cambra_aux[i][j]=cambra[i][j];
+					aux.push_back(cambra[i][j]);
 				}
 			}	
 		}
-		//es copia les vacunes de la nevera aux a la nova nevera
-		cambra=cambra_aux;
+
+		//es copia les vacunes de aux a la nova nevera amb les noves dimensions 
 		cambra.resize(files,vector<string>(columnes));
+		int contador=0;
 		for(unsigned int i=0; i<cambra.size();++i )
 		{
 			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
-				cambra[i][j]=cambra_aux[i][j];
+				cambra[i][j]=aux[contador];
+				++contador;
 			}	
 		}
 	}
-	else cout<<"ERROR"<<endl;
+	else cout<<"error"<<endl;
 }
 
 
