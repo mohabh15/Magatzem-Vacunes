@@ -28,7 +28,7 @@ class Cambra
 
 
     //Modificadores
-    int afegir_unitats(const string &ident_vacuna,int &quantitat);
+    int afegir_unitats(string ident_vacuna,int quantitat);
     //Pre: Identificacio de vacuna ha de començar amb "J07"
     //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
     //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
@@ -51,22 +51,22 @@ class Cambra
 
 
     //Consultores
-    string consultar_posicio(int fila, int columna) const;
+    string consultar_posicio(int fila, int columna);
     //Pre:cert
     //Post:S’indicaquina vacuna hi ha en la posicío corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
-    unsigned int size() const;
+    unsigned int size();
     //Pre: cert
     //Post: retorna la mida de la matriu cambra
-    unsigned int files() const;
+    unsigned int files();
     //Pre: cert
     //Post: retorna la mida de les files de la matriu cambra
-    unsigned int columnes() const;
+    unsigned int columnes();
     //Pre: cert
     //Post: retorna la mida de les columnes de la matriu cambra
 
 
     //L/E
-    void escriure() const;
+    void escriure();
     //Pre: cert
     //Post: S’escriu el contingut de la neverade la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
     //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 

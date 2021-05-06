@@ -13,7 +13,7 @@ int main()
 
     //Cin de magatzem 
     int files,columnes;
-    for(int i=0; i<numero_cambres;++i)
+    for(int i=1; i<numero_cambres;++i)
     {
         cin>>files>>columnes;
         magatzem.cambra(i).canviar_nevera(files,columnes);
@@ -30,28 +30,33 @@ int main()
     //Operacions 
     while(cin>>operacion)
     {
-        if (operacion=="afegir_vac")
+        if (operacion=="afegir_vac")  //Ja funciona, la he fet jo perque la necesito per comprovar els altres metodes de la classe cambra
         {
             cin>>ident_vacuna;
-            cout<<98<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
+            cout<<"afegir_vac fet"<<endl;
         }
         if (operacion=="treure_vac")
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             magatzem.treure_vacuna(ident_vacuna);
         }
-        if(operacion=="afegir_unitats")
+
+
+        if(operacion=="afegir_unitats")     // tenemos que hacer que el metodo cambra de magatzem devuelva una referecia a la cambra que queremos y no una copia 
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
                 magatzem.modificar_sistema(ident_vacuna,quantitat);
+                cout<<77<<endl;
                 aux=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
                 cout<<aux<<endl;
             }
         }
+
+
         if(operacion=="treure_unitats")
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;

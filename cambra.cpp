@@ -15,19 +15,18 @@ Cambra::Cambra(int x, int y)
 }
 
 
-int Cambra::afegir_unitats(const string &ident_vacuna,int &quantitat)   //hem d'afegir el codi per afegir vacunes al sistema
-//Pre:Ident_vacuna ha de començar amb "J07" quantitat>0
-//Post:Si la vacuna no existeix, es produeix un error. En cas contrari, es posen tantes unitats 
-//	   com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
+int Cambra::afegir_unitats(string ident_vacuna,int quantitat) 
+//Post:Es posen tantes unitats com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
 {
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; i<cambra[0].size(); ++i)
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
 		{
-			if(quantitat!=0 or cambra[i][j]!="NULL") 
+			if(quantitat!=0 and cambra[i][j]=="NULL") 
 			{
 				cambra[i][j]=ident_vacuna;
 				--quantitat;
+				cout<<quantitat<<endl;
 			}
 			if(quantitat==0)
 			{
@@ -158,24 +157,26 @@ void Cambra::canviar_nevera(int files, int columnes)
 
 		//es copia les vacunes de aux a la nova nevera amb les noves dimensions 
 		cambra.resize(files,vector<string>(columnes));
-		if(aux.size()!=0)
+		int contador=0;
+		for(unsigned int i=0; i<cambra.size();++i )
 		{
-			int contador=0;
-			for(unsigned int i=0; i<cambra.size();++i )
+			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
-				for(unsigned int j=0; j<cambra[0].size(); ++j) 
+				if(aux.size()!=0) 
 				{
 					cambra[i][j]=aux[contador];
 					++contador;
-				}	
-			}
+				}
+				else cambra[i][j]="NULL";
+			}	
 		}
+		cout<<cambra.size()<<cambra[0].size()<<endl;
 	}
 	else cout<<"error"<<endl;
 }
 
 
-string Cambra::consultar_posicio(int fila, int columna) const
+string Cambra::consultar_posicio(int fila, int columna) 
 //Pre: fila>0 columna>0
 //Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
@@ -183,13 +184,13 @@ string Cambra::consultar_posicio(int fila, int columna) const
 }
 
 
-unsigned int Cambra::files() const 
+unsigned int Cambra::files() 
 //Pre: cert
 //Post: retorna la mida de cambra
 {
 	return cambra.size();
 }
-unsigned int Cambra::columnes() const
+unsigned int Cambra::columnes() 
 //Pre: cert
 //Post: retorna la mida de cambra
 {
@@ -197,7 +198,7 @@ unsigned int Cambra::columnes() const
 }
 
 
-void Cambra::escriure() const 
+void Cambra::escriure() 
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta.
 //      Tambe s’escriu quantes unitats hi ha en total i, per ordre d’identificador de vacuna existent en la nevera, 

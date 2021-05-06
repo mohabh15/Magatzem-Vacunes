@@ -128,7 +128,7 @@ bool Magatzem::find(string ident_vacuna)
 Cambra Magatzem::cambra(int Ident_cambra)
 {
     list<Cambra>::iterator it = magatzem.begin(); 
-    for(int i=0; i<Ident_cambra; ++i) 
+    for(int i=1; i<Ident_cambra; ++i) 
     {
         ++it;
     }
