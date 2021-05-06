@@ -15,7 +15,6 @@ Magatzem::Magatzem(int mida_magatzem)
     while(mida_magatzem>0)
     {
         magatzem.insert(it,aux);
-        ++it;
         --mida_magatzem;
     }
 }
