@@ -43,7 +43,7 @@ int main()
         }
 
 
-        if(operacion=="afegir_unitats")     // tenemos que hacer que el metodo cambra de magatzem devuelva una referecia a la cambra que queremos y no una copia 
+        if(operacion=="afegir_unitats")     // hacer que el metodo cambra de magatzem devuelva una referecia a la cambra que queremos y no una copia 
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;

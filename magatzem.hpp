@@ -65,7 +65,7 @@ class Magatzem
     bool find(string ident_vacuna);
     //Pre: ident_vacun es un identificador de vacuna correcte 
     //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas
-    Cambra cambra(int Ident_cambra);
+    Cambra& cambra(int Ident_cambra);
     //Pre: magatzem.size() > Ident_cambra > 0 
     //Post: retorna la cambra seleccionada
 
