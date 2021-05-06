@@ -10,6 +10,14 @@ Magatzem::Magatzem()
 Magatzem::Magatzem(int mida_magatzem)
 // Crea un magatzem amb n cambres
 {
+    list<Cambra>::iterator it = magatzem.end(); 
+    Cambra aux;
+    while(mida_magatzem>0)
+    {
+        magatzem.insert(it,aux);
+        ++it;
+        --mida_magatzem;
+    }
 }
 
 
@@ -20,7 +28,7 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
-void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el borraria perque ha ser sobre l'arbre que encara no tenim
+/*void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
@@ -29,9 +37,7 @@ void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el b
 //       I si en queda un nº senar de vacunes s'en distribueixen per l'esquerra el restant.
 //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
 
-{
-
-}
+{}*/
 
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.

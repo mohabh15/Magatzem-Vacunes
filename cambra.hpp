@@ -19,6 +19,9 @@ class Cambra
     public:
 
     //Constructores
+    Cambra();
+    //Pre:
+    //Post:
     Cambra(int x, int y);
     //Pre:Cert
     //Post:crea una matriu de x files i y columnes 

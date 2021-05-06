@@ -24,8 +24,9 @@ class Magatzem
     public:
 
     //Constructor
-    Magatzem(); //no fa falta no perqu el c++ ja et crea el consultor buit per defecte
-    // Crea una llista buida anomenada magatzem
+    Magatzem(); 
+    //Pre: cert
+    //Post:Crea una llista buida anomenada magatzem
     Magatzem(int mida_magatzem);
     //Pre:  n>0
     //Post: Magatzem amb n cambres    
