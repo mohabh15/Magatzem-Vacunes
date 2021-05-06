@@ -58,10 +58,10 @@ int main()
                 magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat); 
             }
         }
-        if(operacion=="distribuir")
+        /*if(operacion=="distribuir")
         {
             cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
-        }
+        }*/
         if(operacion=="comprimir")
         {
             cin>>ident_cambra;

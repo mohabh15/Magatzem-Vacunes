@@ -25,11 +25,11 @@ class Cambra
 
 
     //Modificadores
-    int afegir_unitats(string ident_vacuna,int quantitat);
+    int afegir_unitats(const string &ident_vacuna,int &quantitat);
     //Pre: Identificacio de vacuna ha de començar amb "J07"
     //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
     //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
-    int treure_unitats(string ident_vacuna, int quantitat);
+    int treure_unitats(const string &ident_vacuna, int &quantitat);
     //Pre: Identificacio de vacuna ha de començar amb "J07"
     //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
     //pogut treure perque no hi havia suficients a la cambra 
@@ -48,24 +48,22 @@ class Cambra
 
 
     //Consultores
-    string consultar_posicio(int fila, int columna);
+    string consultar_posicio(int fila, int columna) const;
     //Pre:cert
-    //Post:S’indicaquina vacuna hi ha en la posici ́o corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
-    unsigned int size();
+    //Post:S’indicaquina vacuna hi ha en la posicío corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
+    unsigned int size() const;
     //Pre: cert
     //Post: retorna la mida de la matriu cambra
-    unsigned int files();
+    unsigned int files() const;
     //Pre: cert
     //Post: retorna la mida de les files de la matriu cambra
-    unsigned int columnes();
+    unsigned int columnes() const;
     //Pre: cert
     //Post: retorna la mida de les columnes de la matriu cambra
-    //bool plena();
-    //Pre: cert
-    //Post: retorna true si la cambra està plena i false en cas contrari
+
 
     //L/E
-    void escriure();
+    void escriure() const;
     //Pre: cert
     //Post: S’escriu el contingut de la neverade la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
     //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 

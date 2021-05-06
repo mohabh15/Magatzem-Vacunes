@@ -20,7 +20,7 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
-int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el borraria perque ha ser sobre l'arbre que encara no tenim
+void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna) //Aquet jo el borraria perque ha ser sobre l'arbre que encara no tenim
 // Pre:  S’introdueix un identificador de vacuna i una quantitat.
 // Post: Si la vacuna no existeix, es produeix un error. 
 //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.

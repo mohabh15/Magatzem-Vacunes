@@ -8,7 +8,7 @@ Cambra::Cambra(int x, int y)
 }
 
 
-int Cambra::afegir_unitats(string ident_vacuna,int quantitat)   //hem d'afegir el codi per afegir vacunes al sistema
+int Cambra::afegir_unitats(const string &ident_vacuna,int &quantitat)   //hem d'afegir el codi per afegir vacunes al sistema
 //Pre:Ident_vacuna ha de començar amb "J07" quantitat>0
 //Post:Si la vacuna no existeix, es produeix un error. En cas contrari, es posen tantes unitats 
 //	   com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
@@ -33,7 +33,7 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)   //hem d'afegir e
 }
 
 
-int Cambra::treure_unitats(string ident_vacuna, int quantitat) //hem d'afegir el codi per treure vacunes al sistema
+int Cambra::treure_unitats(const string &ident_vacuna, int &quantitat) //hem d'afegir el codi per treure vacunes al sistema
 //Pre: Ident_vacuna ha de començar amb "J07", quantitat>0
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //		pogut treure perque no hi havia suficients a la cambra 
@@ -164,7 +164,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 }
 
 
-string Cambra::consultar_posicio(int fila, int columna)
+string Cambra::consultar_posicio(int fila, int columna) const
 //Pre: fila>0 columna>0
 //Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
@@ -172,13 +172,13 @@ string Cambra::consultar_posicio(int fila, int columna)
 }
 
 
-unsigned int Cambra::files()
+unsigned int Cambra::files() const 
 //Pre: cert
 //Post: retorna la mida de cambra
 {
 	return cambra.size();
 }
-unsigned int Cambra::columnes()
+unsigned int Cambra::columnes() const
 //Pre: cert
 //Post: retorna la mida de cambra
 {
@@ -186,7 +186,7 @@ unsigned int Cambra::columnes()
 }
 
 
-void Cambra::escriure()
+void Cambra::escriure() const 
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta.
 //      Tambe s’escriu quantes unitats hi ha en total i, per ordre d’identificador de vacuna existent en la nevera, 
