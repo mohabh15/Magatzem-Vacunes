@@ -52,9 +52,7 @@ int main()
                 cout<<"afegir_unitas fet"<<endl;
             }
         }
-
-
-        if(operacion=="treure_unitats")
+        if(operacion=="treure_unitats")  //Ja funciona 
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
@@ -65,9 +63,6 @@ int main()
                 cout<<"treure_unitats fet"<<endl;
             }
         }
-
-
-
         /*if(operacion=="distribuir")
         {
             cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
@@ -91,11 +86,17 @@ int main()
         {
             magatzem.inventari();
         }
+
+
         if(operacion=="escriure")
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).escriure();
+            cout<<"escriure fet"<<endl;
         }
+
+
+
         if(operacion=="consultar_pos")
         {
             cin>>ident_cambra>>files>>columnes;

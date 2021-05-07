@@ -38,16 +38,16 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 }
 
 
-int Cambra::treure_unitats(const string &ident_vacuna, int &quantitat)
+int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 //Pre: Ident_vacuna ha de començar amb "J07", quantitat>0
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //		pogut treure perque no hi havia suficients a la cambra 
 {
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; i<cambra[0].size(); ++i)
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
 		{
-			if(quantitat!=0 and cambra[i][j]!=ident_vacuna) 
+			if(quantitat!=0 and cambra[i][j]==ident_vacuna) 
 			{
 				cambra[i][j]="NULL";
 				--quantitat;
@@ -199,8 +199,8 @@ unsigned int Cambra::columnes()
 void Cambra::escriure() 
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta.
-//      Tambe s’escriu quantes unitats hi ha en total i, per ordre d’identificador de vacuna existent en la nevera, 
-//      s’escriuen l’identificador de vacuna i la seva quantitat
+//      Tambe s’escriu quantes unitats hi ha en total.
+//		I per ordre d’identificador de vacuna existent en la nevera, s’escriuen l’identificador de vacuna i la seva quantitat
 {
 	int quantitat;
 	vector<pair<string,int>> vacunes;
@@ -209,7 +209,7 @@ void Cambra::escriure()
 	{
 		for(unsigned int j=0; j<cambra[0].size();++j)
 		{
-			cout<<cambra[i][j];
+			cout<<cambra[i][j]<<" ";
 			if(cambra[i][j]!="NULL") 
 			{
 				++quantitat;
