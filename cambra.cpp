@@ -202,7 +202,7 @@ void Cambra::escriure()
 //      Tambe s’escriu quantes unitats hi ha en total.
 //		I per ordre d’identificador de vacuna existent en la nevera, s’escriuen l’identificador de vacuna i la seva quantitat
 {
-	int quantitat;
+	int quantitat=0;
 	vector<pair<string,int>> vacunes;
 	//contigunt de dalt a baix de la nevera
 	for(unsigned int i=0; i<cambra.size();++i)
@@ -218,11 +218,11 @@ void Cambra::escriure()
 				{
 					for(unsigned int z=0; z<vacunes.size(); ++z)
 					{
-						if(cambra[i][j]==vacunes[i].first)
+						if(cambra[i][j]==vacunes[z].first)
 						{
-							++vacunes[i].second;
+							++vacunes[z].second;
 						}
-						else if(cambra[i][j]!="NULL") vacunes.push_back(make_pair(cambra[i][j],1));
+						else vacunes.push_back(make_pair(cambra[i][j],1));
 					}
 				}
 			}
@@ -233,7 +233,7 @@ void Cambra::escriure()
 	//identificador de vacuna i quantes hi ha d'aquest tipus
 	for(unsigned int i=0; i<vacunes.size(); ++i)
 	{
-		cout<<vacunes[i].first<<vacunes[i].second<<endl;
+		cout<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
 	}
 
 	//quantitat total de vacunes
