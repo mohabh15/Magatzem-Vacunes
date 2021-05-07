@@ -67,17 +67,25 @@ int main()
         {
             cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
         }*/
-        if(operacion=="comprimir")
+        if(operacion=="comprimir") //Ja funciona 
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).comprimir();
+            cout<<"comprimir fet"<<endl;
         }
-        if(operacion=="ordenar")
+
+
+
+        if(operacion=="ordenar") //Ja funciona 
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).ordenar();
+            cout<<"ordenat fet"<<endl;
         }
-        if(operacion=="canviar_nevera")  //de momento ya funciona cuando no hay ninguna vacuna en la nevera
+
+
+
+        if(operacion=="canviar_nevera")  //de momento ya funciona 
         {
             cin>>ident_cambra>>files>>columnes;
             magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
@@ -86,17 +94,12 @@ int main()
         {
             magatzem.inventari();
         }
-
-
-        if(operacion=="escriure")
+        if(operacion=="escriure")  // funciona pero falta arreglar una cosa 
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).escriure();
             cout<<"escriure fet"<<endl;
         }
-
-
-
         if(operacion=="consultar_pos")
         {
             cin>>ident_cambra>>files>>columnes;

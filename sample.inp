@@ -2,6 +2,11 @@
 2 2
 3 3
 afegir_vac J07MOHA1
-afegir_unitats 2 J07MOHA1 13
-treure_unitats 2 J07MOHA1 5
+afegir_vac J07MOHA2
+afegir_unitats 2 J07MOHA1 3
+afegir_unitats 2 J07MOHA2 3
+afegir_unitats 2 J07MOHA1 3
+treure_unitats 2 J07MOHA2 2
+escriure 2
+ordenar 2
 escriure 2

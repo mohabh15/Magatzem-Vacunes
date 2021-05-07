@@ -70,39 +70,33 @@ void Cambra::comprimir()
 //		entre dues vacunes ni abans de cap vacuna
 {
 	//mirar de un en un i si esta buit quan trobem un que estigui buit mirem els seguent 
+	vector<string> aux;
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; i<cambra.size(); ++i)
+		for(unsigned int j=0; j<cambra.size(); ++j)
 		{
-			if(cambra[i][j]=="NULL") 
+			if(cambra[i][j]!="NULL") 
 			{
-				int contador=0;
-				//seguir mirant amb un altre bucle fins trobar un no buit que es posara en el ultim lloc buit trobat
-				for(unsigned int v=i; i<cambra.size(); ++i)
-				{
-					for(unsigned int z=j; i<cambra[0].size(); ++i)
-					{
-						//i aquell lloc es posara en null i mirem la casilla seguent de la que estaba buida
-						if(cambra[v][z]!="NULL") 
-						{
-							cambra[i][j]=cambra[v][z];
-							cambra[v][z]="NULL";
-							v=cambra.size();
-							z=cambra[0].size();
-						}
-						else ++contador;
-						if(contador==v*z) 
-						{
-							//si arribem al final de la cambra sense trobar cap ple ja tenim la post i sortim dels bucles
-							i=cambra.size();
-							j=cambra[0].size();
-						}
-					}
-				}
+				aux.push_back(cambra[i][j]);
 			}
 		}
 	}
+	int n=0;
+	for(unsigned int i=0; i<cambra.size(); ++i)
+	{
+		for(unsigned int j=0; j<cambra.size(); ++j)
+		{
+			if(n<aux.size()) 
+			{
+				cambra[i][j]=aux[n];
+				++n;
+			}
+			else cambra[i][j]="NULL";
+		}
+	}
 }
+
+
 
 bool mirar_null(string a, string b)
 {
@@ -113,13 +107,25 @@ void Cambra::ordenar()
 //Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
 //		entre elles ni abans de cap vacuna
 {
+	vector<string> aux;
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; i<cambra[0].size(); ++j)
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
 		{
-			sort(cambra[i].begin(),cambra[i].end(),mirar_null);
+			aux.push_back(cambra[i][j]);
 		}
 	}
+	sort(aux.begin(),aux.end(),mirar_null);
+	int contador=0;
+	for(unsigned int i=0; i<cambra.size(); ++i)
+	{
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
+		{
+			cambra[i][j]=aux[contador];
+			++contador;
+		}
+	}
+	
 }
 
 
@@ -173,15 +179,13 @@ void Cambra::canviar_nevera(int files, int columnes)
 	else cout<<"error"<<endl;
 }
 
-
+//Consultores
 string Cambra::consultar_posicio(int fila, int columna) 
 //Pre: fila>0 columna>0
 //Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
 	return cambra[fila][columna];
 }
-
-
 unsigned int Cambra::files() 
 //Pre: cert
 //Post: retorna la mida de cambra
@@ -195,7 +199,7 @@ unsigned int Cambra::columnes()
 	return cambra[0].size();
 }
 
-
+//L/E
 void Cambra::escriure() 
 //Pre: cert
 //Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta.
@@ -203,9 +207,10 @@ void Cambra::escriure()
 //		I per ordre d’identificador de vacuna existent en la nevera, s’escriuen l’identificador de vacuna i la seva quantitat
 {
 	int quantitat=0;
+	bool trobat=true;
 	vector<pair<string,int>> vacunes;
 	//contigunt de dalt a baix de la nevera
-	for(unsigned int i=0; i<cambra.size();++i)
+	for(int i=cambra.size()-1; i>=0;--i)
 	{
 		for(unsigned int j=0; j<cambra[0].size();++j)
 		{
@@ -221,9 +226,12 @@ void Cambra::escriure()
 						if(cambra[i][j]==vacunes[z].first)
 						{
 							++vacunes[z].second;
+							trobat=true;
+							z=vacunes.size();
 						}
-						else vacunes.push_back(make_pair(cambra[i][j],1));
+						else trobat=false;
 					}
+					if(not trobat)  vacunes.push_back(make_pair(cambra[i][j],1));
 				}
 			}
 		}
@@ -231,7 +239,7 @@ void Cambra::escriure()
 	}
 
 	//identificador de vacuna i quantes hi ha d'aquest tipus
-	for(unsigned int i=0; i<vacunes.size(); ++i)
+	for(int i=vacunes.size()-1; i>=0; --i)
 	{
 		cout<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
 	}
