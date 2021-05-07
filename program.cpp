@@ -17,7 +17,7 @@ int main()
     {
         cin>>files>>columnes;
         magatzem.cambra(i).canviar_nevera(files,columnes);
-        cout<<magatzem.cambra(i).files()<<endl;
+        //cout<<magatzem.cambra(i).files()<<endl;
     }
 
     cout<<"Cin de Magatzem fet"<<endl;
@@ -26,7 +26,6 @@ int main()
     int  ident_cambra;
     string ident_vacuna; 
     int quantitat; 
-    int aux;
 
     //Operacions 
     while(cin>>operacion)
@@ -42,18 +41,15 @@ int main()
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             magatzem.treure_vacuna(ident_vacuna);
         }
-
-
         if(operacion=="afegir_unitats")    // Ja funciona
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
-                magatzem.modificar_sistema(ident_vacuna,quantitat);
-                cout<<77<<endl;
-                aux=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);   
-                cout<<aux<<endl;
+                magatzem.modificar_sistema(ident_vacuna,quantitat,'+');
+                cout<<magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat)<<endl;   
+                cout<<"afegir_unitas fet"<<endl;
             }
         }
 
@@ -64,9 +60,14 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
             else
             {
-                magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat); 
+                magatzem.modificar_sistema(ident_vacuna,quantitat,'-');
+                cout<<magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat)<<endl; 
+                cout<<"treure_unitats fet"<<endl;
             }
         }
+
+
+
         /*if(operacion=="distribuir")
         {
             cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;

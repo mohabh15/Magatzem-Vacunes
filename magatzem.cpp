@@ -70,13 +70,17 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
     }
 }
 
-void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat)
+void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat, char operacio)
 //Pre: quantitat>0 i Ident_vacuna comença amb J07
 //Post: Posa la quantitat de Ident_vacuna al sistema 
 {
-    vacunes_donades_alta[Ident_vacuna]=quantitat;
+    if(operacio=='+') vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]+quantitat;
+    if(operacio=='-') 
+    {
+        vacunes_donades_alta[Ident_vacuna]=quantitat-vacunes_donades_alta[Ident_vacuna];
+        if(vacunes_donades_alta[Ident_vacuna]<0) vacunes_donades_alta[Ident_vacuna]=0;
+    }
 }
-
 
 // Consultors
 int Magatzem::consultar_vacuna(string Ident_vacuna)  

@@ -38,7 +38,7 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 }
 
 
-int Cambra::treure_unitats(const string &ident_vacuna, int &quantitat) //hem d'afegir el codi per treure vacunes al sistema
+int Cambra::treure_unitats(const string &ident_vacuna, int &quantitat)
 //Pre: Ident_vacuna ha de començar amb "J07", quantitat>0
 //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
 //		pogut treure perque no hi havia suficients a la cambra 
@@ -47,7 +47,7 @@ int Cambra::treure_unitats(const string &ident_vacuna, int &quantitat) //hem d'a
 	{
 		for(unsigned int j=0; i<cambra[0].size(); ++i)
 		{
-			if(quantitat!=0 or cambra[i][j]!=ident_vacuna) 
+			if(quantitat!=0 and cambra[i][j]!=ident_vacuna) 
 			{
 				cambra[i][j]="NULL";
 				--quantitat;
