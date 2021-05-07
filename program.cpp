@@ -13,13 +13,14 @@ int main()
 
     //Cin de magatzem 
     int files,columnes;
-    for(int i=1; i<numero_cambres;++i)
+    for(int i=1; i<=numero_cambres;++i)
     {
         cin>>files>>columnes;
         magatzem.cambra(i).canviar_nevera(files,columnes);
+        cout<<magatzem.cambra(i).files()<<endl;
     }
 
-  cout<<99<<endl;
+    cout<<"Cin de Magatzem fet"<<endl;
 
     string operacion;
     int  ident_cambra;
@@ -43,7 +44,7 @@ int main()
         }
 
 
-        if(operacion=="afegir_unitats")     // hacer que el metodo cambra de magatzem devuelva una referecia a la cambra que queremos y no una copia 
+        if(operacion=="afegir_unitats")    // Ja funciona
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
             if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;

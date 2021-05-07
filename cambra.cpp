@@ -26,7 +26,6 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 			{
 				cambra[i][j]=ident_vacuna;
 				--quantitat;
-				cout<<quantitat<<endl;
 			}
 			if(quantitat==0)
 			{
@@ -170,7 +169,6 @@ void Cambra::canviar_nevera(int files, int columnes)
 				else cambra[i][j]="NULL";
 			}	
 		}
-		cout<<cambra.size()<<cambra[0].size()<<endl;
 	}
 	else cout<<"error"<<endl;
 }
