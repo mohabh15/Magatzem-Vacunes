@@ -17,11 +17,9 @@ int main()
     {
         cin>>files>>columnes;
         magatzem.cambra(i).canviar_nevera(files,columnes);
-        //cout<<magatzem.cambra(i).files()<<endl;
     }
 
-    cout<<"Cin de Magatzem fet"<<endl;
-
+    //Declaracio de Variables que es necessitaran 
     string operacion;
     int  ident_cambra;
     string ident_vacuna; 
@@ -30,97 +28,94 @@ int main()
     //Operacions 
     while(cin>>operacion)
     {
-        if (operacion=="afegir_vac")  //Ja funciona, la he fet jo perque la necesito per comprovar els altres metodes de la classe cambra
+        if (operacion=="afegir_vac")  
         {
             cin>>ident_vacuna;
+            cout<<"afegir_vac "<<ident_vacuna<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
-            cout<<"afegir_vac fet"<<endl;
         }
-        if (operacion=="treure_vac")
+        if (operacion=="treure_vac")  
         {
-            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            cin>>ident_vacuna;
+            cout<<"treure_vac "<<ident_vacuna<<endl;
             magatzem.treure_vacuna(ident_vacuna);
         }
-        if(operacion=="afegir_unitats")    // Ja funciona
+        if(operacion=="afegir_unitats")    
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
+            cout<<"afegir_unitats "<<ident_cambra<<" "<<ident_vacuna<<" "<<quantitat<<endl;
+            if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
-            {
-                magatzem.modificar_sistema(ident_vacuna,quantitat,'+');
-                cout<<magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat)<<endl;   
-                cout<<"afegir_unitas fet"<<endl;
+            { 
+                int n=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);
+                cout<<"  "<<n<<endl;
+                magatzem.modificar_sistema(ident_vacuna,quantitat-n,'+');
             }
         }
-        if(operacion=="treure_unitats")  //Ja funciona 
+        if(operacion=="treure_unitats")   
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
+            cout<<"treure_unitats "<<ident_cambra<<" "<<ident_vacuna<<" "<<quantitat<<endl;
+            if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
             {
-                magatzem.modificar_sistema(ident_vacuna,quantitat,'-');
-                cout<<magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat)<<endl; 
-                cout<<"treure_unitats fet"<<endl;
+                int n=magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat);
+                cout<<"  "<<n<<endl; 
+                magatzem.modificar_sistema(ident_vacuna,quantitat-n,'-');
             }
         }
         /*if(operacion=="distribuir")
         {
             cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
         }*/
-        if(operacion=="comprimir") //Ja funciona 
+        if(operacion=="comprimir") 
         {
             cin>>ident_cambra;
+            cout<<"comprimir "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).comprimir();
-            cout<<"comprimir fet"<<endl;
         }
-        if(operacion=="ordenar") //Ja funciona 
+        if(operacion=="ordenar") 
         {
             cin>>ident_cambra;
+            cout<<"ordenar "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).ordenar();
-            cout<<"ordenat fet"<<endl;
         }
-
-
-
-        if(operacion=="canviar_nevera")  //de momento ya funciona 
+        if(operacion=="canviar_nevera")  
         {
             cin>>ident_cambra>>files>>columnes;
+            cout<<"canviar_nevera "<<ident_cambra<<" "<<files<<" "<<columnes<<endl;
             magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
         }
-        if(operacion=="inventari")
+        if(operacion=="inventari")  
         {
+            cout<<"inventari"<<endl;
             magatzem.inventari();
         }
-        if(operacion=="escriure")  // Ja funciona 
+        if(operacion=="escriure")
         {
             cin>>ident_cambra;
+            cout<<"escriure "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).escriure();
-            cout<<"escriure fet"<<endl;
         }
-        if(operacion=="consultar_pos")
+        if(operacion=="consultar_pos") 
         {
             cin>>ident_cambra>>files>>columnes;
-            magatzem.cambra(ident_cambra).consultar_posicio(files,columnes);
+            cout<<"consultar_pos "<<ident_cambra<<" "<<files<<" "<<columnes<<endl;
+            cout<<"  "<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
         }
-        if(operacion=="consultar_vac")
+        if(operacion=="consultar_vac") 
         {
             cin>>ident_vacuna;
-            magatzem.consultar_vacuna(ident_vacuna);
+            cout<<"consultar_vac "<<ident_vacuna<<endl;
+            if(magatzem.consultar_vacuna(ident_vacuna)==-1)  cout<<"  error"<<endl;
+            else cout<<"  "<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
         }
         if(operacion=="fi")
         {
-          magatzem.fi();
+            cout<<"fi"<<endl;
+            magatzem.fi();
         }
-        
-        
-        
-        
-        
-        
     }
-
-
-
 }
 
 

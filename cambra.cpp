@@ -63,7 +63,7 @@ void Cambra::comprimir()
 	vector<string> vector_aux_vacunes;
 	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j = 0; j < cambra.size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
 			if(cambra[i][j] != "NULL") 
 			{
@@ -71,14 +71,14 @@ void Cambra::comprimir()
 			}
 		}
 	}
-	// Es torna a recorrer la cambra posició per posició. Mentre l'enter n sigui més petit que la mida del vector aux
+	// Torna a recorrer la cambra posició per posició. Mentre l'enter n sigui més petit que la mida del vector aux
 	// s'afagiran les diferents vacunes d'esquerra a dreta i d'avall cap a d'alt per ordre en el que es troben al vector.
 	// Un cop ja no quedin més vacunes a afegeir si encara queda espai a la cambra es substituiran els "calaixos" restants
 	// per l'string NULL.
 	int int_aux = 0;
 	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j = 0; j < cambra.size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
 			if(int_aux < vector_aux_vacunes.size()) 
 			{
@@ -136,7 +136,6 @@ void Cambra::canviar_nevera(int files, int columnes)
 		vector<string> vetor_aux_vacunes; 
 		for(unsigned int i = 0; i < cambra.size(); ++i)
 		{
-			columnes = 0;
 			for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 			{
 				if(cambra[i][j] != "NULL") 
@@ -147,29 +146,32 @@ void Cambra::canviar_nevera(int files, int columnes)
 		}
 
 		// Es copien les vacunes del vector aux a la nova nevera amb les noves dimensions 
-		cambra.resize(files,vector<string>(columnes));
-		int contador = 0;
+		cambra = vector<vector<string>>(files, vector<string>(columnes));
+		int comptador = 0;
 		for(unsigned int i = 0; i < cambra.size(); ++i)
 		{
 			for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 			{
-				if(vetor_aux_vacunes.size() != 0) 
+				if(comptador < vetor_aux_vacunes.size()) 
 				{
-					cambra[i][j] = vetor_aux_vacunes[contador];
-					++contador;
+					cambra[i][j] = vetor_aux_vacunes[comptador];
+					++comptador;
 				}
-				else cambra[i][j] = "NULL";
+				else 
+				{
+					cambra[i][j] = "NULL";
+				}
 			}	
 		}
 	}
-	else cout << "error" << endl;
+	else cout << "  error" << endl;
 }
 
 
 // Consultors
 string Cambra::consultar_posicio(int fila, int columna) 
 {
-	return cambra[fila][columna];
+	return cambra[fila-1][columna-1];
 }
 
 unsigned int Cambra::files() 
@@ -192,6 +194,7 @@ void Cambra::escriure()
 	// Mostra per pantalla el contigunt de la nevera de dalt a baix
 	for(int i = cambra.size()-1; i >= 0; --i)
 	{
+		cout << " ";
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
 			cout << cambra[i][j] << " ";
@@ -230,13 +233,10 @@ void Cambra::escriure()
 			}
 		}
 	}
-
+	// Escriu per pantalla el nombre total de vacunes qu hi ha a la cambra. 
+	cout << " " << quantitat << endl;
 	// Mostra per pantalla l'identificador de vacuna i el nº que hi ha del tipus de vacuna.
 	for(int i = 0; i < vector_vacunes.size(); ++i)
 	{
-		cout << vector_vacunes[i].first << " " << vector_vacunes[i].second << endl;
+		cout << " " << vector_vacunes[i].first << " " << vector_vacunes[i].second << endl;
 	}
-
-	// Escriu per pantalla el nombre total de vacunes qu hi ha a la cambra. 
-	cout << quantitat << endl;
-}
