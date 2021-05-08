@@ -90,11 +90,6 @@ void Cambra::comprimir()
 	}
 }
 
-bool mirar_null(string a, string b)
-{
-	return (a < b);
-}
-
 void Cambra::ordenar()
 {
 	vector<string> vector_aux_vacunes;
@@ -106,7 +101,7 @@ void Cambra::ordenar()
 			vector_aux_vacunes.push_back(cambra[i][j]);
 		}
 	}
-	sort(vector_aux_vacunes.begin(), vector_aux_vacunes.end(), mirar_null);
+	sort(vector_aux_vacunes.begin(), vector_aux_vacunes.end());
 	int comptador = 0;
 	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
@@ -240,3 +235,4 @@ void Cambra::escriure()
 	{
 		cout << " " << vector_vacunes[i].first << " " << vector_vacunes[i].second << endl;
 	}
+}
