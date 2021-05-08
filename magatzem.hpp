@@ -70,11 +70,11 @@ class Magatzem
     //Post: Retorna la cambra seleccionada.
 
     //Lectura i Escriptura
-    void inventari();
+    void inventari() const;
     // Pre:  Cert.
     // Post: Per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
     //       total en el magatzem, ordenat per identificador de vacuna.
-    void fi();
+    void fi() const;
     // Pre:  Cert.
     // Post: Acaba l'execució de la simulació.
 

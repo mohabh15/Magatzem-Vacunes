@@ -52,22 +52,19 @@ class Cambra
     //       nova nevera, és a dir, la nova nevera sigui de la mateixa mida o més gran que l'antiga. Si no dona error. 
 
     // Consultors
-    string consultar_posicio(int fila, int columna);
+    string consultar_posicio(int fila, int columna) const;
     // Pre:  els enters fila i columna són més grans que 0.
     // Post: S’indica quina vacuna hi ha a la posicío [fila][columna] de la cambra. Si no hi ha cap vacuna, s’escriu NULL.
-    unsigned int size();
-    // Pre:  Cert.
-    // Post: Retorna la mida de la matriu cambra.
-    unsigned int files();
+    unsigned int files() const;
     // Pre:  Cert.
     // Post: Retorna la mida de les files de la matriu cambra.
-    unsigned int columnes();
+    unsigned int columnes() const;
     // Pre:  Cert.
     // Post: Retorna la mida de les columnes de la matriu cambra.
 
 
     // Lectura i Escriptura
-    void escriure();
+    void escriure() const;
     // Pre:  Cert.
     // Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
     //       També s’escriu el nombre d'unitats que hi ha en total i, per ordre d’identificador de vacuna existent a la nevera, 

@@ -67,7 +67,7 @@ void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat, char operac
 }
 
 // Consultors
-int Magatzem::consultar_vacuna(string Ident_vacuna)  
+int Magatzem::consultar_vacuna(string Ident_vacuna) 
 {
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end())
     {
@@ -80,7 +80,7 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
     return 0;
 }
 
-bool Magatzem::find(string ident_vacuna)
+bool Magatzem::find(string ident_vacuna) 
 {
     bool trobat = false;
     map<string,int>::iterator it = vacunes_donades_alta.find(ident_vacuna);
@@ -95,7 +95,7 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
-Cambra& Magatzem::cambra(int Ident_cambra)
+Cambra& Magatzem::cambra(int Ident_cambra) 
 {
     list<Cambra>::iterator it = magatzem.begin(); 
     for(int i=1; i<Ident_cambra; ++i) 
@@ -107,7 +107,7 @@ Cambra& Magatzem::cambra(int Ident_cambra)
 
 
 // Lectura i Escriptura
-void Magatzem::inventari()   
+void Magatzem::inventari() const  
 {
     for(map<string, int>::const_iterator it = vacunes_donades_alta.begin(); it != vacunes_donades_alta.end(); ++it)
     {
@@ -115,7 +115,7 @@ void Magatzem::inventari()
     }
 }
 
-void Magatzem::fi()
+void Magatzem::fi() const
 {
    // Com que tota l'estona està llegint al cridar el mètode fi deixarà de llegir i s'acabarà el programa
    cin.ignore();  

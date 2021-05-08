@@ -164,24 +164,24 @@ void Cambra::canviar_nevera(int files, int columnes)
 
 
 // Consultors
-string Cambra::consultar_posicio(int fila, int columna) 
+string Cambra::consultar_posicio(int fila, int columna) const
 {
 	return cambra[fila-1][columna-1];
 }
 
-unsigned int Cambra::files() 
+unsigned int Cambra::files() const
 {
 	return cambra.size();
 }
 
-unsigned int Cambra::columnes() 
+unsigned int Cambra::columnes() const
 {
 	return cambra[0].size();
 }
 
 
 // Lectura i Escriptura
-void Cambra::escriure() 
+void Cambra::escriure() const
 {
 	int quantitat = 0;
 	bool trobat = true;
