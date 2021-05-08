@@ -33,35 +33,35 @@ int main()
         if (operacion=="afegir_vac")  //Ja funciona, la he fet jo perque la necesito per comprovar els altres metodes de la classe cambra
         {
             cin>>ident_vacuna;
+            cout<<"afegir_vac fet"<<ident_vacuna<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
-            cout<<"afegir_vac fet"<<endl;
         }
         if (operacion=="treure_vac")  //Ja funciona
         {
             cin>>ident_vacuna;
+            cout<<"treure_vac "<<ident_vacuna<<endl;
             magatzem.treure_vacuna(ident_vacuna);
-            cout<<"treure_vac fet"<<endl;
         }
         if(operacion=="afegir_unitats")    // Ja funciona
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
+            cout<<"afegir_unitats "<<ident_cambra<<" "<<ident_vacuna<<" "<<quantitat<<endl;
+            if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
             {
                 magatzem.modificar_sistema(ident_vacuna,quantitat,'+');
-                cout<<magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat)<<endl;   
-                cout<<"afegir_unitas fet"<<endl;
+                cout<<" "<<magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat)<<endl;   
             }
         }
         if(operacion=="treure_unitats")  //Ja funciona 
         {
             cin>>ident_cambra>>ident_vacuna>>quantitat;
-            if(magatzem.find(ident_vacuna)==false) cout<<"error"<<endl;
+            cout<<"treure_unitats "<<ident_cambra<<" "<<ident_vacuna<<" "<<quantitat<<endl;
+            if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
             {
                 magatzem.modificar_sistema(ident_vacuna,quantitat,'-');
-                cout<<magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat)<<endl; 
-                cout<<"treure_unitats fet"<<endl;
+                cout<<" "<<magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat)<<endl; 
             }
         }
         /*if(operacion=="distribuir")
@@ -71,41 +71,43 @@ int main()
         if(operacion=="comprimir") //Ja funciona 
         {
             cin>>ident_cambra;
+            cout<<"comprimir "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).comprimir();
-            cout<<"comprimir fet"<<endl;
         }
         if(operacion=="ordenar") //Ja funciona 
         {
             cin>>ident_cambra;
+            cout<<"ordenar "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).ordenar();
-            cout<<"ordenat fet"<<endl;
         }
         if(operacion=="canviar_nevera")  //Ja funciona 
         {
             cin>>ident_cambra>>files>>columnes;
+            cout<<"canviar_nevera "<<ident_cambra<<" "<<files<<" "<<columnes<<endl;
             magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
         }
         if(operacion=="inventari")  //Ja funciona
         {
+            cout<<"inventari"<<endl;
             magatzem.inventari();
         }
         if(operacion=="escriure")  // Ja funciona 
         {
             cin>>ident_cambra;
+            cout<<"escriure "<<ident_cambra<<endl;
             magatzem.cambra(ident_cambra).escriure();
-            cout<<"escriure fet"<<endl;
         }
         if(operacion=="consultar_pos") //Ja funciona
         {
             cin>>ident_cambra>>files>>columnes;
-            cout<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
-            cout<<"consultar_pos fet"<<endl;
+            cout<<"consultar_pos "<<files<<" "<<columnes<<endl;
+            cout<<" "<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
         }
         if(operacion=="consultar_vac")  //Ja funciona
         {
             cin>>ident_vacuna;
-            cout<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
-            cout<<"consultar_vac fet"<<endl;
+            cout<<"consultar_vac "<<ident_vacuna<<endl;
+            cout<<" "<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
         }
         if(operacion=="fi")
         {

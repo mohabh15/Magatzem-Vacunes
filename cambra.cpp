@@ -212,6 +212,7 @@ void Cambra::escriure()
 	//contigunt de dalt a baix de la nevera
 	for(int i=cambra.size()-1; i>=0;--i)
 	{
+		cout<<" ";
 		for(unsigned int j=0; j<cambra[0].size();++j)
 		{
 			cout<<cambra[i][j]<<" ";
@@ -245,12 +246,13 @@ void Cambra::escriure()
 		}
 	}
 
+	//quantitat total de vacunes
+	cout<<" "<<quantitat<<endl;
+
 	//identificador de vacuna i quantes hi ha d'aquest tipus
 	for(int i=0; i<vacunes.size(); ++i)
 	{
-		cout<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
+		cout<<" "<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
 	}
 
-	//quantitat total de vacunes
-	cout<<quantitat<<endl;
 }

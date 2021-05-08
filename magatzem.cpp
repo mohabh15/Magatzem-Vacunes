@@ -37,6 +37,21 @@ Magatzem::~Magatzem()
 //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
 
 {}*/
+void Magatzem::afegir_vacuna(string Ident_vacuna)
+    // Pre:  s’introdueix un identificador de vacuna.
+    // Post: si la vacuna ja existeix, es produeix un error;
+    //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
+{
+    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
+    {
+        cout<<" error"<<endl;
+    }
+    else 
+    {
+        // Afageix la vacuna al diccionari vacunes_donades_alta
+        vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
+    }
+}
 
 void Magatzem::treure_vacuna(string Ident_vacuna)   
 // Pre:  s’introdueix  un  identificador  de  vacuna.
@@ -45,28 +60,12 @@ void Magatzem::treure_vacuna(string Ident_vacuna)
 {
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or  vacunes_donades_alta[Ident_vacuna]>0)
     {
-        cout << "error" << endl;
+        cout<<" error"<<endl;
     }
     else
     {
         //eliminar_vacuna; 
         vacunes_donades_alta.erase(Ident_vacuna);
-    }
-}
-
-void Magatzem::afegir_vacuna(string Ident_vacuna)
-    // Pre:  s’introdueix un identificador de vacuna.
-    // Post: si la vacuna ja existeix, es produeix un error;
-    //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
-{
-    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
-    {
-        cout<<"error"<<endl;
-    }
-    else 
-    {
-        // Afageix la vacuna al diccionari vacunes_donades_alta
-        vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
     }
 }
 
@@ -138,7 +137,7 @@ void Magatzem::inventari()
 {
     for(map<string, int>::const_iterator it = vacunes_donades_alta.begin(); it != vacunes_donades_alta.end(); ++it)
     {
-        cout << "Del tipus de vacuna " << it -> first << " hi ha " << it -> second << " vacunes" << endl;
+        cout<<" "<<it->first<<" "<<it->second<<endl;
     }
 }
 
