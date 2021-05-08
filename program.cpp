@@ -73,9 +73,6 @@ int main()
             magatzem.cambra(ident_cambra).comprimir();
             cout<<"comprimir fet"<<endl;
         }
-
-
-
         if(operacion=="ordenar") //Ja funciona 
         {
             cin>>ident_cambra;
@@ -94,7 +91,7 @@ int main()
         {
             magatzem.inventari();
         }
-        if(operacion=="escriure")  // funciona pero falta arreglar una cosa, cambiar el orden en que se añaden al vector vacunes
+        if(operacion=="escriure")  // Ja funciona 
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).escriure();

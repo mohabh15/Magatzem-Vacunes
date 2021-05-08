@@ -215,6 +215,14 @@ void Cambra::escriure()
 		for(unsigned int j=0; j<cambra[0].size();++j)
 		{
 			cout<<cambra[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	//Cambres en ordre d'aparicio
+	for(unsigned int i=0; i<cambra.size();++i)
+	{
+		for(unsigned int j=0; j<cambra[0].size();++j)
+		{
 			if(cambra[i][j]!="NULL") 
 			{
 				++quantitat;
@@ -235,11 +243,10 @@ void Cambra::escriure()
 				}
 			}
 		}
-		cout<<endl;
 	}
 
 	//identificador de vacuna i quantes hi ha d'aquest tipus
-	for(int i=vacunes.size()-1; i>=0; --i)
+	for(int i=0; i<vacunes.size(); ++i)
 	{
 		cout<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
 	}
