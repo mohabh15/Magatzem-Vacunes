@@ -94,7 +94,7 @@ int main()
         {
             magatzem.inventari();
         }
-        if(operacion=="escriure")  // funciona pero falta arreglar una cosa 
+        if(operacion=="escriure")  // funciona pero falta arreglar una cosa, cambiar el orden en que se añaden al vector vacunes
         {
             cin>>ident_cambra;
             magatzem.cambra(ident_cambra).escriure();
