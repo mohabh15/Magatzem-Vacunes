@@ -92,7 +92,7 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
 {
     if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end())
     {
-        cout<<"error"<<endl;
+       return -1;
     }
     else 
     {

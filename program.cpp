@@ -20,7 +20,6 @@ int main()
         //cout<<magatzem.cambra(i).files()<<endl;
     }
 
-    cout<<"Cin de Magatzem fet"<<endl;
 
     string operacion;
     int  ident_cambra;
@@ -33,7 +32,7 @@ int main()
         if (operacion=="afegir_vac")  //Ja funciona, la he fet jo perque la necesito per comprovar els altres metodes de la classe cambra
         {
             cin>>ident_vacuna;
-            cout<<"afegir_vac fet"<<ident_vacuna<<endl;
+            cout<<"afegir_vac "<<ident_vacuna<<endl;
             magatzem.afegir_vacuna(ident_vacuna);
         }
         if (operacion=="treure_vac")  //Ja funciona
@@ -48,9 +47,10 @@ int main()
             cout<<"afegir_unitats "<<ident_cambra<<" "<<ident_vacuna<<" "<<quantitat<<endl;
             if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
-            {
-                magatzem.modificar_sistema(ident_vacuna,quantitat,'+');
-                cout<<" "<<magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat)<<endl;   
+            { 
+                int n=magatzem.cambra(ident_cambra).afegir_unitats(ident_vacuna,quantitat);
+                cout<<"  "<<n<<endl;
+                magatzem.modificar_sistema(ident_vacuna,quantitat-n,'+');
             }
         }
         if(operacion=="treure_unitats")  //Ja funciona 
@@ -60,8 +60,9 @@ int main()
             if(magatzem.find(ident_vacuna)==false) cout<<" error"<<endl;
             else
             {
-                magatzem.modificar_sistema(ident_vacuna,quantitat,'-');
-                cout<<" "<<magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat)<<endl; 
+                int n=magatzem.cambra(ident_cambra).treure_unitats(ident_vacuna,quantitat);
+                cout<<"  "<<n<<endl; 
+                magatzem.modificar_sistema(ident_vacuna,quantitat-n,'-');
             }
         }
         /*if(operacion=="distribuir")
@@ -100,18 +101,20 @@ int main()
         if(operacion=="consultar_pos") //Ja funciona
         {
             cin>>ident_cambra>>files>>columnes;
-            cout<<"consultar_pos "<<files<<" "<<columnes<<endl;
-            cout<<" "<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
+            cout<<"consultar_pos "<<ident_cambra<<" "<<files<<" "<<columnes<<endl;
+            cout<<"  "<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
         }
         if(operacion=="consultar_vac")  //Ja funciona
         {
             cin>>ident_vacuna;
             cout<<"consultar_vac "<<ident_vacuna<<endl;
-            cout<<" "<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
+            if(magatzem.consultar_vacuna(ident_vacuna)==-1)  cout<<"  error"<<endl;
+            else cout<<"  "<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
         }
         if(operacion=="fi")
         {
-          magatzem.fi();
+            cout<<"fi"<<endl;
+            magatzem.fi();
         }
     
 

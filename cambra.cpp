@@ -73,7 +73,7 @@ void Cambra::comprimir()
 	vector<string> aux;
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra.size(); ++j)
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
 		{
 			if(cambra[i][j]!="NULL") 
 			{
@@ -81,10 +81,11 @@ void Cambra::comprimir()
 			}
 		}
 	}
+
 	int n=0;
 	for(unsigned int i=0; i<cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra.size(); ++j)
+		for(unsigned int j=0; j<cambra[0].size(); ++j)
 		{
 			if(n<aux.size()) 
 			{
@@ -150,7 +151,6 @@ void Cambra::canviar_nevera(int files, int columnes)
 		vector<string> aux; 
 		for(unsigned int i=0; i<cambra.size();++i )
 		{
-			columnes=0;
 			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
 				if(cambra[i][j]!="NULL") 
@@ -161,22 +161,25 @@ void Cambra::canviar_nevera(int files, int columnes)
 		}
 
 		//es copia les vacunes de aux a la nova nevera amb les noves dimensions 
-		cambra.resize(files,vector<string>(columnes));
+		cambra= vector<vector<string> >(files, vector<string>(columnes));
 		int contador=0;
-		for(unsigned int i=0; i<cambra.size();++i )
+		for(unsigned int i=0; i<cambra.size();++i)
 		{
 			for(unsigned int j=0; j<cambra[0].size(); ++j) 
 			{
-				if(aux.size()!=0) 
+				if(contador<aux.size()) 
 				{
 					cambra[i][j]=aux[contador];
 					++contador;
 				}
-				else cambra[i][j]="NULL";
+				else 
+				{
+					cambra[i][j]="NULL";
+				}
 			}	
 		}
 	}
-	else cout<<"error"<<endl;
+	else cout<<"  error"<<endl;
 }
 
 //Consultores
