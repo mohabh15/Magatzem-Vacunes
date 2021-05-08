@@ -20,10 +20,10 @@ class Cambra
 
     //Constructores
     Cambra();
-    //Pre:
-    //Post:
+    //Pre: x>0 i y>0
+    //Post: crea una matriu de x files i y columnes 
     Cambra(int x, int y);
-    //Pre:Cert
+    //Pre: x>0 i y>0
     //Post:crea una matriu de x files i y columnes 
 
 

@@ -4,12 +4,9 @@ using namespace std;
 
 
 Cambra::Cambra()
-//Pre:
-//Post:
 {}
 
 Cambra::Cambra(int x, int y)
-//crea una matriu de x files i y columnes 
 {
     cambra.resize(x,vector<string>(y));
 }
