@@ -3,12 +3,9 @@ using namespace std;
 
 // Constructors
 Magatzem::Magatzem()
-//Pre:
-// Post:Crea una llista buida anomenada magatzem
 {}
 
 Magatzem::Magatzem(int mida_magatzem)
-// Crea un magatzem amb n cambres
 {
     list<Cambra>::iterator it = magatzem.end(); 
     Cambra aux;
@@ -22,42 +19,16 @@ Magatzem::Magatzem(int mida_magatzem)
 
 //Destructors
 Magatzem::~Magatzem()
-// Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
 {}
 
 
 // Modificadors
-/*void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
-// Pre:  S’introdueix un identificador de vacuna i una quantitat.
-// Post: Si la vacuna no existeix, es produeix un error. 
-//       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
-//       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen la meitat
-//       a partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per la dreta.
-//       I si en queda un nº senar de vacunes s'en distribueixen per l'esquerra el restant.
-//       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir.   
-
-{}*/
-
-void Magatzem::treure_vacuna(string Ident_vacuna)   
-// Pre:  s’introdueix  un  identificador  de  vacuna.
-// Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
-//       En cas contrari, la vacuna s'elimina del map de vacunes
-{
-    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or  vacunes_donades_alta[Ident_vacuna]>0)
-    {
-        cout << "error" << endl;
-    }
-    else
-    {
-        //eliminar_vacuna; 
-        vacunes_donades_alta.erase(Ident_vacuna);
-    }
-}
+/*
+void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)  
+{}
+*/
 
 void Magatzem::afegir_vacuna(string Ident_vacuna)
-    // Pre:  s’introdueix un identificador de vacuna.
-    // Post: si la vacuna ja existeix, es produeix un error;
-    //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
 {
     if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
     {
@@ -67,6 +38,19 @@ void Magatzem::afegir_vacuna(string Ident_vacuna)
     {
         // Afageix la vacuna al diccionari vacunes_donades_alta
         vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
+    }
+}
+
+void Magatzem::treure_vacuna(string Ident_vacuna)   
+{
+    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or vacunes_donades_alta[Ident_vacuna]>0)
+    {
+        cout << "error" << endl;
+    }
+    else
+    {
+        // eliminar_vacuna; 
+        vacunes_donades_alta.erase(Ident_vacuna);
     }
 }
 

@@ -18,58 +18,59 @@ class Cambra
 
     public:
 
-    //Constructores
+    // Constructors
     Cambra();
-    //Pre:
-    //Post:
+    // Pre:  Cert.
+    // Post: Crea una matriu buida.
     Cambra(int x, int y);
-    //Pre:Cert
-    //Post:crea una matriu de x files i y columnes 
+    // Pre:  x i y són la mida de la cambra, sempre més grans que 0.
+    // Post: Crea una matriu de x files i y columnes.
 
-
-    //Modificadores
+    // Modificadors
     int afegir_unitats(string ident_vacuna,int quantitat);
-    //Pre: Identificacio de vacuna ha de començar amb "J07"
-    //Post:Si la vacuna no existeix,  es produeix un error.  En cas contrari, es posen tantes unitats 
-    //com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
+    // Pre:  L'string identificació de vacuna ha de començar amb "J07" i l'enter quantitat ha de ser més gran que 0.
+    // Post: Si la vacuna no existeix, es produeix un error. En cas contrari, es posen tantes 
+    //       unitats com capiguen a la cambra i es torna un enter que indiqui quantes unitats no han cabut. 
     int treure_unitats(string ident_vacuna, int quantitat);
-    //Pre: Identificacio de vacuna ha de començar amb "J07"
-    //Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
-    //pogut treure perque no hi havia suficients a la cambra 
+    // Pre:  L'string identificacio de vacuna ha de començar amb "J07" i l'enter quantitat ha de ser més gran que 0.
+    // Post: Si la vacuna no existeix dona error. En cas contrari es torna la quantitat que no s'ha 
+    //       pogut treure perque no hi havia prou unitats a la cambra.
     void comprimir();
-    //Pre: cert
-    //Post:  Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
-    //entre dues vacunes ni abans de cap vacuna
+    // Pre:  Cert.
+    // Post: Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
+    //       entre dues vacunes ni abans de cap vacuna.
+    bool mirar_null(string a, string b);
+    // Pre:  a i b són dos strings no buits.
+    // Post: Retorna true si a < b, en cas contrari retorna false. 
     void ordenar();
-    //Pre: cert
-    //Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
-    //entre elles ni abans de cap vacuna
+    // Pre:  Cert.
+    // Post: S’ordenen alfabèticament les vacunes que conté la nevera sense deixar forats
+    //       entre elles ni abans de cap vacuna.
     void canviar_nevera(int files, int columnes);
-    //Pre: cert
-    //Post: Es crea un nova nevera amb les dimension de files i columnes si el contingut de la antigua nevera
-    //caben en la nova, si no dona error  
+    // Pre:  files > 0   columnes > 0.
+    // Post: Es crea un nova nevera amb les dimension de files i columnes sempre i quan la nevera antiga càpiga a la 
+    //       nova nevera, és a dir, la nova nevera sigui de la mateixa mida o més gran que l'antiga. Si no dona error. 
 
-
-    //Consultores
+    // Consultors
     string consultar_posicio(int fila, int columna);
-    //Pre:cert
-    //Post:S’indicaquina vacuna hi ha en la posicío corresponent de la nevera de la cambra. Si no hi hacap vacuna, s’escriu NULL
+    // Pre:  els enters fila i columna són més grans que 0.
+    // Post: S’indica quina vacuna hi ha a la posicío [fila][columna] de la cambra. Si no hi ha cap vacuna, s’escriu NULL.
     unsigned int size();
-    //Pre: cert
-    //Post: retorna la mida de la matriu cambra
+    // Pre:  Cert.
+    // Post: Retorna la mida de la matriu cambra.
     unsigned int files();
-    //Pre: cert
-    //Post: retorna la mida de les files de la matriu cambra
+    // Pre:  Cert.
+    // Post: Retorna la mida de les files de la matriu cambra.
     unsigned int columnes();
-    //Pre: cert
-    //Post: retorna la mida de les columnes de la matriu cambra
+    // Pre:  Cert.
+    // Post: Retorna la mida de les columnes de la matriu cambra.
 
 
-    //L/E
+    // Lectura i Escriptura
     void escriure();
-    //Pre: cert
-    //Post: S’escriu el contingut de la neverade la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
-    //Tamb ́e s’escriu quantes unitats hi ha en total i,  per ordre d’identificador de vacunaexistent en la nevera, 
-    //s’escriuen l’identificador de vacuna i la seva quantitat
+    // Pre:  Cert.
+    // Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta. On hi hagi un forat s’escriu NULL.
+    //       També s’escriu el nombre d'unitats que hi ha en total i, per ordre d’identificador de vacuna existent a la nevera, 
+    //       s’escriu l’identificador de vacuna i la seva quantitat.
 };
 #endif

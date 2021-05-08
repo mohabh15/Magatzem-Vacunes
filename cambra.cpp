@@ -2,60 +2,53 @@
 using namespace std;
 
 
-
+// Constructors
 Cambra::Cambra()
-//Pre:
-//Post:
 {}
 
 Cambra::Cambra(int x, int y)
-//crea una matriu de x files i y columnes 
 {
     cambra.resize(x,vector<string>(y));
 }
 
 
+// Modificadors
 int Cambra::afegir_unitats(string ident_vacuna,int quantitat) 
-//Post:Es posen tantes unitats com capiguen en la cambra i es torna un enter que indiqui quantes unitats no han cabut.
 {
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			if(quantitat!=0 and cambra[i][j]=="NULL") 
+			if(quantitat != 0 and cambra[i][j] == "NULL") 
 			{
-				cambra[i][j]=ident_vacuna;
+				cambra[i][j] = ident_vacuna;
 				--quantitat;
 			}
-			if(quantitat==0)
+			if(quantitat == 0)
 			{
-				i=cambra.size();
-				j=cambra[0].size();
+				i = cambra.size();
+				j = cambra[0].size();
 			}
 		}
 	}
 	return quantitat;
 }
 
-
 int Cambra::treure_unitats(string ident_vacuna, int quantitat)
-//Pre: Ident_vacuna ha de començar amb "J07", quantitat>0
-//Post: Si la vacuna no existeix dona error, en cas contrari es torna la quantitat que no s'ha 
-//		pogut treure perque no hi havia suficients a la cambra 
 {
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			if(quantitat!=0 and cambra[i][j]==ident_vacuna) 
+			if(quantitat != 0 and cambra[i][j] == ident_vacuna) 
 			{
-				cambra[i][j]="NULL";
+				cambra[i][j] = "NULL";
 				--quantitat;
 			}
-			if(quantitat==0)
+			if(quantitat == 0)
 			{
-				i=cambra.size();
-				j=cambra[0].size();
+				i = cambra.size();
+				j = cambra[0].size();
 			}
 			
 		}
@@ -63,194 +56,187 @@ int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 	return quantitat;
 }	
 
-
 void Cambra::comprimir()
-//Pre: cert
-//Post: Es desplacen les vacunes cap a l’esquerra i cap avall de manera que no resti cap forat
-//		entre dues vacunes ni abans de cap vacuna
 {
-	//mirar de un en un i si esta buit quan trobem un que estigui buit mirem els seguent 
-	vector<string> aux;
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	// Recorre la cambra posició per posició. Si hi ha alguna posició buida es salta a la següent posició, si no, 
+	// es fa un push_back al vector aux.
+	vector<string> vector_aux_vacunes;
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra.size(); ++j)
+		for(unsigned int j = 0; j < cambra.size(); ++j)
 		{
-			if(cambra[i][j]!="NULL") 
+			if(cambra[i][j] != "NULL") 
 			{
-				aux.push_back(cambra[i][j]);
+				vector_aux_vacunes.push_back(cambra[i][j]);
 			}
 		}
 	}
-	int n=0;
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	// Es torna a recorrer la cambra posició per posició. Mentre l'enter n sigui més petit que la mida del vector aux
+	// s'afagiran les diferents vacunes d'esquerra a dreta i d'avall cap a d'alt per ordre en el que es troben al vector.
+	// Un cop ja no quedin més vacunes a afegeir si encara queda espai a la cambra es substituiran els "calaixos" restants
+	// per l'string NULL.
+	int int_aux = 0;
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra.size(); ++j)
+		for(unsigned int j = 0; j < cambra.size(); ++j)
 		{
-			if(n<aux.size()) 
+			if(int_aux < vector_aux_vacunes.size()) 
 			{
-				cambra[i][j]=aux[n];
-				++n;
+				cambra[i][j] = vector_aux_vacunes[int_aux];
+				++int_aux;
 			}
-			else cambra[i][j]="NULL";
+			else cambra[i][j] = "NULL";
 		}
 	}
 }
-
-
 
 bool mirar_null(string a, string b)
 {
-	return (a<b);
+	return (a < b);
 }
+
 void Cambra::ordenar()
-//Pre: cert
-//Post: S’ordenen alfabèticament les vacunes de la nevera que conté sense deixar forats
-//		entre elles ni abans de cap vacuna
 {
-	vector<string> aux;
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	vector<string> vector_aux_vacunes;
+	// Recorre la cambra posició per posició i afageix cada string al vector aux.
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			aux.push_back(cambra[i][j]);
+			vector_aux_vacunes.push_back(cambra[i][j]);
 		}
 	}
-	sort(aux.begin(),aux.end(),mirar_null);
-	int contador=0;
-	for(unsigned int i=0; i<cambra.size(); ++i)
+	sort(vector_aux_vacunes.begin(), vector_aux_vacunes.end(), mirar_null);
+	int comptador = 0;
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size(); ++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			cambra[i][j]=aux[contador];
-			++contador;
+			cambra[i][j] = vector_aux_vacunes[comptador];
+			++comptador;
 		}
 	}
 	
 }
 
-
 void Cambra::canviar_nevera(int files, int columnes)
-//Pre: files>0 i columnes>0
-//Post: Es crea un nova nevera amb les dimension de files i columnes si el contingut de la antigua nevera
-//		caben en la nova, si no dona error  
 {
-	//contar quantes vacunes hay en la cambra
-	int quantitat=0;
-	for(unsigned int i=0; i<cambra.size();++i )
+	// Conta quantes vacunes hi ha a la cambra
+	int quantitat = 0;
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size(); ++j) 
+		for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 		{
-			if(cambra[i][j]!="NULL") ++quantitat;
+			if(cambra[i][j] != "NULL") ++quantitat;
 		}
 	}
-	//si la cantidad cabe en la nueva nevera es va omplint la nova amb la antigua
-	if(quantitat<=files*columnes)  
+	// Si la quantitat cap a la nova nevera la nova nevera va ompint-se amb el contingut de l'antiga nevera iteració a iteració
+	if(quantitat <= files*columnes)  
 	{
-		//Es copia la nevera en un vector aux
-		vector<string> aux; 
-		for(unsigned int i=0; i<cambra.size();++i )
+		vector<string> vetor_aux_vacunes; 
+		for(unsigned int i = 0; i < cambra.size(); ++i)
 		{
-			columnes=0;
-			for(unsigned int j=0; j<cambra[0].size(); ++j) 
+			columnes = 0;
+			for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 			{
-				if(cambra[i][j]!="NULL") 
+				if(cambra[i][j] != "NULL") 
 				{
-					aux.push_back(cambra[i][j]);
+					vetor_aux_vacunes.push_back(cambra[i][j]);
 				}
 			}	
 		}
 
-		//es copia les vacunes de aux a la nova nevera amb les noves dimensions 
+		// Es copien les vacunes del vector aux a la nova nevera amb les noves dimensions 
 		cambra.resize(files,vector<string>(columnes));
-		int contador=0;
-		for(unsigned int i=0; i<cambra.size();++i )
+		int contador = 0;
+		for(unsigned int i = 0; i < cambra.size(); ++i)
 		{
-			for(unsigned int j=0; j<cambra[0].size(); ++j) 
+			for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 			{
-				if(aux.size()!=0) 
+				if(vetor_aux_vacunes.size() != 0) 
 				{
-					cambra[i][j]=aux[contador];
+					cambra[i][j] = vetor_aux_vacunes[contador];
 					++contador;
 				}
-				else cambra[i][j]="NULL";
+				else cambra[i][j] = "NULL";
 			}	
 		}
 	}
-	else cout<<"error"<<endl;
+	else cout << "error" << endl;
 }
 
-//Consultores
+
+// Consultors
 string Cambra::consultar_posicio(int fila, int columna) 
-//Pre: fila>0 columna>0
-//Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
 	return cambra[fila][columna];
 }
+
 unsigned int Cambra::files() 
-//Pre: cert
-//Post: retorna la mida de cambra
 {
 	return cambra.size();
 }
+
 unsigned int Cambra::columnes() 
-//Pre: cert
-//Post: retorna la mida de cambra
 {
 	return cambra[0].size();
 }
 
-//L/E
+
+// Lectura i Escriptura
 void Cambra::escriure() 
-//Pre: cert
-//Post: S’escriu el contingut de la nevera de la cambra de dalt a baix i d’esquerra a dreta.
-//      Tambe s’escriu quantes unitats hi ha en total.
-//		I per ordre d’identificador de vacuna existent en la nevera, s’escriuen l’identificador de vacuna i la seva quantitat
 {
-	int quantitat=0;
-	bool trobat=true;
-	vector<pair<string,int>> vacunes;
-	//contigunt de dalt a baix de la nevera
-	for(int i=cambra.size()-1; i>=0;--i)
+	int quantitat = 0;
+	bool trobat = true;
+	vector<pair<string,int>> vector_vacunes;
+	// Mostra per pantalla el contigunt de la nevera de dalt a baix
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
-		for(unsigned int j=0; j<cambra[0].size();++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			cout<<cambra[i][j]<<" ";
+			cout << cambra[i][j] << " ";
 		}
-		cout<<endl;
+		cout << endl;
 	}
-	//Cambres en ordre d'aparicio
-	for(unsigned int i=0; i<cambra.size();++i)
+	// Cambres en ordre d'aparicio
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
-		for(unsigned int j=0; j<cambra[0].size();++j)
+		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
-			if(cambra[i][j]!="NULL") 
+			if(cambra[i][j] != "NULL") 
 			{
 				++quantitat;
-				if (vacunes.size()==0) vacunes.push_back(make_pair(cambra[i][j],1));
+				if (vector_vacunes.size() == 0) 
+				{
+					vector_vacunes.push_back(make_pair(cambra[i][j],1));
+				}
 				else
 				{
-					for(unsigned int z=0; z<vacunes.size(); ++z)
+					for(unsigned int k = 0; k < vector_vacunes.size(); ++k)
 					{
-						if(cambra[i][j]==vacunes[z].first)
+						if(cambra[i][j] == vector_vacunes[k].first)
 						{
-							++vacunes[z].second;
-							trobat=true;
-							z=vacunes.size();
+							++vector_vacunes[k].second;
+							trobat = true;
+							k = vector_vacunes.size();
 						}
-						else trobat=false;
+						else trobat = false;
 					}
-					if(not trobat)  vacunes.push_back(make_pair(cambra[i][j],1));
+					if(not trobat) 
+					{
+						vector_vacunes.push_back(make_pair(cambra[i][j],1));
+					}
 				}
 			}
 		}
 	}
 
-	//identificador de vacuna i quantes hi ha d'aquest tipus
-	for(int i=0; i<vacunes.size(); ++i)
+	// Mostra per pantalla l'identificador de vacuna i el nº que hi ha del tipus de vacuna.
+	for(int i = 0; i < vector_vacunes.size(); ++i)
 	{
-		cout<<vacunes[i].first<<" "<<vacunes[i].second<<endl;
+		cout << vector_vacunes[i].first << " " << vector_vacunes[i].second << endl;
 	}
 
-	//quantitat total de vacunes
-	cout<<quantitat<<endl;
+	// Escriu per pantalla el nombre total de vacunes qu hi ha a la cambra. 
+	cout << quantitat << endl;
 }

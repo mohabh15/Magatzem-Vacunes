@@ -18,65 +18,65 @@ class Magatzem
 
     
     map<string,int> vacunes_donades_alta;    
-    // l'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
+    // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
 
     public:
 
-    //Constructor
+    // Constructor
     Magatzem(); 
-    //Pre: cert
-    //Post:Crea una llista buida anomenada magatzem
+    // Pre:  Cert.
+    // Post: Crea una llista buida anomenada magatzem.
     Magatzem(int mida_magatzem);
-    //Pre:  n>0
-    //Post: Magatzem amb n cambres    
+    // Pre:  n > 0.
+    // Post: Crea un magatzem amb n cambres.
 
-    //Destructors
+    // Destructors
     ~Magatzem();
-    //Pre: cert
-    // Post: esborra automaticament els objectes locals en sortir d'un ambit de visibilitat 
+    // Pre:  Cert.
+    // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
-    //Modificadors
+    // Modificadors
     void distribuir(string Ident_vacuna, int quant_vacuna);
     // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
-    //       En cas contrari, començant per la cambra inicial es distribueix la quantitat de vacunes de 
-    //       cap a l’esquerra i cap avall de manera que no quedi cap forat ni abans ni entre dues vacunes. 
-    //       L’ordre relatiu de les vacunes no s’ha de canviar.
-    //       Si no hi ha suficient espai a les cambres per poder guardar totes les vacunes, 
-    //       torna un enter que indica el nombre d'unitats no s’han pogut distribuir.
+    //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
+    //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen la meitat
+    //       a partir de la cambra següent per l’esquerra i l’altra meitat a partir de la cambra seguent per la dreta.
+    //       I si queda un nº senar de vacunes la vacuna restant es distribueix per l'esquerra.
+    //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir. 
     void afegir_vacuna(string Ident_vacuna);
-    // Pre:  s’introdueix un identificador de vacuna.
-    // Post: si la vacuna ja existeix, es produeix un error;
+    // Pre:  S’introdueix un identificador de vacuna.
+    // Post: Si la vacuna ja existeix, es produeix un error;
     //       sinó, la vacuna s'afegeix al sistema amb 0 unitats.
     void treure_vacuna(string Ident_vacuna);
-    // Pre:  s’introdueix  un  identificador  de  vacuna.
-    // Post: si  la  vacuna  no  existeix,  o existeix i en queden unitats, es produeix un error. 
-    //       En cas contrari, la vacuna s'elimina del map de vacunes
+    // Pre:  S’introdueix  un  identificador  de  vacuna.
+    // Post: Si la vacuna no existeix, o existeix i en queden unitats, es produeix un error. 
+    //       En cas contrari, la vacuna s'elimina del map de vacunes.
     void modificar_sistema(string Ident_vacuna, int quantitat, char operacio);
-    //Pre: quantitat>0 i Ident_vacuna comença amb J07
-    //Post: Posa la quantitat de Ident_vacuna al sistema 
+    //Pre:  quantitat > 0 i Ident_vacuna comença amb J07.
+    //Post: Posa la quantitat de Ident_vacuna al sistema.
 
-    //Consultors
+    // Consultors
     int consultar_vacuna(string Ident_vacuna);
     // Pre:  S'introdueix un identificador de vacuna
     // Post: Si la vacuna no existeix, es produeix un error.  
     //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
     bool find(string ident_vacuna);
-    //Pre: ident_vacun es un identificador de vacuna correcte 
-    //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas
+    //Pre:  ident_vacuna es un identificador de vacuna correcte.
+    //Post: Retorna true si existeix la vacuna al sistema i false en cualsevol altre cas.
     Cambra& cambra(int Ident_cambra);
-    //Pre: magatzem.size() > Ident_cambra > 0 
-    //Post: retorna la cambra seleccionada
+    //Pre:  magatzem.size() > Ident_cambra > 0 
+    //Post: Retorna la cambra seleccionada.
 
-    //L/E
+    //Lectura i Escriptura
     void inventari();
-    // Pre:  cert
-    // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
+    // Pre:  Cert.
+    // Post: Per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
     //       total en el magatzem, ordenat per identificador de vacuna.
     void fi();
-    // Pre:  cert
-    // Post: Acaba l'execució de la simulació
+    // Pre:  Cert.
+    // Post: Acaba l'execució de la simulació.
 
 };
 #endif
