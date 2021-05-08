@@ -74,10 +74,13 @@ void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat, char operac
 //Pre: quantitat>0 i Ident_vacuna comença amb J07
 //Post: Posa la quantitat de Ident_vacuna al sistema 
 {
-    if(operacio=='+') vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]+quantitat;
+    if(operacio=='+') 
+    {
+        vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]+quantitat;
+    }
     if(operacio=='-') 
     {
-        vacunes_donades_alta[Ident_vacuna]=quantitat-vacunes_donades_alta[Ident_vacuna];
+        vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]-quantitat;
         if(vacunes_donades_alta[Ident_vacuna]<0) vacunes_donades_alta[Ident_vacuna]=0;
     }
 }
@@ -88,28 +91,15 @@ int Magatzem::consultar_vacuna(string Ident_vacuna)
 // Post: Si la vacuna no existeix, es produeix un error.  
 //       En cas contrari, escriu quantes unitats hi ha en total al magatzem d'aquesta vacuna en concret.
 {
-    int comptador = 0;
-    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
+    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end())
     {
         cout<<"error"<<endl;
     }
     else 
     {
-        // recorrer la llista magatzem
-        for(list<Cambra>::iterator it = magatzem.begin(); it != magatzem.end(); ++it) 
-        {
-            Cambra c1=*it;
-            // recorrer la matriu cambra
-            for(unsigned int i = 0; i < c1.files(); ++i)
-            {
-                for(unsigned int j = 0; j < c1.columnes(); ++j)
-                {
-                    if(c1.consultar_posicio(i,j)==Ident_vacuna) ++comptador;
-                }
-            }
-        }
+        return vacunes_donades_alta[Ident_vacuna];
     }
-    return comptador;
+    return 0;
 }
 
 bool Magatzem::find(string ident_vacuna)
@@ -141,14 +131,14 @@ Cambra& Magatzem::cambra(int Ident_cambra)
 
 
 // Lectura i Escriptura
-void Magatzem::inventari()   //es el total que hi ha al magatzem no al sistema si no cada vegada que s'hafegixi al magatzem s'ha d'afegir al sistema tambe aixi tenir al sistema la quantitat total que hi ha al magatzem que té sentit  
+void Magatzem::inventari()   
 // Pre:  cert
 // Post: per cada tipus de vacuna que hi hagi en el sistema s'escriu el seu identificador i la quantitat
 //       total en el magatzem, ordenat per identificador de vacuna.
 {
     for(map<string, int>::const_iterator it = vacunes_donades_alta.begin(); it != vacunes_donades_alta.end(); ++it)
     {
-        cout << "Del tipus de vacuna " << it -> first << " hi ha " << it -> second << "vacunes" << endl;
+        cout << "Del tipus de vacuna " << it -> first << " hi ha " << it -> second << " vacunes" << endl;
     }
 }
 

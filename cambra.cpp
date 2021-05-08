@@ -184,7 +184,7 @@ string Cambra::consultar_posicio(int fila, int columna)
 //Pre: fila>0 columna>0
 //Post:S’indica el contingut de la posicio corresponent de cambra. 
 {
-	return cambra[fila][columna];
+	return cambra[fila-1][columna-1];
 }
 unsigned int Cambra::files() 
 //Pre: cert

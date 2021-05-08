@@ -36,10 +36,11 @@ int main()
             magatzem.afegir_vacuna(ident_vacuna);
             cout<<"afegir_vac fet"<<endl;
         }
-        if (operacion=="treure_vac")
+        if (operacion=="treure_vac")  //Ja funciona
         {
-            cin>>ident_cambra>>ident_vacuna>>quantitat;
+            cin>>ident_vacuna;
             magatzem.treure_vacuna(ident_vacuna);
+            cout<<"treure_vac fet"<<endl;
         }
         if(operacion=="afegir_unitats")    // Ja funciona
         {
@@ -79,15 +80,12 @@ int main()
             magatzem.cambra(ident_cambra).ordenar();
             cout<<"ordenat fet"<<endl;
         }
-
-
-
-        if(operacion=="canviar_nevera")  //de momento ya funciona 
+        if(operacion=="canviar_nevera")  //Ja funciona 
         {
             cin>>ident_cambra>>files>>columnes;
             magatzem.cambra(ident_cambra).canviar_nevera(files,columnes);
         }
-        if(operacion=="inventari")
+        if(operacion=="inventari")  //Ja funciona
         {
             magatzem.inventari();
         }
@@ -97,30 +95,26 @@ int main()
             magatzem.cambra(ident_cambra).escriure();
             cout<<"escriure fet"<<endl;
         }
-        if(operacion=="consultar_pos")
+        if(operacion=="consultar_pos") //Ja funciona
         {
             cin>>ident_cambra>>files>>columnes;
-            magatzem.cambra(ident_cambra).consultar_posicio(files,columnes);
+            cout<<magatzem.cambra(ident_cambra).consultar_posicio(files,columnes)<<endl;
+            cout<<"consultar_pos fet"<<endl;
         }
-        if(operacion=="consultar_vac")
+        if(operacion=="consultar_vac")  //Ja funciona
         {
             cin>>ident_vacuna;
-            magatzem.consultar_vacuna(ident_vacuna);
+            cout<<magatzem.consultar_vacuna(ident_vacuna)<<endl;
+            cout<<"consultar_vac fet"<<endl;
         }
         if(operacion=="fi")
         {
           magatzem.fi();
         }
-        
-        
-        
-        
-        
-        
+    
+
+
     }
-
-
-
 }
 
 
