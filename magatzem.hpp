@@ -37,12 +37,12 @@ class Magatzem
     // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
     // Modificadors
-    void distribuir(string Ident_vacuna, int quant_vacuna);
+    int distribuir(string Ident_vacuna, int quant_vacuna);
     // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
     //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
-    //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacuens es distribueixen la meitat
-    //       a partir de la cambra següent per l’esquerra i l’altra meitat a partir de la cambra seguent per la dreta.
+    //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacunes es distribueixen la meitat
+    //       a partir de la cambra següent per l’esquerra i l’altra meitat a partir de la cambra següent per la dreta.
     //       I si queda un nº senar de vacunes la vacuna restant es distribueix per l'esquerra.
     //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir. 
     void afegir_vacuna(string Ident_vacuna);
