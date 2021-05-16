@@ -23,10 +23,36 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
-/*
-void Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)  
-{}
-*/
+
+int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)  
+{
+    int vacunes_no_distribuides;
+    bool bucle_no_acabat = true;
+    int cnt_cambres = 0;
+    if(not find(Ident_vacuna))
+    {
+        cout << "error" << endl;
+    }
+    else
+    {
+        ++cnt_cambres;
+        vacunes_no_distribuides = magatzem.arrel.afegir_unitat(Ident_vacuna, quant_vacuna)
+        if(vacunes_no_distribuides = 0)
+        {
+            bucle_no_acabat = false;
+        }
+        while(bucle_no_acabat)
+        {
+            if(cnt_cambres >= mida_magatzem)
+            {
+                bucle_no_acabat = false;
+            }
+            //recorrer l'arbre binari recursivament
+        }
+    }
+    return vacunes_no_distribuides;    
+}
+
 
 void Magatzem::afegir_vacuna(string Ident_vacuna)
 {
