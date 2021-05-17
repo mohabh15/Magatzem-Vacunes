@@ -7,19 +7,20 @@
 #include <map>
 
 #include "cambra.hpp"
-
+#include "arbreBin.hpp"
 using namespace std;
 
 class Magatzem
 {
     private:
 
-    list<Cambra> magatzem;
+    arbreBin<int> magatzem;
 
-    
     map<string,int> vacunes_donades_alta;    
     // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
+    void distribuir_recursivament(int quant_vacuna, Cambra &cambra);
+    // És una funció recursiva que permet recorrer l'arbre binari.  
 
     public:
 
@@ -44,7 +45,7 @@ class Magatzem
     //       Un cop acabat l'espai de la primera cambra si queda un nº parell de vacunes es distribueixen la meitat
     //       a partir de la cambra següent per l’esquerra i l’altra meitat a partir de la cambra següent per la dreta.
     //       I si queda un nº senar de vacunes la vacuna restant es distribueix per l'esquerra.
-    //       Finalemnt torna un enter que indica el nombre d'unitats no s’han pogut distribuir. 
+    //       Finalment torna un enter que indica el nombre d'unitats no s’han pogut distribuir. 
     void afegir_vacuna(string Ident_vacuna);
     // Pre:  S’introdueix un identificador de vacuna.
     // Post: Si la vacuna ja existeix, es produeix un error;

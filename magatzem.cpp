@@ -7,6 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem)
 {
+    /*
     list<Cambra>::iterator it = magatzem.end(); 
     Cambra aux;
     while(mida_magatzem>0)
@@ -14,6 +15,7 @@ Magatzem::Magatzem(int mida_magatzem)
         magatzem.insert(it,aux);
         --mida_magatzem;
     }
+    */
 }
 
 
@@ -24,20 +26,17 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)  
+int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna, Cambra &cambra)  
 {
     int vacunes_no_distribuides;
-    bool bucle_no_acabat = true;
-    int cnt_cambres = 0;
     if(not find(Ident_vacuna))
     {
         cout << "error" << endl;
     }
     else
     {
-        ++cnt_cambres;
         vacunes_no_distribuides = magatzem.arrel.afegir_unitat(Ident_vacuna, quant_vacuna)
-        if(vacunes_no_distribuides = 0)
+        if(vacunes_no_distribuides == 0)
         {
             bucle_no_acabat = false;
         }
@@ -48,9 +47,26 @@ int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna)
                 bucle_no_acabat = false;
             }
             //recorrer l'arbre binari recursivament
+            distribuir_recursivament(vacunes_no_distribuides, cambra);
         }
     }
     return vacunes_no_distribuides;    
+
+
+void Magatzem::distribuir_recursivament(string Ident_vacuna, int quant_vacuna, Cambra &cambra)
+{
+    int quant_vacuna1 = quant_vacuna;
+    if(quant_vacuna1 == 0)
+    {
+        fi_distribuir;
+    }
+    else if(quant_vacuna1 == 1)
+    {
+        fe().afegir_unitats(Ident_vacuna, 1);
+    }
+    distribuir_recursivament(Ident_vacuna, vacunes_no_distribuides)/2 + 1, fe());
+    distribuir_recursivament(Ident_vacuna, vacunes_no_distribuides)/2, fd());
+
 }
 
 

@@ -11,7 +11,34 @@ int main()
     
     Magatzem magatzem(numero_cambres);
 
-    //Cin de magatzem 
+    //Cin distribució cambres magatzem
+    int cnt_cambres = 0, cambra, cambra_anterior;
+    bool acabat =false;
+    while(not acabat)
+    {
+        cin >> cambra;
+        if(cambra != 0 and (cambra_anterior != 0 or cnt_cambres < 1))
+        {
+            ++cnt_cambres;
+            afegir.fe();
+        }
+        else if(cambra != 0)
+        {
+            ++cnt_cambres;
+            afegir.fd()
+        }
+        else if(cambra == 0 and cambra_anterior != 0)
+        {
+            
+        }
+        if(cnt_cambres >= numero_cambres)
+        {
+            acabat = true;
+        }
+        cambra_anterior = cambra;
+    }
+
+    //Cin mida cambres
     int files,columnes;
     for(int i=1; i<=numero_cambres;++i)
     {
