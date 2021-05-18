@@ -16,6 +16,7 @@ Magatzem::Magatzem(int mida_magatzem)    //porque esta comentado?
         --mida_magatzem;
     }
     */
+   
 }
 
 
