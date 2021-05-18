@@ -16,6 +16,7 @@ Magatzem::Magatzem(int mida_magatzem)
         --mida_magatzem;
     }
     */
+   
 }
 
 

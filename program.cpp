@@ -11,36 +11,60 @@ int main()
     
     Magatzem magatzem(numero_cambres);
 
-    //Cin distribució cambres magatzem
-    int cnt_cambres = 0, cambra, cambra_anterior;
-    bool acabat =false;
-    while(not acabat)
+    list<int> llista_cambres;
+    
+    for(unsigned int i; i < numero_cambres; ++i)
     {
+        int cambra;
         cin >> cambra;
-        if(cambra != 0 and (cambra_anterior != 0 or cnt_cambres < 1))
+        llista_cambres.push_back(cambra);
+    }
+
+    //Cin distribució cambres magatzem
+    bool afegir_fd = false, ple;
+    int e, x, i = 0;
+    //afegir_arrel
+    {
+        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
+        x = e;
+        ++i;
+    }
+    while(not llista_cambres.empty())
+    {
+        if(e != 0)
         {
-            ++cnt_cambres;
-            afegir.fe();
+            if(afegir_fd)
+            {
+                x.fd() = e;
+                x = e;
+                afegir_fd = false;
+            }
+            else
+            {
+                x.fe() = e;
+                x = e;
+            }
         }
-        else if(cambra != 0)
+        else //e == 0
         {
-            ++cnt_cambres;
-            afegir.fd()
+            if(afegir_fd)
+            {
+                while(x not ple)
+                {
+                    x = x.arrel();
+                }
+            }
+            else
+            {
+                afegir_fd = true;
+            }
         }
-        else if(cambra == 0 and cambra_anterior != 0)
-        {
-            
-        }
-        if(cnt_cambres >= numero_cambres)
-        {
-            acabat = true;
-        }
-        cambra_anterior = cambra;
+        ++i;
     }
 
     //Cin mida cambres
     int files,columnes;
-    for(int i=1; i<=numero_cambres;++i)
+    for(int i = 1; i<=numero_cambres;++i)
     {
         cin>>files>>columnes;
         magatzem.cambra(i).canviar_nevera(files,columnes);
