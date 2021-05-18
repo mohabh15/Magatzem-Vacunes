@@ -5,7 +5,7 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(int mida_magatzem)
+Magatzem::Magatzem(int mida_magatzem)    //porque esta comentado?
 {
     /*
     list<Cambra>::iterator it = magatzem.end(); 
@@ -26,7 +26,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna, Cambra &cambra)  
+int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna, Cambra &cambra)  //los parametros no coinciden con el hpp supongo que no esta acabado no?
 {
     int vacunes_no_distribuides;
     if(not find(Ident_vacuna))
