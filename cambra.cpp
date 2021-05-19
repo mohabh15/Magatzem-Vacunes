@@ -15,6 +15,7 @@ Cambra::Cambra(int x, int y)
 // Modificadors
 int Cambra::afegir_unitats(string ident_vacuna,int quantitat) 
 {
+	//cambiar esto ya lo hago yo 
 	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
