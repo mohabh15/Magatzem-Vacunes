@@ -23,7 +23,6 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 			if(quantitat != 0 and cambra[i][j] == "NULL") 
 			{
 				cambra[i][j] = ident_vacuna;
-				--quantitat;
 			}
 			if(quantitat == 0)
 			{
