@@ -1,16 +1,2 @@
 
 
-metode distribució:
-
-1.tenemos que hacer un cin de la distribucio
-2. esa distribucion aplicarla a la magatzem de cambres
-3. solo crear el arbol al llamar a dicha operacion i dejar todo lo demas igual  
-
-cin: 1 2 4 0 0 5 0 0 3 6 0 0 7 0 0      cada un representa el numero de la cambra i els zeros son les fulles 
-
-
-arbreBin<cambres>
-cin>> 
-
-
-
