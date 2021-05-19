@@ -16,7 +16,7 @@ Cambra::Cambra(int x, int y)
 int Cambra::afegir_unitats(string ident_vacuna,int quantitat) 
 {
 	//Entrar desde final
-	for(int i = cambra.size(); i >= 0; --i)
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -26,7 +26,7 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 			}
 			if(quantitat == 0)
 			{
-				i = cambra.size();
+				i = -1;
 				j = cambra[0].size();
 			}
 		}
@@ -37,7 +37,7 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 {
 	//Entrar desde final
-	for(int i = cambra.size(); i >= 0; --i)
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -48,7 +48,7 @@ int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 			}
 			if(quantitat == 0)
 			{
-				i = cambra.size();
+				i = -1;
 				j = cambra[0].size();
 			}
 			
@@ -104,7 +104,7 @@ void Cambra::ordenar()
 	}
 	sort(vector_aux_vacunes.begin(), vector_aux_vacunes.end());
 	int comptador = 0;
-	for(unsigned int i = 0; i < cambra.size(); ++i)
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -126,7 +126,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 			if(cambra[i][j] != "NULL") ++quantitat;
 		}
 	}
-	// Si la quantitat cap a la nova nevera la nova nevera va ompint-se amb el contingut de l'antiga nevera iteració a iteració
+	// Si la quantitat cap a la nova nevera la nova nevera va omplint-se amb el contingut de l'antiga nevera iteració a iteració
 	if(quantitat <= files*columnes)  
 	{
 		vector<string> vetor_aux_vacunes; 
@@ -144,7 +144,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 		// Es copien les vacunes del vector aux a la nova nevera amb les noves dimensions 
 		cambra = vector<vector<string>>(files, vector<string>(columnes));
 		int comptador = 0;
-		for(unsigned int i = 0; i < cambra.size(); ++i)
+		for(int i = cambra.size()-1; i >= 0; --i)
 		{
 			for(unsigned int j = 0; j < cambra[0].size(); ++j) 
 			{
@@ -187,8 +187,8 @@ void Cambra::escriure() const
 	int quantitat = 0;
 	bool trobat = true;
 	vector<pair<string,int>> vector_vacunes;
-	// Mostra per pantalla el contigunt de la nevera de dalt a baix
-	for(int i = cambra.size()-1; i >= 0; --i)
+	// Mostra per pantalla el contigunt de la nevera de dalt a baix es a dir de la posicio (1 1) a (n n)
+	for(unsigned int i = 0; i < cambra.size(); ++i)
 	{
 		cout << " ";
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
@@ -198,7 +198,7 @@ void Cambra::escriure() const
 		cout << endl;
 	}
 	// Cambres en ordre d'aparicio
-	for(unsigned int i = 0; i < cambra.size(); ++i)
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
