@@ -76,7 +76,7 @@ void Cambra::comprimir()
 	// Un cop ja no quedin més vacunes a afegeir si encara queda espai a la cambra es substituiran els "calaixos" restants
 	// per l'string NULL.
 	int int_aux = 0;
-	for(unsigned int i = 0; i < cambra.size(); ++i)
+	for(int i = cambra.size()-1; i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -135,7 +135,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 			{
 				if(cambra[i][j] != "NULL") 
 				{
-					vetor_aux_vacunes.push_back(cambra[i][j]);
+					vetor_aux_vacunes.(cambra[i][j]);
 				}
 			}	
 		}
