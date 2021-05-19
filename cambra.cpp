@@ -15,8 +15,8 @@ Cambra::Cambra(int x, int y)
 // Modificadors
 int Cambra::afegir_unitats(string ident_vacuna,int quantitat) 
 {
-	//cambiar esto ya lo hago yo 
-	for(unsigned int i = 0; i < cambra.size(); ++i)
+	//Entrar desde final
+	for(int i = cambra.size(); i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -37,7 +37,8 @@ int Cambra::afegir_unitats(string ident_vacuna,int quantitat)
 
 int Cambra::treure_unitats(string ident_vacuna, int quantitat)
 {
-	for(unsigned int i = 0; i < cambra.size(); ++i)
+	//Entrar desde final
+	for(int i = cambra.size(); i >= 0; --i)
 	{
 		for(unsigned int j = 0; j < cambra[0].size(); ++j)
 		{
@@ -136,7 +137,7 @@ void Cambra::canviar_nevera(int files, int columnes)
 			{
 				if(cambra[i][j] != "NULL") 
 				{
-					vetor_aux_vacunes.(cambra[i][j]);
+					vetor_aux_vacunes.push_back(cambra[i][j]);
 				}
 			}	
 		}

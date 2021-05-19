@@ -1,20 +1,16 @@
 
 
+metode distribució:
 
-si et dieuen accedeix a la cambra 3 com ho fas si es un arbre?
+1.tenemos que hacer un cin de la distribucio
+2. esa distribucion aplicarla a la magatzem de cambres
+3. solo crear el arbol al llamar a dicha operacion i dejar todo lo demas igual  
 
-"despres l’estructura del magatzemen preordre" -> aixo encara no ho tenim no te 
-sentit fer un arbre perque no tenim l'esctructura
-perque no saps com sera l'arbre quants fill ha de tenir cada arrel, quantes fulles...etc 
-
-
-
-La quantitat de vacunes que hi ha al sistema ha de ser diferents a la quantitat que hi ha al magatzem? no, ha de ser la mateixa
-
-Hem de distribuir la meitat per l'esquerra i si amb aquella meitat ja omplim la cambra l'altre meitat 
-que havia d'anar per la dreta la distribuim a la seguent cambra?
+cin: 1 2 4 0 0 5 0 0 3 6 0 0 7 0 0      cada un representa el numero de la cambra i els zeros son les fulles 
 
 
-A tots els metodes que son d'afegir vacunes hem d'afegir el codi per afegir vacunes al sistema
+arbreBin<cambres>
+cin>> 
+
 
 
