@@ -5,18 +5,49 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(int mida_magatzem)
+Magatzem::Magatzem(list<int> llista_cambres)
 {
-    /*
-    list<Cambra>::iterator it = magatzem.end(); 
-    Cambra aux;
-    while(mida_magatzem>0)
+    //Cin distribució cambres magatzem
+    bool afegir_fd = false, ple;
+    int e, x, i = 0;
+    //afegir_arrel
     {
-        magatzem.insert(it,aux);
-        --mida_magatzem;
+        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
+        x = e;
+        ++i;
     }
-    */
-   
+    while(not llista_cambres.empty())
+    {
+        if(e != 0)
+        {
+            if(afegir_fd)
+            {
+                x.fd() = e;
+                x = e;
+                afegir_fd = false;
+            }
+            else
+            {
+                x.fe() = e;
+                x = e;
+            }
+        }
+        else //e == 0
+        {
+            if(afegir_fd)
+            {
+                while(x not ple)
+                {
+                    x = x.arrel();
+                }
+            }
+            else
+            {
+                afegir_fd = true;
+            }
+        }
+        ++i;
+    }
 }
 
 
@@ -27,98 +58,144 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string Ident_vacuna, int quant_vacuna, Cambra &cambra)  
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)  
 {
     int vacunes_no_distribuides;
-    if(not find(Ident_vacuna))
+    if(not find(ident_vacuna))
     {
         cout << "error" << endl;
+        vacunes_no_distribuides = quant_vacuna;
     }
     else
     {
-        vacunes_no_distribuides = magatzem.arrel.afegir_unitat(Ident_vacuna, quant_vacuna)
-        if(vacunes_no_distribuides == 0)
-        {
-            bucle_no_acabat = false;
-        }
-        while(bucle_no_acabat)
-        {
-            if(cnt_cambres >= mida_magatzem)
-            {
-                bucle_no_acabat = false;
-            }
-            //recorrer l'arbre binari recursivament
-            distribuir_recursivament(vacunes_no_distribuides, cambra);
-        }
+        //recorrer l'arbre binari recursivament
+        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, cambra);
     }
+    magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');
+
     return vacunes_no_distribuides;    
+}
 
-
-void Magatzem::distribuir_recursivament(string Ident_vacuna, int quant_vacuna, Cambra &cambra)
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra)
 {
-    int quant_vacuna1 = quant_vacuna;
-    if(quant_vacuna1 == 0)
+    int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
+    
+    bool arbre_recorregut = false;
+    
+    //Cin distribució cambres magatzem
+    bool afegir_fd = false, ple;
+    int e, x, i = 0;
+    //afegir_arrel
+    {
+        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
+        x = e;
+        ++i;
+    }
+    while(not llista_cambres.empty())
+    {
+        if(e != 0)
+        {
+            if(afegir_fd)
+            {
+                x.fd() = e;
+                x = e;
+                afegir_fd = false;
+            }
+            else
+            {
+                x.fe() = e;
+                x = e;
+            }
+        }
+        else //e == 0
+        {
+            if(afegir_fd)
+            {
+                while(x not ple)
+                {
+                    x = x.arrel();
+                }
+            }
+            else
+            {
+                afegir_fd = true;
+            }
+        }
+        ++i;
+    }magatzem.arrel.afegir_unitat(ident_vacuna, quant_vacuna);
+    if(vacunes_no_distribuides == 0 or arbre_recorregut)
     {
         fi_distribuir;
     }
-    else if(quant_vacuna1 == 1)
+    else if(vacunes_no_distribuides == 1)
     {
-        fe().afegir_unitats(Ident_vacuna, 1);
+        quant_vacuna = fe().afegir_unitats(ident_vacuna, 1);
     }
-    distribuir_recursivament(Ident_vacuna, vacunes_no_distribuides)/2 + 1, fe());
-    distribuir_recursivament(Ident_vacuna, vacunes_no_distribuides)/2, fd());
-
+    else if(vacunes_no_distribuides % 2 != 0)
+    {
+        quant_vacuna1 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2) + 1, fe());
+        quant_vacuna2 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fd());
+        quant_vacuna = quant_vacuna - (quant_vacuna1 + quant_vacuna2);
+    }
+    else
+    {
+        quant_vacuna1 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fe());
+        quant_vacuna2 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fd());
+        quant_vacuna = quant_vacuna - (quant_vacuna1 + quant_vacuna2);
+    }
+    if()
+    return vacunes_no_distribuides;
 }
 
 
-void Magatzem::afegir_vacuna(string Ident_vacuna)
+void Magatzem::afegir_vacuna(string ident_vacuna)
 {
-    if(vacunes_donades_alta.find(Ident_vacuna) != vacunes_donades_alta.end())
+    if(vacunes_donades_alta.find(ident_vacuna) != vacunes_donades_alta.end())
     {
         cout << " error" << endl;
     }
     else 
     {
         // Afageix la vacuna al diccionari vacunes_donades_alta
-        vacunes_donades_alta.insert(make_pair(Ident_vacuna,0));
+        vacunes_donades_alta.insert(make_pair(ident_vacuna,0));
     }
 }
 
-void Magatzem::treure_vacuna(string Ident_vacuna)   
+void Magatzem::treure_vacuna(string ident_vacuna)   
 {
-    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end() or vacunes_donades_alta[Ident_vacuna]>0)
+    if(vacunes_donades_alta.find(ident_vacuna) == vacunes_donades_alta.end() or vacunes_donades_alta[ident_vacuna]>0)
     {
         cout << "error" << endl;
     }
     else
     {
-        vacunes_donades_alta.erase(Ident_vacuna);
+        vacunes_donades_alta.erase(ident_vacuna);
     }
 }
 
-void Magatzem::modificar_sistema(string Ident_vacuna, int quantitat, char operacio)
+void Magatzem::modificar_sistema(string ident_vacuna, int quantitat, char operacio)
 {
-    if(operacio=='+') 
+    if(operacio == '+') 
     {
-        vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]+quantitat;
+        vacunes_donades_alta[ident_vacuna] = vacunes_donades_alta[ident_vacuna] + quantitat;
     }
-    if(operacio=='-') 
+    if(operacio == '-') 
     {
-        vacunes_donades_alta[Ident_vacuna]=vacunes_donades_alta[Ident_vacuna]-quantitat;
-        if(vacunes_donades_alta[Ident_vacuna]<0) vacunes_donades_alta[Ident_vacuna]=0;
+        vacunes_donades_alta[ident_vacuna] = vacunes_donades_alta[ident_vacuna] - quantitat;
+        if(vacunes_donades_alta[ident_vacuna] < 0) vacunes_donades_alta[ident_vacuna] = 0;
     }
 }
 
 // Consultors
-int Magatzem::consultar_vacuna(string Ident_vacuna) 
+int Magatzem::consultar_vacuna(string ident_vacuna) 
 {
-    if(vacunes_donades_alta.find(Ident_vacuna) == vacunes_donades_alta.end())
+    if(vacunes_donades_alta.find(ident_vacuna) == vacunes_donades_alta.end())
     {
        return -1;
     }
     else 
     {
-        return vacunes_donades_alta[Ident_vacuna];
+        return vacunes_donades_alta[ident_vacuna];
     }
     return 0;
 }

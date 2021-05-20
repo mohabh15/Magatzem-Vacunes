@@ -20,48 +20,6 @@ int main()
         llista_cambres.push_back(cambra);
     }
 
-    //Cin distribució cambres magatzem
-    bool afegir_fd = false, ple;
-    int e, x, i = 0;
-    //afegir_arrel
-    {
-        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
-        x = e;
-        ++i;
-    }
-    while(not llista_cambres.empty())
-    {
-        if(e != 0)
-        {
-            if(afegir_fd)
-            {
-                x.fd() = e;
-                x = e;
-                afegir_fd = false;
-            }
-            else
-            {
-                x.fe() = e;
-                x = e;
-            }
-        }
-        else //e == 0
-        {
-            if(afegir_fd)
-            {
-                while(x not ple)
-                {
-                    x = x.arrel();
-                }
-            }
-            else
-            {
-                afegir_fd = true;
-            }
-        }
-        ++i;
-    }
-
     //Cin mida cambres
     int files,columnes;
     for(int i = 1; i<=numero_cambres;++i)
