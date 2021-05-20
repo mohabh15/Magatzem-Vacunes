@@ -19,7 +19,7 @@ class Magatzem
     map<string,int> vacunes_donades_alta;    
     // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
-    void distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra);
+    void distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra);    //aquest tipus de funcions en el privat no s'havien de declarar com a static 
     // És una funció recursiva que permet recorrer l'arbre binari.  
 
     public:
