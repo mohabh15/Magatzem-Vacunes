@@ -5,7 +5,7 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int> llista_cambres)
+Magatzem::Magatzem(list<int> llista_cambres) //perdona, encara no havia fet el push
 {
     //Cin distribució cambres magatzem
     bool afegir_fd = false, ple;
@@ -58,7 +58,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)  
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)  //encara he d'acabar la funció, no et preocupis però gràcies per avisar-me
 {
     int vacunes_no_distribuides;
     if(not find(ident_vacuna))
