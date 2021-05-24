@@ -7,10 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(list<int>& llista_cambres)    
 {
-    
-    
-
-
+    magatzem=generar_arbre(arbreBin<int>()));
 }
 
 

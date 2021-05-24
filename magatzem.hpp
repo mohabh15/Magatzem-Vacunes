@@ -39,6 +39,9 @@ class Magatzem
     // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
     // Modificadors
+    arbreBin<int> generar_arbre(arbreBin<int>& x);
+    //Pre: cert
+    //Post: retorna un arbre creat en preordre
     int distribuir(string ident_vacuna, int quant_vacuna);
     // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
