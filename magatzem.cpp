@@ -7,92 +7,8 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(list<int>& llista_cambres)    
 {
-    /*25003600700 -  401*/
-
-    vector<int> aux;
-
-    int arrel=llista_cambres.begin();
-    llista_cambres.erase(llista_cambres.begin());
-
-    for(list<int>::const_iterator it = l.begin(); it!=llista_cambres.end(); ++it)
-    {
-        if(*it==0 and *++it==0) 
-        {
-            --it
-            aux.push_back(*it);
-            llista_cambres.erase(it);
-            llista_cambres.erase(it);
-            llista_cambres.erase(it);
-            aux.push_back(0);
-            if()
-        }
-
-
-    }
-
-
-    //probar construir el arbol recursivamente;
-
-    arbreBin generar_arbre(int arrel, arbreBin p)
-    {
-        arbreBin aux;
-        if(p.es_buit()) aux=p;
-        //cas recursiu
-        if(not p.es_buit())
-        {
-            aux=generar_arbre(arrel, p);
-        }
-        return aux;
-      
-
-        
-    }
-
-
-
-
-
-    /*//Cin distribució cambres magatzem
-    bool afegir_fd = false, ple;
-    int e, x, i = 0;
-    //afegir_arrel
-    {
-        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
-        x = e;
-        ++i;
-    }
-    while(not llista_cambres.empty())
-    {
-        if(e != 0)
-        {
-            if(afegir_fd)
-            {
-                x.fd() = e;   //quan fas x.fd() que es? en plan sembla que estiguis afegint el fill dret pero x es un enter no un arbre, aixo no hauria d'anar al paramatre implicit es a dir l'arbre magatzem declarat al privat? 
-                x = e;              //Sugerencia: activa intellisense del visual studio si no el tens aixi vas vien els errors sense haver de compilar i vas veient si el que fas es pot o no 
-                afegir_fd = false;
-            }
-            else
-            {
-                x.fe() = e;
-                x = e;
-            }
-        }
-        else //e == 0
-        {
-            if(afegir_fd)
-            {
-                while(x not ple)
-                {
-                    x = x.arrel();
-                }
-            }
-            else
-            {
-                afegir_fd = true;
-            }
-        }
-        ++i;
-    }*/
+    
+    
 
 
 }
@@ -105,6 +21,45 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
+
+arbreBin<int> Magatzem::generar_arbre(arbreBin<int>& x)
+{
+    int node;
+    int size, nf;
+    stack<arbreBin<int> > p;
+
+    cin >> size;  
+
+    while (size > 0) {
+        cin >> node >> nf;
+        if (nf == 0) 
+        {  //fills buits
+            p.push(arbreBin<int>(node, arbreBin<int>(), arbreBin<int>()));
+        } 
+        else if (nf == -1) 
+        {  //nf=-1 --> nomes un fill, l'esquerre
+            arbreBin<int> fe = p.top();
+            p.pop();
+            p.push(arbreBin<int>(node, fe, arbreBin<int>()));
+        }
+        else if (nf == 1) 
+        {  //nf=1 --> nomes un fill, el dret
+            arbreBin<int> fd = p.top();
+            p.pop();
+            p.push(arbreBin<int>(node, arbreBin<int>(), fd));
+        } 
+        else {  //nf=2 --> dos fills no buits
+            arbreBin<int> fd = p.top();
+            p.pop();
+            arbreBin<int> fe = p.top();
+            p.pop();
+            p.push(arbreBin<int>(node, fe, fd));
+        }
+        --size;
+    }
+    if (not p.empty()) x = p.top();
+  return x;
+}
 
 int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
 {
@@ -128,7 +83,6 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna,arb
 {
     //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
-   
 
     //cas base
     if(p.es_buit() and quant_vacuna!=0)   quant_vacuna=cambres[p.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
@@ -158,77 +112,6 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna,arb
         }
     }
     return vacunes_no_distr;
-    
-
-
-
-    /*int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
-    
-    bool arbre_recorregut = false;
-    
-    //Cin distribució cambres magatzem
-    bool afegir_fd = false, ple;
-    int e, x, i = 0;
-    //afegir_arrel
-    {
-        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
-        x = e;
-        ++i;
-    }
-    while(not llista_cambres.empty())
-    {
-        if(e != 0)
-        {
-            if(afegir_fd)
-            {
-                x.fd() = e;
-                x = e;
-                afegir_fd = false;
-            }
-            else
-            {
-                x.fe() = e;
-                x = e;
-            }
-        }
-        else //e == 0
-        {
-            if(afegir_fd)
-            {
-                while(x not ple)
-                {
-                    x = x.arrel();
-                }
-            }
-            else
-            {
-                afegir_fd = true;
-            }
-        }
-        ++i;
-    }magatzem.arrel.afegir_unitat(ident_vacuna, quant_vacuna);
-    if(vacunes_no_distribuides == 0 or arbre_recorregut)
-    {
-        //fi_distribuir;
-    }
-    else if(vacunes_no_distribuides == 1)
-    {
-        quant_vacuna = fe().afegir_unitats(ident_vacuna, 1);
-    }
-    else if(vacunes_no_distribuides % 2 != 0)
-    {
-        quant_vacuna1 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2) + 1, fe());
-        quant_vacuna2 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fd());
-        quant_vacuna = quant_vacuna - (quant_vacuna1 + quant_vacuna2);
-    }
-    else
-    {
-        quant_vacuna1 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fe());
-        quant_vacuna2 = distribuir_recursivament(ident_vacuna, (vacunes_no_distribuides/2), fd());
-        quant_vacuna = quant_vacuna - (quant_vacuna1 + quant_vacuna2);
-    }
-    if()
-    return vacunes_no_distribuides;*/
 }
 
 
