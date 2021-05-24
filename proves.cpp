@@ -11,10 +11,11 @@ typedef vector<vector<string> > Matriu;
 
 
 
-arbreBin<int> generar_arbre(arbreBin<int>& x)
+arbreBin<int> generar_arbre()
 {
     int node;
     int size, nf;
+    arbreBin<int> x;
     stack<arbreBin<int> > p;
 
     cin >> size;  
@@ -64,35 +65,8 @@ int main()
         }
     }*/
 
-    /*stack<arbreBin<int>> fills;
-    int arrel,fe,fd;
-
-
-    while(cin>>arrel)
-    {
-        if(arrel!=0)
-        {
-            arbreBin<int> aux(arrel,aux.fe(),aux.fd());
-            fills.push(aux);
-        }
-    }
-    
-    while(not fills.empty())
-    {
-        arbreBin<int> fe=fills.top();
-        fills.pop();
-        arbreBin<int> fd=fills.top();
-
-        arbreBin<int> aux1(fills.top().arrel(),fe,fd);
-
-    }*/
-
-
-
     arbreBin<int> aux;
-
-    generar_arbre(aux);
-    cout<<aux;
+    cout<<generar_arbre();
 }
 
 
