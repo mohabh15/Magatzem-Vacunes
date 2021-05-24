@@ -5,44 +5,9 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int> llista_cambres)
+Magatzem::Magatzem(list<int>& llista_cambres)    //como darselo para que con un simple cin en 
+                                                 //havia pensat en utilitzar l'algorisme que hi ha a l'arbreBin (operator>>) només hauria de 
 {
-    arbreBin<int> arbre_entrada;
-    cin >> arbre_entrada;
-}
-
-
-//Destructor
-Magatzem::~Magatzem()
-{}
-
-
-// Modificadors
-
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)
-{
-    int vacunes_no_distribuides;
-    if(not find(ident_vacuna))
-    {
-        cout << "error" << endl;
-        vacunes_no_distribuides = quant_vacuna;
-    }
-    else
-    {
-        //recorrer l'arbre binari recursivament
-        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, cambra);
-    }
-    magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');
-
-    return vacunes_no_distribuides;    
-}
-
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra)
-{
-    int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
-    
-    bool arbre_recorregut = false;
-    
     //Cin distribució cambres magatzem
     bool afegir_fd = false, ple;
     int e, x, i = 0;
@@ -58,10 +23,10 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Ca
         {
             if(afegir_fd)
             {
-                x.fd() = e;
-                x = e;
-                afegir_fd = false;
-            }
+                x.fd() = e;         //quan fas x.fd() que es? en plan sembla que estiguis afegint el fill dret pero x es un enter no un arbre, aixo no hauria d'anar al paramatre implicit es a dir l'arbre magatzem declarat al privat? 
+                x = e;              //Era una notació per dir que x és el node i que li afegeixo com a fill dret la cambra e 
+                afegir_fd = false;  //Sugerencia: activa intellisense del visual studio si no el tens aixi vas vien els errors sense haver de compilar i vas veient si el que fas es pot o no
+            }                       //Merci, ja ho tinc fet
             else
             {
                 x.fe() = e;
@@ -83,10 +48,45 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Ca
             }
         }
         ++i;
+    }
+}
+
+
+//Destructor
+Magatzem::~Magatzem()
+{}
+
+
+// Modificadors
+
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra) //Cambra es metode de la propia classe i estas dins de la classe pots accedir al privat directament que en aquest cas seria l'arbre magatzem que conte les cambres que vols
+{
+    int vacunes_no_distribuides;
+    if(not find(ident_vacuna))
+    {
+        cout << "error" << endl;
+        vacunes_no_distribuides = quant_vacuna;
+    }
+    else
+    {
+        //recorrer l'arbre binari recursivament
+        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, cambra);
+    }
+    magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');  //estas editant el map dins de la classe pots accedir al map directament no fa falta cridar al metode de la mateixa classe en la que estas 
+
+    return vacunes_no_distribuides;    
+}
+
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) //Bua sembla molt complicat no? i no entenc per que tornes a utilitzar el que fem al metode de crear l'arbre si l'abre ja esta creat cuan fas el metode distribuir 
+                                                                                              //L'havia copiat sense voler
+{
+    int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
+    bool arbre_recorregut = false;
+    
     }magatzem.arrel.afegir_unitat(ident_vacuna, quant_vacuna);
     if(vacunes_no_distribuides == 0 or arbre_recorregut)
     {
-        fi_distribuir;
+        //fi_distribuir;
     }
     else if(vacunes_no_distribuides == 1)
     {
@@ -176,7 +176,7 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
-Cambra& Magatzem::cambra(int Ident_cambra) 
+Cambra& Magatzem::cambra(int Ident_cambra)  //Actualizar al arbol
 {
     list<Cambra>::iterator it = magatzem.begin(); 
     for(int i=1; i<Ident_cambra; ++i) 
