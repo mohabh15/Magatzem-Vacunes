@@ -8,29 +8,23 @@ Magatzem::Magatzem()
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
     //algoritmo para modificar el vector con la estructura de preorden a post orden
-    
     vector<int> llista_final;
-    int mida_llista = llista_cambres.size(), node, node_fill, cnt_cambres;
-    
-    while(mida_llista > 0)
+    for(int i=1; i<llista_cambres.size()-1,++i)
     {
-        node = llista_cambres[i];
-        node_fill = llista_cambres[i + 1];
-
-        if(node_fill != 0)
+        if(llista_cambres[i]!=0 and llista_cambres[i+1]!=0)
         {
-            llista_final.push_back(node);
+            llista_final.push_back(llista_cambres[i]);
             llista_final.push_back(2);
-            ++cnt_cambres;
+            ++i;
         }
-        else if(node_fill == 0)
+        else if(llista_cambres[i]!=0 and llista_cambres[i+1]==0)
         {
-            llista_final.push_back(node);
-            llista_final.push_back(0);
-            ++cnt_cambres;
-            --mida_llista;
+            llista_final.push_back(llista_cambres[i]);
+            ++i;
         }
     }
+    llista_final.push_back(llista_cambres[0]);
+    llista_final.push_back(2);
 
     magatzem=generar_arbre(mida_magatzem,llista_cambres);
     Cambra aux;
