@@ -7,6 +7,22 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(list<int>& llista_cambres)    
 {
+    //124005003600700
+
+    //40502260703212
+
+    list<int> aux;
+
+    for(list<int>::const_iterator it = l.begin(); it!=llista_cambres.end(); ++it)
+    {
+
+
+    }
+
+
+
+
+
     /*//Cin distribució cambres magatzem
     bool afegir_fd = false, ple;
     int e, x, i = 0;
@@ -112,31 +128,8 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna,arb
             }
         }
     }
-    return quant_vacuna;
+    return vacunes_no_distr;
     
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
