@@ -31,14 +31,6 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
             --mida_llista;
         }
     }
-
-    magatzem=generar_arbre(mida_magatzem,llista_cambres);
-    Cambra aux;
-    while(mida_magatzem>0)
-    {
-        cambres.push_back(aux);
-        --mida_magatzem;
-    }
 }
 
 
