@@ -2,8 +2,6 @@
 #include "magatzem.hpp"
 using namespace std;
 
-
-
 int main()
 {
     int numero_cambres;
@@ -126,7 +124,3 @@ int main()
         }
     }
 }
-
-
-
-
