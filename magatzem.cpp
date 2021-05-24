@@ -7,6 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
+    //algoritmo para modificar el vector con la estructura de preorden a post orden
     magatzem=generar_arbre(mida_magatzem,llista_cambres);
     Cambra aux;
     while(mida_magatzem>0)
