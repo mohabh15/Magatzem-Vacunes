@@ -9,7 +9,7 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
 {
     //algoritmo para modificar el vector con la estructura de preorden a post orden
     vector<int> llista_final;
-    for(int i=1; i<llista_cambres.size()-1,++i)
+    for(int i=1; i<llista_cambres.size()-1;++i)
     {
         if(llista_cambres[i]!=0 and llista_cambres[i+1]!=0)
         {
