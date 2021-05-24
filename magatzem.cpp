@@ -8,8 +8,30 @@ Magatzem::Magatzem()
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
     //algoritmo para modificar el vector con la estructura de preorden a post orden
-
     
+    vector<int> llista_final;
+    int mida_llista = llista_cambres.size(), node, node_fill, cnt_cambres;
+    
+    while(mida_llista > 0)
+    {
+        node = llista_cambres[i];
+        node_fill = llista_cambres[i + 1];
+
+        if(node_fill != 0)
+        {
+            llista_final.push_back(node);
+            llista_final.push_back(2);
+            ++cnt_cambres;
+        }
+        else if(node_fill == 0)
+        {
+            llista_final.push_back(node);
+            llista_final.push_back(0);
+            ++cnt_cambres;
+            --mida_llista;
+        }
+    }
+
     magatzem=generar_arbre(mida_magatzem,llista_cambres);
     Cambra aux;
     while(mida_magatzem>0)
@@ -18,7 +40,6 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
         --mida_magatzem;
     }
 }
-
 
 
 //Destructor
@@ -89,7 +110,7 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
     return vacunes_no_distribuides;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna,arbreBin<int> p,int &vacunes_no_distr) 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, arbreBin<int> p, int &vacunes_no_distr) 
 {
     //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
