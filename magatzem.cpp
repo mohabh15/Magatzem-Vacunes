@@ -75,11 +75,15 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
         //una vegada sabem l'index llavors distribuir en aquesta cambra 
 
         /*
-        comencant per la cambra inicial, posar totes dels vacunes que c`apiguen en la
-        cambra en qu`e ens trobem i intentar distribuir la resta en les cambres seg¨uents del magatzem. 
-        Si el nombre d’unitats que falten per distribuir ´es parell, es distribueixen la meitat a
-        partir de la cambra seg¨uent per l’esquerra i l’altra meitat a partir de la cambra seg¨uent per
-        la dreta; si ´es senar, la unitat “restant” es distribueix per l’esquerra.
+        comencant per la cambra inicial, posar totes dels vacunes que capiguen en la
+        cambra en que ens trobem 
+        
+        cambres[]
+
+        i intentar distribuir la resta en les cambres seguents del magatzem. 
+        Si el nombre d’unitats que falten per distribuir es parell, es distribueixen la meitat a
+        partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per
+        la dreta; si es senar, la unitat “restant” es distribueix per l’esquerra.
         
         */
 
