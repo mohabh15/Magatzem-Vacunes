@@ -209,7 +209,7 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
-Cambra& Magatzem::cambra(int Ident_cambra)  //actualizar a vector
+Cambra& Magatzem::cambra(int Ident_cambra)  
 {   
     vector<Cambra>::iterator it = cambres.begin();
     while(Ident_cambra>0)

@@ -7,7 +7,7 @@ int main()
     int numero_cambres;
     cin>>numero_cambres;
 
-    //Lectura de l'escriptura del magatzem
+    //Lectura de l'Estructura del magatzem
     vector<int> llista_cambres;
     for(unsigned int i; i < numero_cambres; ++i)
     {
