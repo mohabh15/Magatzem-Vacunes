@@ -61,7 +61,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) 
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
 {
     int vacunes_no_distribuides;
     if(not find(ident_vacuna))
