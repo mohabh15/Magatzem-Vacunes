@@ -5,9 +5,9 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int>& llista_cambres)    //como darselo para que con un simple cin en 
+Magatzem::Magatzem(list<int>& llista_cambres)    
 {
-    //Cin distribució cambres magatzem
+    /*//Cin distribució cambres magatzem
     bool afegir_fd = false, ple;
     int e, x, i = 0;
     //afegir_arrel
@@ -47,7 +47,7 @@ Magatzem::Magatzem(list<int>& llista_cambres)    //como darselo para que con un 
             }
         }
         ++i;
-    }
+    }*/
 
 
 }
@@ -71,8 +71,26 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
     }
     else
     {
+        //accedir al arbre per saber l'index de la cambra
+        //una vegada sabem l'index llavors distribuir en aquesta cambra 
+
+        /*
+        comencant per la cambra inicial, posar totes dels vacunes que c`apiguen en la
+        cambra en qu`e ens trobem i intentar distribuir la resta en les cambres seg¨uents del magatzem. 
+        Si el nombre d’unitats que falten per distribuir ´es parell, es distribueixen la meitat a
+        partir de la cambra seg¨uent per l’esquerra i l’altra meitat a partir de la cambra seg¨uent per
+        la dreta; si ´es senar, la unitat “restant” es distribueix per l’esquerra.
+        
+        */
+
+
+
+
+
         //recorrer l'arbre binari recursivament
         distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, //cambra);
+
+
     }
     vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
 
@@ -85,8 +103,6 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Ca
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
 
     //no es necessari aquest metode es pot fer directament a distribuir.
-
-
 
 
 
