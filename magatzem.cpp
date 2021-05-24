@@ -71,18 +71,51 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
     }
     else
     {
-        quant_vacuna=distribuir_recursivament(ident_vacuna, quant_vacuna);
+        vacunes_no_distribuides=distribuir_recursivament(ident_vacuna, quant_vacuna,magatzem, vacunes_no_distribuides);
     }
 
-    vacunes_donades_alta[ident_vacuna]=quant_vacuna;
+    vacunes_donades_alta[ident_vacuna]=quant_vacuna-vacunes_no_distribuides;
 
-    return quant_vacuna;    
+    return vacunes_no_distribuides;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna) 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna,arbreBin<int> p,int &vacunes_no_distr) 
 {
     //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
+   
+
+    //cas base
+    if(p.es_buit() and quant_vacuna!=0)   quant_vacuna=cambres[p.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
+
+    //cas recursiu
+    if(not p.es_buit() and quant_vacuna!=0)
+    {
+        quant_vacuna=cambres[magatzem.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
+        vacunes_no_distr=quant_vacuna;
+        if(quant_vacuna%2==0 and quant_vacuna!=0) 
+        {
+            if(not p.fe().es_buit())   
+            {
+                distribuir_recursivament(ident_vacuna,quant_vacuna/2,p.fe(), vacunes_no_distr);
+            }
+            if(not p.fd().es_buit())   
+            {
+                distribuir_recursivament(ident_vacuna,quant_vacuna/2,p.fd(), vacunes_no_distr);
+            }
+        }
+        else if(quant_vacuna!=0)
+        {
+            if(not p.fd().es_buit())   
+            {
+                distribuir_recursivament(ident_vacuna,quant_vacuna,p.fd(), vacunes_no_distr);
+            }
+        }
+    }
+    return quant_vacuna;
+    
+
+
 
     
     
