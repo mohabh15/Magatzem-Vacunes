@@ -2,6 +2,7 @@
 #define _MAGATZEM_HPP_
 
 #include <iostream>
+#include <vector>
 #include <string>
 #include <list>
 #include <map>
@@ -29,7 +30,7 @@ class Magatzem
     Magatzem(); 
     // Pre:  Cert.
     // Post: Crea una llista buida anomenada magatzem.
-    Magatzem(list<int>& llista_cambres);
+    Magatzem(int n,vector<int>& llista_cambres);
     // Pre:  n > 0.
     // Post: Crea un magatzem amb n cambres.
 
@@ -39,7 +40,10 @@ class Magatzem
     // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
     // Modificadors
-    int distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra);
+    arbreBin<int> generar_arbre(arbreBin<int>& x);
+    //Pre: cert
+    //Post: retorna un arbre creat en preordre
+    int distribuir(string ident_vacuna, int quant_vacuna);
     // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
     //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.

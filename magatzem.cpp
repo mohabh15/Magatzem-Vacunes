@@ -5,8 +5,11 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int>& llista_cambres)    
-{}
+Magatzem::Magatzem(int n, vector<int>& llista_cambres)    
+{
+    magatzem=generar_arbre(arbreBin<int>()));
+}
+
 
 
 //Destructor

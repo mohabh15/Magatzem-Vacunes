@@ -6,17 +6,17 @@ int main()
 {
     int numero_cambres;
     cin>>numero_cambres;
-    
-    Magatzem magatzem(numero_cambres);
 
-    list<int> llista_cambres;
-    
+    //Lectura de l'escriptura del magatzem
+    vector<int> llista_cambres;
     for(unsigned int i; i < numero_cambres; ++i)
     {
         int cambra;
         cin >> cambra;
         llista_cambres.push_back(cambra);
     }
+
+    Magatzem magatzem(numero_cambres,llista_cambres);
 
     //Cin mida cambres
     int files,columnes;
