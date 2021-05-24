@@ -81,7 +81,34 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
 
 int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) 
 {
-    int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
+    //accedir al arbre per sabir l'index de la cambra
+    //una vegada sabem l'index llavors distribuir en aquesta cambra 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
     
     bool arbre_recorregut = false;
     
@@ -147,7 +174,7 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Ca
         quant_vacuna = quant_vacuna - (quant_vacuna1 + quant_vacuna2);
     }
     if()
-    return vacunes_no_distribuides;
+    return vacunes_no_distribuides;*/
 }
 
 
