@@ -5,9 +5,18 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(int n, vector<int>& llista_cambres)    
+Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
-    magatzem=generar_arbre(arbreBin<int>()));
+    //algoritmo para modificar el vector con la estructura de preorden a post orden
+
+    
+    magatzem=generar_arbre(mida_magatzem,llista_cambres);
+    Cambra aux;
+    while(mida_magatzem>0)
+    {
+        cambres.push_back(aux);
+        --mida_magatzem;
+    }
 }
 
 
@@ -19,16 +28,19 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-arbreBin<int> Magatzem::generar_arbre(arbreBin<int>& x)
+arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cambres)
 {
-    int node;
+    int node,i;
     int size, nf;
+    arbreBin<int> x;
     stack<arbreBin<int> > p;
 
-    cin >> size;  
+    size=numero_cambres;   
 
     while (size > 0) {
-        cin >> node >> nf;
+        node=llista_cambres[i];
+        nf=llista_cambres[i+1];
+        //cin >> node >> nf;
         if (nf == 0) 
         {  //fills buits
             p.push(arbreBin<int>(node, arbreBin<int>(), arbreBin<int>()));
@@ -53,6 +65,7 @@ arbreBin<int> Magatzem::generar_arbre(arbreBin<int>& x)
             p.push(arbreBin<int>(node, fe, fd));
         }
         --size;
+        ++i;
     }
     if (not p.empty()) x = p.top();
   return x;
@@ -179,7 +192,7 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
-Cambra& Magatzem::cambra(int Ident_cambra)  //Actualizar al arbol
+Cambra& Magatzem::cambra(int Ident_cambra)  //actualizar a vector
 {
     list<Cambra>::iterator it = cambres.begin(); 
     for(int i=1; i<Ident_cambra; ++i) 

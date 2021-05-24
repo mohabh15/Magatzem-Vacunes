@@ -40,7 +40,7 @@ class Magatzem
     // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
     // Modificadors
-    arbreBin<int> generar_arbre(arbreBin<int>& x);
+    arbreBin<int> generar_arbre(int numero_cambres,vector<int>& llista_cambres);
     //Pre: cert
     //Post: retorna un arbre creat en preordre
     int distribuir(string ident_vacuna, int quant_vacuna);
