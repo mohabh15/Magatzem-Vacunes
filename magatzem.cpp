@@ -81,10 +81,10 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
 
 int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) 
 {
-    //accedir al arbre per sabir l'index de la cambra
+    //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
 
-
+    //no es necessari aquest metode es pot fer directament a distribuir.
 
 
 
