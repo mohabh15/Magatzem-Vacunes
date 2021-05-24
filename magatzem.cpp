@@ -61,7 +61,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)  //Cambra es metode de la propia classe i estas dins de la classe pots accedir al privat directament que en aquest cas seria l'arbre magatzem que conte les cambres que vols 
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) 
 {
     int vacunes_no_distribuides;
     if(not find(ident_vacuna))
@@ -72,7 +72,7 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)  //Cambra es met
     else
     {
         //recorrer l'arbre binari recursivament
-        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, cambra);
+        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, //cambra);
     }
     vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
     //magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');  //estas editant el map dins de la classe pots accedir al map directament no fa falta cridar al metode de la mateixa classe en la que estas 
