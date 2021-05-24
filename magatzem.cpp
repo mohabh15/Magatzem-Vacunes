@@ -61,7 +61,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)  //Cambra es metode de la propia classe i estas dins de la classe pots accedir al privat directament que en aquest cas seria l'arbre magatzem que conte les cambres que vols 
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)  //Cambra es metode de la propia classe i estas dins de la classe pots accedir al privat directament que en aquest cas seria l'arbre magatzem que conte les cambres que vols 
 {
     int vacunes_no_distribuides;
     if(not find(ident_vacuna))
@@ -74,7 +74,8 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra) 
         //recorrer l'arbre binari recursivament
         distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, cambra);
     }
-    magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');  //estas editant el map dins de la classe pots accedir al map directament no fa falta cridar al metode de la mateixa classe en la que estas 
+    vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
+    //magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');  //estas editant el map dins de la classe pots accedir al map directament no fa falta cridar al metode de la mateixa classe en la que estas 
 
     return vacunes_no_distribuides;    
 }
@@ -220,7 +221,7 @@ bool Magatzem::find(string ident_vacuna)
 
 Cambra& Magatzem::cambra(int Ident_cambra)  //Actualizar al arbol
 {
-    list<Cambra>::iterator it = magatzem.begin(); 
+    list<Cambra>::iterator it = cambres.begin(); 
     for(int i=1; i<Ident_cambra; ++i) 
     {
         ++it;

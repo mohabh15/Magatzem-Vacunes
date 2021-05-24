@@ -14,7 +14,9 @@ class Magatzem
 {
     private:
 
-    arbreBin<Cambra> magatzem;
+    arbreBin<int> magatzem;
+
+    list<Cambra> cambres;
 
     map<string,int> vacunes_donades_alta;    
     // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
