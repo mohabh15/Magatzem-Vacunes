@@ -63,7 +63,7 @@ Magatzem::~Magatzem()
 
 int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
 {
-    int vacunes_no_distribuides=quant_vacuna;
+    int vacunes_no_distribuides=0;
     if(not find(ident_vacuna))
     {
         cout << "error" << endl;
@@ -71,57 +71,20 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
     }
     else
     {
-        bool ple=false;
-
-        stack<arbreBin<int>> p;
-        p.push(magatzem);
-
-        while(not p.empty())
-        {
-            arbreBin<int> a1 = p.top();
-            p.pop();
-
-            quant_vacuna=cambres[a1.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
-
-            if(quant_vacuna%2==0)
-            {
-                quant_vacuna=cambres[a1.fe().arrel()].afegir_unitats(ident_vacuna,quant_vacuna/2);
-                quant_vacuna=cambres[a1.fd().arrel()].afegir_unitats(ident_vacuna,quant_vacuna/2);
-
-
-
-
-
-                if (not a1.fd().es_buit()) p.push(a1.fe());
-                if (not a1.fe().es_buit()) p.push(a1.fd());
-            }
-            else
-            {
-                if (not a1.fe().es_buit()) p.push(a1.fe());
-            }
-        }
+        quant_vacuna=distribuir_recursivament(ident_vacuna, quant_vacuna);
     }
-     
 
+    vacunes_donades_alta[ident_vacuna]=quant_vacuna;
 
-
-        /*
-
-        Si el nombre d’unitats que falten per distribuir es parell, es distribueixen la meitat a
-        partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per
-        la dreta; si es senar, la unitat “restant” es distribueix per l’esquerra.
-        
-        */
-    vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
-
-    return vacunes_no_distribuides;    
+    return quant_vacuna;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna) 
 {
     //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
 
+    
     
 
 

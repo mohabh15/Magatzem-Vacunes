@@ -21,7 +21,7 @@ class Magatzem
     map<string,int> vacunes_donades_alta;    
     // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
-    static void distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra);   
+    static int distribuir_recursivament(string ident_vacuna, int quant_vacuna);   
 
     public:
 
