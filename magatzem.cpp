@@ -7,14 +7,21 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(list<int>& llista_cambres)    
 {
-    //124005003600700
+    /*//124005003600700 */
 
-    //40502260703212
-
-    list<int> aux;
+    vector<int> aux;
 
     for(list<int>::const_iterator it = l.begin(); it!=llista_cambres.end(); ++it)
     {
+        if(*it==0 and *++it==0) 
+        {
+            ++it;
+            ++it;
+            if(*it==0)   aux.push_back(*it);
+
+
+
+        }
 
 
     }
