@@ -75,12 +75,11 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
         distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, //cambra);
     }
     vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
-    //magatzem.modificar_sistema(ident_vacuna, quant_vacuna - vacunes_no_distribuides, '+');  //estas editant el map dins de la classe pots accedir al map directament no fa falta cridar al metode de la mateixa classe en la que estas 
 
     return vacunes_no_distribuides;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) //Bua sembla molt complicat no? i no entenc per que tornes a utilitzar el que fem al metode de crear l'arbre si l'abre ja esta creat cuan fas el metode distribuir 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra) 
 {
     int quant_vacuna1 = quant_vacuna, quant_vacuna2 = quant_vacuna, vacunes_no_distribuides = quant_vacuna;
     
