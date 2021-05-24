@@ -18,6 +18,8 @@ int main()
         llista_cambres.push_back(cambra);
     }
 
+    Magatzem magatzem(numero_cambres,llista_cambres);
+
     //Cin mida cambres
     int files,columnes;
     for(int i = 1; i<=numero_cambres;++i)
