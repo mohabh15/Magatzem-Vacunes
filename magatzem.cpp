@@ -5,7 +5,7 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int> llista_cambres)  //seria necessari la llista? no es millor fer un cin i anar fer cada vegada que t'entri una cambra?
+Magatzem::Magatzem(list<int>& llista_cambres)    //como darselo para que con un simple cin en 
 {
     //Cin distribució cambres magatzem
     bool afegir_fd = false, ple;
@@ -48,7 +48,10 @@ Magatzem::Magatzem(list<int> llista_cambres)  //seria necessari la llista? no es
         }
         ++i;
     }
+
+
 }
+
 
 
 //Destructor

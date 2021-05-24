@@ -14,13 +14,12 @@ class Magatzem
 {
     private:
 
-    arbreBin<int> magatzem;
+    arbreBin<Cambra> magatzem;
 
     map<string,int> vacunes_donades_alta;    
     // L'string és l'identificador de la vacuna i l'int és la quantitat d'aquella vacuna
 
-    void distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra);    //aquest tipus de funcions en el privat no s'havien de declarar com a static 
-    // És una funció recursiva que permet recorrer l'arbre binari.  
+    static void distribuir_recursivament(string ident_vacuna, int quant_vacuna, Cambra &cambra);   
 
     public:
 
@@ -28,7 +27,7 @@ class Magatzem
     Magatzem(); 
     // Pre:  Cert.
     // Post: Crea una llista buida anomenada magatzem.
-    Magatzem(list<int> llista_cambres);
+    Magatzem(list<int>& llista_cambres);
     // Pre:  n > 0.
     // Post: Crea un magatzem amb n cambres.
 

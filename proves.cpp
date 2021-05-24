@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "arbreBin.hpp"
 using namespace std;
 
 
@@ -18,4 +19,8 @@ int main()
             cout<<cambra1[i][j]<<endl;
         }
     }
+
+    arbreBinºCambraª aux;
 }
+
+
