@@ -63,7 +63,7 @@ Magatzem::~Magatzem()
 
 int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
 {
-    int vacunes_no_distribuides;
+    int vacunes_no_distribuides=quant_vacuna;
     if(not find(ident_vacuna))
     {
         cout << "error" << endl;
@@ -80,17 +80,24 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
         {
             arbreBin<int> a1 = p.top();
             p.pop();
-            vacunes_no_distribuides=cambres[a1.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
 
-            if(vacunes_no_distribuides%2==0)
+            quant_vacuna=cambres[a1.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
+
+            if(quant_vacuna%2==0)
             {
-                vacunes_no_distribuides/=2;
+                quant_vacuna=cambres[a1.fe().arrel()].afegir_unitats(ident_vacuna,quant_vacuna/2);
+                quant_vacuna=cambres[a1.fd().arrel()].afegir_unitats(ident_vacuna,quant_vacuna/2);
+
+
+
+
+
                 if (not a1.fd().es_buit()) p.push(a1.fe());
                 if (not a1.fe().es_buit()) p.push(a1.fd());
             }
             else
             {
-                if (not a1.fd().es_buit()) p.push(a1.fe());
+                if (not a1.fe().es_buit()) p.push(a1.fe());
             }
         }
     }
@@ -115,7 +122,7 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, Ca
     //accedir al arbre per saber l'index de la cambra
     //una vegada sabem l'index llavors distribuir en aquesta cambra 
 
-    //no es necessari aquest metode es pot fer directament a distribuir.
+    
 
 
 
