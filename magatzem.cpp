@@ -7,7 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
-    magatzem=generar_arbre(llista_cambres);
+    magatzem=generar_arbre(mida_magatzem,llista_cambres);
     Cambra aux;
     while(mida_magatzem>0)
     {
@@ -25,14 +25,14 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-arbreBin<int> Magatzem::generar_arbre(vector<int>& llista_cambres)
+arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cambres)
 {
     int node,i;
     int size, nf;
     arbreBin<int> x;
     stack<arbreBin<int> > p;
 
-    cin >> size;   //meter el numero de cambres
+    size=numero_cambres;   
 
     while (size > 0) {
         node=llista_cambres[i];
