@@ -7,7 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(list<int>& llista_cambres)    
 {
-    /*124005003600700 */
+    /*25003600700 -  401*/
 
     vector<int> aux;
 
@@ -20,10 +20,32 @@ Magatzem::Magatzem(list<int>& llista_cambres)
         {
             --it
             aux.push_back(*it);
+            llista_cambres.erase(it);
+            llista_cambres.erase(it);
+            llista_cambres.erase(it);
             aux.push_back(0);
+            if()
         }
 
 
+    }
+
+
+    //probar construir el arbol recursivamente;
+
+    arbreBin generar_arbre(int arrel, arbreBin p)
+    {
+        arbreBin aux;
+        if(p.es_buit()) aux=p;
+        //cas recursiu
+        if(not p.es_buit())
+        {
+            aux=generar_arbre(arrel, p);
+        }
+        return aux;
+      
+
+        
     }
 
 
