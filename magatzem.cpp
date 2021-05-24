@@ -26,7 +26,9 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
     llista_final.push_back(llista_cambres[0]);
     llista_final.push_back(2);
 
-    magatzem=generar_arbre(mida_magatzem,llista_cambres);
+    //Generar el arbre amb l'estructura del magatzem que conte els indexs de les cambres
+    magatzem=generar_arbre(mida_magatzem,llista_final);
+    //Generar el vector amb les n cambres
     Cambra aux;
     while(mida_magatzem>0)
     {
@@ -208,11 +210,12 @@ bool Magatzem::find(string ident_vacuna)
 }
 
 Cambra& Magatzem::cambra(int Ident_cambra)  //actualizar a vector
-{
-    list<Cambra>::iterator it = cambres.begin(); 
-    for(int i=1; i<Ident_cambra; ++i) 
+{   
+    vector<Cambra>::iterator it = cambres.begin();
+    while(Ident_cambra>0)
     {
         ++it;
+        --Ident_cambra;
     }
     return *it;
 }
