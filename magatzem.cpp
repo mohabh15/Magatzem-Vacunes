@@ -71,8 +71,37 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
     }
     else
     {
+        bool ple=false;
+
+        stack<arbreBin<int>> p;
+        p.push(magatzem);
+
+        while(not p.empty())
+        {
+            arbreBin<int> a1 = p.top();
+            p.pop();
+            for(int i=0; i< cambres[a1.arrel()].files()-1; ++i)
+            {
+                for(int j=0; j< cambres[a1.arrel()].columnes(); ++j)
+                {
+
+                }
+            }
+
+        }
+
+
+
         //accedir al arbre per saber l'index de la cambra
+        if (not a1.es_buit()) {
+            l.insert(l.end(), a1.arrel());
+            if (not a1.fd().es_buit()) p.push(a1.fd());
+            if (not a1.fe().es_buit()) p.push(a1.fe());
+        }
+    }
         //una vegada sabem l'index llavors distribuir en aquesta cambra 
+
+
 
         /*
         comencant per la cambra inicial, posar totes dels vacunes que capiguen en la
