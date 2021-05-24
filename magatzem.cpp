@@ -5,49 +5,10 @@ using namespace std;
 Magatzem::Magatzem()
 {}
 
-Magatzem::Magatzem(list<int> llista_cambres) //perdona, encara no havia fet el push
+Magatzem::Magatzem(list<int> llista_cambres)
 {
-    //Cin distribució cambres magatzem
-    bool afegir_fd = false, ple;
-    int e, x, i = 0;
-    //afegir_arrel
-    {
-        e = llista_cambres(i);//utilitzar iteradors o punt d'interès
-        x = e;
-        ++i;
-    }
-    while(not llista_cambres.empty())
-    {
-        if(e != 0)
-        {
-            if(afegir_fd)
-            {
-                x.fd() = e;
-                x = e;
-                afegir_fd = false;
-            }
-            else
-            {
-                x.fe() = e;
-                x = e;
-            }
-        }
-        else //e == 0
-        {
-            if(afegir_fd)
-            {
-                while(x not ple)
-                {
-                    x = x.arrel();
-                }
-            }
-            else
-            {
-                afegir_fd = true;
-            }
-        }
-        ++i;
-    }
+    arbreBin<int> arbre_entrada;
+    cin >> arbre_entrada;
 }
 
 
@@ -58,7 +19,7 @@ Magatzem::~Magatzem()
 
 // Modificadors
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)  //encara he d'acabar la funció, no et preocupis però gràcies per avisar-me
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra)
 {
     int vacunes_no_distribuides;
     if(not find(ident_vacuna))

@@ -62,7 +62,7 @@ class arbreBin {
     const T& arrel() const;
     /* Pre: el paràmetre implícit no és buit */
     /* Post: el resultat és l'arrel del paràmetre implícit */
-    arbreBin<T> fe() const;
+    arbreBin<T> fe() const; 
     /* Pre: el paràmetre implícit no és buit */
     /* Post: el resultat és el fill esquerre del p.i. original */
     arbreBin<T> fd() const;

@@ -38,7 +38,7 @@ class Magatzem
     // Post: Esborra automàticament els objectes locals en sortir d'un àmbit de visibilitat.
 
     // Modificadors
-    int distribuir(string ident_vacuna, int quant_vacuna);
+    int distribuir(string ident_vacuna, int quant_vacuna, Cambra &cambra);
     // Pre:  S’introdueix un identificador de vacuna i una quantitat.
     // Post: Si la vacuna no existeix, es produeix un error. 
     //       En cas contrari, començant per la cambra inicial es distribueixen totes le vacunes que hi caben.
