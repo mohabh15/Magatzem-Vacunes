@@ -80,51 +80,31 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
         {
             arbreBin<int> a1 = p.top();
             p.pop();
-            for(int i=0; i< cambres[a1.arrel()].files()-1; ++i)
+            vacunes_no_distribuides=cambres[a1.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
+
+            if(vacunes_no_distribuides%2==0)
             {
-                for(int j=0; j< cambres[a1.arrel()].columnes(); ++j)
-                {
-
-                }
+                vacunes_no_distribuides/=2;
+                if (not a1.fd().es_buit()) p.push(a1.fe());
+                if (not a1.fe().es_buit()) p.push(a1.fd());
             }
-
-        }
-
-
-
-        //accedir al arbre per saber l'index de la cambra
-        if (not a1.es_buit()) {
-            l.insert(l.end(), a1.arrel());
-            if (not a1.fd().es_buit()) p.push(a1.fd());
-            if (not a1.fe().es_buit()) p.push(a1.fe());
+            else
+            {
+                if (not a1.fd().es_buit()) p.push(a1.fe());
+            }
         }
     }
-        //una vegada sabem l'index llavors distribuir en aquesta cambra 
+     
 
 
 
         /*
-        comencant per la cambra inicial, posar totes dels vacunes que capiguen en la
-        cambra en que ens trobem 
-        
-        cambres[]
 
-        i intentar distribuir la resta en les cambres seguents del magatzem. 
         Si el nombre d’unitats que falten per distribuir es parell, es distribueixen la meitat a
         partir de la cambra seguent per l’esquerra i l’altra meitat a partir de la cambra seguent per
         la dreta; si es senar, la unitat “restant” es distribueix per l’esquerra.
         
         */
-
-
-
-
-
-        //recorrer l'arbre binari recursivament
-        distribuir_recursivament(ident_vacuna, vacunes_no_distribuides, //cambra);
-
-
-    }
     vacunes_donades_alta[ident_vacuna]=quant_vacuna - vacunes_no_distribuides;
 
     return vacunes_no_distribuides;    
