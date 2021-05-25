@@ -7,18 +7,22 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
+<<<<<<< HEAD
     cout<<99<<endl;
     //Passar l'estructura de preordre a postordre
+=======
+    //Algorisme per modificar el vector amb l'estructura en preordre i passar-lo a postordre
+>>>>>>> 04075814f35f1f807ef9d47010828f02d13b2648
     vector<int> llista_final;
-    for(int i=1; i<llista_cambres.size()-2;++i)
+    for(int i = 1; i < llista_cambres.size() - 2; ++i)
     {
-        if(llista_cambres[i]!=0 and llista_cambres[i+1]!=0)
+        if(llista_cambres[i] != 0 and llista_cambres[i+1] != 0)
         {
             llista_final.push_back(llista_cambres[i]);
             llista_final.push_back(2);
             ++i;
         }
-        else if(llista_cambres[i]!=0 and llista_cambres[i+1]==0)
+        else if(llista_cambres[i] != 0 and llista_cambres[i+1] == 0)
         {
             llista_final.push_back(llista_cambres[i]);
             ++i;
@@ -27,13 +31,19 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
     llista_final.push_back(llista_cambres[0]);
     llista_final.push_back(2);
 
+<<<<<<< HEAD
     cout<<99<<endl;
 
     //Generar el arbre amb l'estructura del magatzem que conte els indexs de les cambres
     magatzem=generar_arbre(mida_magatzem,llista_final);
     //Generar el vector amb les n cambres
+=======
+    //Genera l'arbre amb l'estructura del magatzem que conté els índexos de les cambres
+    magatzem = generar_arbre(mida_magatzem,llista_final);
+    //Genera el vector amb les n cambres
+>>>>>>> 04075814f35f1f807ef9d47010828f02d13b2648
     Cambra aux;
-    while(mida_magatzem>0)
+    while(mida_magatzem > 0)
     {
         cambres.push_back(aux);
         --mida_magatzem;
@@ -47,8 +57,7 @@ Magatzem::~Magatzem()
 
 
 // Modificadors
-
-arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cambres)
+arbreBin<int> Magatzem::generar_arbre(int numero_cambres, vector<int>& llista_cambres)
 {
     int node,i;
     int size, nf;
@@ -58,8 +67,8 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cam
     size=numero_cambres;   
 
     while (size > 0) {
-        node=llista_cambres[i];
-        nf=llista_cambres[i+1];
+        node = llista_cambres[i];
+        nf = llista_cambres[i+1];
         if (nf == 0) 
         {  //fills buits
             p.push(arbreBin<int>(node, arbreBin<int>(), arbreBin<int>()));
@@ -90,9 +99,9 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cam
   return x;
 }
 
-int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
+int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
 {
-    int vacunes_no_distribuides=0;
+    int vacunes_no_distribuides = 0;
     if(not find(ident_vacuna))
     {
         cout << "error" << endl;
@@ -100,43 +109,43 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna) //NO TOCAR
     }
     else
     {
-        vacunes_no_distribuides=distribuir_recursivament(ident_vacuna, quant_vacuna,magatzem, vacunes_no_distribuides);
+        vacunes_no_distribuides = distribuir_recursivament(ident_vacuna, quant_vacuna,magatzem, vacunes_no_distribuides);
     }
 
-    vacunes_donades_alta[ident_vacuna]=quant_vacuna-vacunes_no_distribuides;
+    vacunes_donades_alta[ident_vacuna] = quant_vacuna-vacunes_no_distribuides;
 
     return vacunes_no_distribuides;    
 }
 
 int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, arbreBin<int> p, int &vacunes_no_distr) 
 {
-    //accedir al arbre per saber l'index de la cambra
-    //una vegada sabem l'index llavors distribuir en aquesta cambra 
+    //Accedim a l'arbre per saber l'índex de la cambra
+    //Una vegada sabem l'índex distribuim en aquesta cambra 
 
-    //cas base
-    if(p.es_buit() and quant_vacuna!=0)   quant_vacuna=cambres[p.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
+    //Cas base
+    if(p.es_buit() and quant_vacuna != 0) quant_vacuna = cambres[p.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
 
-    //cas recursiu
-    if(not p.es_buit() and quant_vacuna!=0)
+    //Cas recursiu
+    if(not p.es_buit() and quant_vacuna != 0)
     {
-        quant_vacuna=cambres[magatzem.arrel()].afegir_unitats(ident_vacuna,quant_vacuna);
-        vacunes_no_distr=quant_vacuna;
-        if(quant_vacuna%2==0 and quant_vacuna!=0) 
+        quant_vacuna = cambres[magatzem.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
+        vacunes_no_distr = quant_vacuna;
+        if((quant_vacuna % 2) == 0 and quant_vacuna != 0) 
         {
             if(not p.fe().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna,quant_vacuna/2,p.fe(), vacunes_no_distr);
+                distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fe(), vacunes_no_distr);
             }
             if(not p.fd().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna,quant_vacuna/2,p.fd(), vacunes_no_distr);
+                distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fd(), vacunes_no_distr);
             }
         }
-        else if(quant_vacuna!=0)
+        else if(quant_vacuna != 0)
         {
             if(not p.fd().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna,quant_vacuna,p.fd(), vacunes_no_distr);
+                distribuir_recursivament(ident_vacuna, quant_vacuna,p.fd(), vacunes_no_distr);
             }
         }
     }
@@ -152,7 +161,7 @@ void Magatzem::afegir_vacuna(string ident_vacuna)
     }
     else 
     {
-        // Afageix la vacuna al diccionari vacunes_donades_alta
+        //Afegeix la vacuna al diccionari vacunes_donades_alta
         vacunes_donades_alta.insert(make_pair(ident_vacuna,0));
     }
 }
@@ -211,13 +220,13 @@ bool Magatzem::find(string ident_vacuna)
     return trobat;
 }
 
-Cambra& Magatzem::cambra(int Ident_cambra)  
+Cambra& Magatzem::cambra(int ident_cambra)  
 {   
     vector<Cambra>::iterator it = cambres.begin();
-    while(Ident_cambra>0)
+    while(ident_cambra>0)
     {
         ++it;
-        --Ident_cambra;
+        --ident_cambra;
     }
     return *it;
 }
@@ -234,6 +243,6 @@ void Magatzem::inventari() const
 
 void Magatzem::fi() const
 {
-   // Com que tota l'estona està llegint al cridar el mètode fi deixarà de llegir i s'acabarà el programa
+   //Com que tota l'estona està llegint, al cridar el mètode fi deixarà de llegir i s'acabarà el programa
    cin.ignore();  
 }
