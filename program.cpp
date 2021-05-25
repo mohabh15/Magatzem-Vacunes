@@ -8,10 +8,10 @@ int main()
     vector<int> llista_cambres;
   
     //Lectura del numero de cambres i l'Estructura del magatzem
-    cin>>numero_cambres;
-    for(int i=0; i<(numero_cambres*2+1); ++i)
+    cin >> numero_cambres;
+    for(int i = 0; i < (numero_cambres*2 + 1); ++i)
     {
-        cin>>cambra;
+        cin >> cambra;
         llista_cambres.push_back(cambra);
     }
 
