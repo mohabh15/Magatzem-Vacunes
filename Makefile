@@ -1,7 +1,7 @@
 OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
-program.exe: program.o magatzem.o cambra.o 
-		g++ -o program.exe program.o magatzem.o cambra.o 
+program.exe: program.o magatzem.o cambra.o listIOint.o
+		g++ -o program.exe program.o magatzem.o cambra.o listIOint.o 
 
 #./test.exe < /jocs_de_prova/sample1.inp
 
@@ -13,6 +13,9 @@ magatzem.o: magatzem.cpp magatzem.hpp cambra.hpp arbreBin.hpp
 
 cambra.o: cambra.cpp cambra.hpp
 		g++ -c cambra.cpp $(OPCIONS)
+
+listIOint.o: listIOint.cpp listIOint.hpp
+	g++ -c listIOint.cpp $(OPCIONS)
 
 clean:
 	rm *.o
