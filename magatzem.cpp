@@ -55,7 +55,7 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres, vector<int>& llista_ca
 
     while (size > 0) {
         node = llista_cambres[i];
-        nf = llista_cambres[i + 1];
+        nf = llista_cambres[i+1];
         if (nf == 0) 
         {  //fills buits
             p.push(arbreBin<int>(node, arbreBin<int>(), arbreBin<int>()));
