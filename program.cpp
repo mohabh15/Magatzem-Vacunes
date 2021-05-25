@@ -25,6 +25,9 @@ int main()
         magatzem.cambra(i).canviar_nevera(files, columnes);
     }
 
+    cout<< "CIN PERFECTO" << endl;
+    
+
     //Declaracio de Variables que es necessitaran 
     string operacion;
     int  ident_cambra;

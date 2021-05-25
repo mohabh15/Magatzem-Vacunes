@@ -118,7 +118,7 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
     int vacunes_no_distribuides = 0;
     if(not find(ident_vacuna))
     {
-        cout << "error" << endl;
+        cout << "  error" << endl;
         vacunes_no_distribuides = quant_vacuna;
     }
     else
@@ -131,7 +131,7 @@ int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
     return vacunes_no_distribuides;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, arbreBin<int> p, int &vacunes_no_distr) 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int &quant_vacuna, arbreBin<int> p, int &vacunes_no_distr) 
 {
     //Accedim a l'arbre per saber l'índex de la cambra
     //Una vegada sabem l'índex distribuim en aquesta cambra 
@@ -142,11 +142,11 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, ar
     //Cas recursiu
     if(not p.es_buit() and quant_vacuna != 0)
     {
-        quant_vacuna = cambres[magatzem.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
+        quant_vacuna = cambres[p.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
         vacunes_no_distr = quant_vacuna;
         if((quant_vacuna % 2) == 0 and quant_vacuna != 0) 
         {
-            if(not p.fe().es_buit())   
+            if(not magatzem.fe().es_buit())   
             {
                 distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fe(), vacunes_no_distr);
             }
@@ -163,7 +163,7 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, ar
             }
         }
     }
-    return vacunes_no_distr;
+    return quant_vacuna;
 }
 
 
@@ -171,7 +171,7 @@ void Magatzem::afegir_vacuna(string ident_vacuna)
 {
     if(vacunes_donades_alta.find(ident_vacuna) != vacunes_donades_alta.end())
     {
-        cout << " error" << endl;
+        cout << "  error" << endl;
     }
     else 
     {
@@ -184,7 +184,7 @@ void Magatzem::treure_vacuna(string ident_vacuna)
 {
     if(vacunes_donades_alta.find(ident_vacuna) == vacunes_donades_alta.end() or vacunes_donades_alta[ident_vacuna]>0)
     {
-        cout << "error" << endl;
+        cout << "  error" << endl;
     }
     else
     {
