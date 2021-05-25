@@ -52,6 +52,8 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
 
     //Genera l'arbre amb l'estructura del magatzem que conté els índexos de les cambres
     magatzem = generar_arbre(mida_magatzem,llista_cambres);
+
+    cout<<magatzem<<endl;
     
     //Genera el vector amb les n cambres
     Cambra aux;
@@ -235,7 +237,7 @@ bool Magatzem::find(string ident_vacuna)
 Cambra& Magatzem::cambra(int ident_cambra)  
 {   
     vector<Cambra>::iterator it = cambres.begin();
-    while(ident_cambra>0)
+    while(1<ident_cambra)
     {
         ++it;
         --ident_cambra;
