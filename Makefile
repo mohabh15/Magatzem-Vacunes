@@ -13,6 +13,9 @@ magatzem.o: magatzem.cpp magatzem.hpp cambra.hpp arbreBin.hpp
 cambra.o: cambra.cpp cambra.hpp
 		g++ -c cambra.cpp $(OPCIONS)
 
+listIOint.o: listIOint.cpp listIOint.hpp
+		g++ -c listIOint.cpp $(OPCIONS)
+
 clean:
 	rm *.o
 	rm *.exe
