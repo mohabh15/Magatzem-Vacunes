@@ -53,7 +53,7 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
     //Genera l'arbre amb l'estructura del magatzem que conté els índexos de les cambres
     magatzem = generar_arbre(mida_magatzem,llista_cambres);
 
-    cout << magatzem << endl;
+    cout<<magatzem<<endl;
     
     //Genera el vector amb les n cambres
     Cambra aux;
