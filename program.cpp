@@ -9,11 +9,10 @@ int main()
   
     //Lectura del numero de cambres i l'Estructura del magatzem
     cin>>numero_cambres;
-    for(int i=0; i<numero_cambres-1; ++i)
+    for(int i=0; i<(numero_cambres*2+1); ++i)
     {
         cin>>cambra;
         llista_cambres.push_back(cambra);
-        if(cambra==0) --i;
     }
 
     Magatzem magatzem(numero_cambres, llista_cambres);
