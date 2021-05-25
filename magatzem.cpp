@@ -7,6 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
+    cout<<99<<endl;
     //Passar l'estructura de preordre a postordre
     vector<int> llista_final;
     for(int i=1; i<llista_cambres.size()-2;++i)
@@ -25,6 +26,8 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
     }
     llista_final.push_back(llista_cambres[0]);
     llista_final.push_back(2);
+
+    cout<<99<<endl;
 
     //Generar el arbre amb l'estructura del magatzem que conte els indexs de les cambres
     magatzem=generar_arbre(mida_magatzem,llista_final);

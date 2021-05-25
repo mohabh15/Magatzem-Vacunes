@@ -1,7 +1,7 @@
 #include <iostream>
 #include "magatzem.hpp"
 using namespace std;
-
+//<<  >>
 int main()
 {
     int numero_cambres,cambra;
@@ -9,9 +9,11 @@ int main()
   
     //Lectura del numero de cambres i l'Estructura del magatzem
     cin>>numero_cambres;
-    while(cin>>cambra)
+    for(int i=0; i<numero_cambres-1; ++i)
     {
+        cin>>cambra;
         llista_cambres.push_back(cambra);
+        if(cambra==0) --i;
     }
 
     Magatzem magatzem(numero_cambres,llista_cambres);
