@@ -1,4 +1,5 @@
-OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
+OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -Wall -Wextra -Werror -Wno-sign-compare -std=c++11 -l./arbre_bin -I./arbre_bin
+
 program.exe: program.o magatzem.o cambra.o listIOint.o
 		g++ -o program.exe program.o magatzem.o cambra.o listIOint.o 
 
@@ -15,7 +16,7 @@ cambra.o: cambra.cpp cambra.hpp
 
 listIOint.o: listIOint.cpp listIOint.hpp
 		g++ -c listIOint.cpp $(OPCIONS)
-
+		
 clean:
 	rm *.o
 	rm *.exe
