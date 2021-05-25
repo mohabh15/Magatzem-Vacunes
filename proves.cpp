@@ -65,8 +65,11 @@ int main()
         }
     }*/
 
-    arbreBin<int> aux;
-    cout<<generar_arbre();
+    /*arbreBin<int> aux;
+    cout<<generar_arbre();*/
+    int a=7/4;
+    cout<<a;
+
 }
 
 

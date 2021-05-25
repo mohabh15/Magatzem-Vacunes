@@ -139,7 +139,7 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, ar
         if((quant_vacuna % 2) == 0 and quant_vacuna != 0) 
         {
             int fe=0,fd=0;
-            if(not magatzem.fe().es_buit())   
+            if(not p.fe().es_buit())   
             {
                 fe=distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fe());
             }
@@ -153,7 +153,16 @@ int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, ar
         {
             if(not p.fd().es_buit())   
             {
-                quant_vacuna=distribuir_recursivament(ident_vacuna, quant_vacuna,p.fd());
+                int fe=0,fd=0;
+                if(not p.fe().es_buit())   
+                {
+                    fe=distribuir_recursivament(ident_vacuna, (quant_vacuna/2)+1, p.fe());
+                }
+                if(not p.fd().es_buit())   
+                {
+                    fd=distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fd());
+                }
+                quant_vacuna=fe+fd;
             }
         }
     }
