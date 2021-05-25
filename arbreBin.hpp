@@ -84,8 +84,6 @@ class arbreBin {
        node s'indica el seu valor i el nombre de fills */
     /* Post: a = A */
 };
-
-
 /// ------------------------------------------
 ///
 ///  Codificació operacions tipus ARBRE BINARI
@@ -296,5 +294,4 @@ std::istream& operator>>(std::istream &is, arbreBin<U> &x)
   if (not p.empty()) x = p.top();
   return is;
 }
-
 #endif

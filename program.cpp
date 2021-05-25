@@ -4,15 +4,13 @@ using namespace std;
 
 int main()
 {
-    int numero_cambres;
-    cin>>numero_cambres;
-
-    //Lectura de l'Estructura del magatzem
+    int numero_cambres,cambra;
     vector<int> llista_cambres;
-    for(unsigned int i; i < numero_cambres; ++i)
+  
+    //Lectura del numero de cambres i l'Estructura del magatzem
+    cin>>numero_cambres;
+    while(cin>>cambra)
     {
-        int cambra;
-        cin >> cambra;
         llista_cambres.push_back(cambra);
     }
 

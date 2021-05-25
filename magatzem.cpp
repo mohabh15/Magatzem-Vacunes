@@ -7,9 +7,9 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
-    //algoritmo para modificar el vector con la estructura de preorden a post orden
+    //Passar l'estructura de preordre a postordre
     vector<int> llista_final;
-    for(int i=1; i<llista_cambres.size()-1;++i)
+    for(int i=1; i<llista_cambres.size()-2;++i)
     {
         if(llista_cambres[i]!=0 and llista_cambres[i+1]!=0)
         {
@@ -57,7 +57,6 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres,vector<int>& llista_cam
     while (size > 0) {
         node=llista_cambres[i];
         nf=llista_cambres[i+1];
-        //cin >> node >> nf;
         if (nf == 0) 
         {  //fills buits
             p.push(arbreBin<int>(node, arbreBin<int>(), arbreBin<int>()));
