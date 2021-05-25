@@ -7,7 +7,7 @@ Magatzem::Magatzem()
 
 Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)    
 {
-    //L'algorisme crea un nou vector que té les cambres en postordre, a partir del vector que rebem en preordre
+    //Algorisme per modificar el vector amb l'estructura en preordre i passar-lo a postordre
     vector<int> llista_final;
     for(int i = 1; i < llista_cambres.size() - 2; ++i)
     {
@@ -15,19 +15,44 @@ Magatzem::Magatzem(int mida_magatzem, vector<int>& llista_cambres)
         {
             llista_final.push_back(llista_cambres[i]);
             llista_final.push_back(2);
-            ++i;
         }
         else if(llista_cambres[i] != 0 and llista_cambres[i+1] == 0)
         {
             llista_final.push_back(llista_cambres[i]);
+            llista_final.push_back(0);
             ++i;
         }
     }
     llista_final.push_back(llista_cambres[0]);
     llista_final.push_back(2);
 
+    //Acabem d'ordenar la llista per tenir l'estructura en postordre
+    llista_cambres.clear();
+    for(int i = 1; i < llista_final.size()-2; ++i)
+    {
+       if(llista_final[i]!=0)
+       {
+           for(int j = i; j < i+4; ++j)
+           {
+               llista_cambres.push_back(llista_final[j+1]);
+           }
+           llista_cambres.push_back(llista_final[i-1]);
+           llista_cambres.push_back(llista_final[i]);
+           i+=5;
+       }
+       else
+       {
+           llista_cambres.push_back(llista_final[i-1]);
+           llista_cambres.push_back(llista_final[i]);
+       }
+    }
+    llista_cambres.push_back(llista_final[llista_final.size()-2]);
+    llista_cambres.push_back(llista_final[llista_final.size()-1]);
+
+
     //Genera l'arbre amb l'estructura del magatzem que conté els índexos de les cambres
-    magatzem=generar_arbre(mida_magatzem,llista_final);
+    magatzem = generar_arbre(mida_magatzem,llista_cambres);
+
     //Genera el vector amb les n cambres
     Cambra aux;
     while(mida_magatzem > 0)
@@ -46,10 +71,12 @@ Magatzem::~Magatzem()
 // Modificadors
 arbreBin<int> Magatzem::generar_arbre(int numero_cambres, vector<int>& llista_cambres)
 {
-    int node,i;
+    int node,i=0;
     int size, nf;
     arbreBin<int> x;
     stack<arbreBin<int> > p;
+
+    cout<<llista_cambres[i]<<endl;
 
     size=numero_cambres;   
 
@@ -80,7 +107,7 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres, vector<int>& llista_ca
             p.push(arbreBin<int>(node, fe, fd));
         }
         --size;
-        ++i;
+        i+=2;
     }
     if (not p.empty()) x = p.top();
   return x;
