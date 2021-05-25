@@ -112,7 +112,7 @@ int main()
         {
             cin >> ident_vacuna;
             cout << "consultar_vac " << ident_vacuna << endl;
-            if(magatzem.consultar_vacuna(ident_vacuna) ==- 1) cout << "  error" << endl;
+            if(magatzem.consultar_vacuna(ident_vacuna) == -1) cout << "  error" << endl;
             else cout << "  " << magatzem.consultar_vacuna(ident_vacuna) << endl;
         }
         if(operacion == "fi")
