@@ -8,12 +8,12 @@ int main()
     vector<int> llista_cambres;
   
     //Lectura del numero de cambres i l'Estructura del magatzem
-    cin>>numero_cambres;
-    for(int i=0; i<numero_cambres-1; ++i)
+    cin >> numero_cambres;
+    for(int i = 0; i<numero_cambres-1; ++i)
     {
-        cin>>cambra;
+        cin >> cambra;
         llista_cambres.push_back(cambra);
-        if(cambra==0) --i;
+        if(cambra == 0) --i;
     }
 
     Magatzem magatzem(numero_cambres, llista_cambres);
