@@ -71,10 +71,10 @@ int main()
                 magatzem.modificar_sistema(ident_vacuna, quantitat-n, '-');
             }
         }
-        /*if(operacion=="distribuir")
+        if(operacion == "distribuir")
         {
-            cout<<magatzem.distribuir(ident_vacuna,quantitat)<<endl;
-        }*/
+            cout << magatzem.distribuir(ident_vacuna,quantitat) << endl;
+        }
         if(operacion == "comprimir") 
         {
             cin >> ident_cambra;
