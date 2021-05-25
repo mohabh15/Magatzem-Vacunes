@@ -116,50 +116,44 @@ arbreBin<int> Magatzem::generar_arbre(int numero_cambres, vector<int>& llista_ca
 int Magatzem::distribuir(string ident_vacuna, int quant_vacuna)
 {
     int vacunes_no_distribuides = 0;
-    if(not find(ident_vacuna))
-    {
-        cout << "  error" << endl;
-        vacunes_no_distribuides = quant_vacuna;
-    }
-    else
-    {
-        vacunes_no_distribuides = distribuir_recursivament(ident_vacuna, quant_vacuna,magatzem, vacunes_no_distribuides);
-    }
+    vacunes_no_distribuides = distribuir_recursivament(ident_vacuna, quant_vacuna,magatzem);
 
     vacunes_donades_alta[ident_vacuna] = quant_vacuna-vacunes_no_distribuides;
 
     return vacunes_no_distribuides;    
 }
 
-int Magatzem::distribuir_recursivament(string ident_vacuna, int &quant_vacuna, arbreBin<int> p, int &vacunes_no_distr) 
+int Magatzem::distribuir_recursivament(string ident_vacuna, int quant_vacuna, arbreBin<int> p) 
 {
     //Accedim a l'arbre per saber l'índex de la cambra
     //Una vegada sabem l'índex distribuim en aquesta cambra 
 
     //Cas base
-    if(p.es_buit() and quant_vacuna != 0) quant_vacuna = cambres[p.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
+    if(p.es_buit() and quant_vacuna != 0) quant_vacuna = cambres[p.arrel()-1].afegir_unitats(ident_vacuna, quant_vacuna);
 
     //Cas recursiu
     if(not p.es_buit() and quant_vacuna != 0)
     {
-        quant_vacuna = cambres[p.arrel()].afegir_unitats(ident_vacuna, quant_vacuna);
-        vacunes_no_distr = quant_vacuna;
+        quant_vacuna = cambres[p.arrel()-1].afegir_unitats(ident_vacuna, quant_vacuna);
+
         if((quant_vacuna % 2) == 0 and quant_vacuna != 0) 
         {
+            int fe=0,fd=0;
             if(not magatzem.fe().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fe(), vacunes_no_distr);
+                fe=distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fe());
             }
             if(not p.fd().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fd(), vacunes_no_distr);
+                fd=distribuir_recursivament(ident_vacuna, quant_vacuna/2, p.fd());
             }
+            quant_vacuna=fe+fd;
         }
         else if(quant_vacuna != 0)
         {
             if(not p.fd().es_buit())   
             {
-                distribuir_recursivament(ident_vacuna, quant_vacuna,p.fd(), vacunes_no_distr);
+                quant_vacuna=distribuir_recursivament(ident_vacuna, quant_vacuna,p.fd());
             }
         }
     }

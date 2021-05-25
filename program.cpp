@@ -75,7 +75,12 @@ int main()
         }
         if(operacion == "distribuir")
         {
-            cout << magatzem.distribuir(ident_vacuna,quantitat) << endl;
+            cin >> ident_vacuna >> quantitat;
+            if(magatzem.find(ident_vacuna)==false)
+            {
+                cout << "  error" << endl;
+            }
+            else cout << magatzem.distribuir(ident_vacuna,quantitat) << endl;
         }
         if(operacion == "comprimir") 
         {
